@@ -1,0 +1,42 @@
+name: Deploy to Vercel
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Select the environment
+        required: true
+        type: choice
+        options: [dev, prod]
+
+jobs:
+  deploy:
+    name: Deploy to Vercel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          # If ENV === prod, always use main. Otherwise use the branch name
+          # This prevents deploying to prod from a branch other than main
+          ref: ${{ github.event.inputs.environment == 'prod' && 'main' || github.ref }}
+
+      # Install Vercel CLI and link project
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Link project to Vercel
+        run: vercel link --yes --token ${{ secrets.VERCEL_ACCESS_TOKEN }}
+
+      # Deploy based on the selected environment
+      - name: Deploy to Vercel
+        run: |
+          ENV="${{ github.event.inputs.environment }}"
+          echo "🚀 Deploying to '$ENV'..."
+
+          if [[ "$ENV" == "prod" ]]; then
+            vercel deploy --prod --force --yes --token ${{ secrets.VERCEL_ACCESS_TOKEN }}
+          else
+            vercel deploy --force --yes --token ${{ secrets.VERCEL_ACCESS_TOKEN }}
+          fi
