@@ -1,5 +1,7 @@
 // contexts
 import { useToggleContext } from '@/contexts/use-toggle-context';
+// utils
+import { cn } from '@/utils/tw-merge';
 
 // ----------------------------------------------------------------------
 
@@ -8,7 +10,10 @@ export default function ContactView() {
 
   return (
     <section
-      className={`bg-primary absolute inset-y-0 right-0 flex w-[calc(100vw-64px)] transition-transform duration-500 ease-in-out ${openContact ? 'translate-x-0' : 'translate-x-[calc(100vw-128px)]'}`}
+      className={cn(
+        'bg-primary absolute inset-y-0 right-0 z-20 flex w-screen transition-transform duration-500 ease-in-out',
+        openContact ? 'translate-x-16' : 'translate-x-[calc(100vw-64px)]'
+      )}
     >
       <button
         onClick={handleToggleContact}
@@ -18,6 +23,8 @@ export default function ContactView() {
           Contact
         </p>
       </button>
+
+      <div className="mr-16 w-full">Contents here...</div>
     </section>
   );
 }
