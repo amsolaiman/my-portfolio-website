@@ -10,7 +10,10 @@
     "format": "prettier --write \"**/*.{js,ts,tsx,json,md,yml,yaml}\"",
     "check:type": "tsc --noEmit",
     "check:circular-deps": "madge -c --extensions ts,tsx .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "release:patch": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major"
   },
   "dependencies": {
     "next": "16.0.10",
@@ -37,6 +40,7 @@
     "madge": "^8.0.0",
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
+    "standard-version": "^9.5.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
