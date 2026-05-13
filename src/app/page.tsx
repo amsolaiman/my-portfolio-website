@@ -12,7 +12,7 @@ import ProjectView from '@/sections/project/view';
 export default function App() {
   return (
     <ToggleProvider>
-      <main className="relative h-svh overflow-hidden xl:h-screen">
+      <main className="relative h-svh w-screen overflow-hidden xl:h-screen">
         <HomeView />
 
         <ProjectView />
