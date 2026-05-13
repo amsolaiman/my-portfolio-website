@@ -5,6 +5,13 @@ import * as Yup from 'yup';
 export const envSchema = Yup.object({
   // HOST
   HOST_URL: Yup.string().url().required('HOST_URL is required'),
+  // BASIC AUTH
+  BASIC_AUTH_USERNAME: Yup.string().required('BASIC_AUTH_USERNAME is required'),
+  BASIC_AUTH_PASSWORD: Yup.string().required('BASIC_AUTH_PASSWORD is required'),
+  BASIC_AUTH_BYPASS: Yup.string()
+    .oneOf(['true', 'false'])
+    .default('false')
+    .optional(),
 });
 
 export const envClientSchema = Yup.object({
