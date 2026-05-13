@@ -2,19 +2,23 @@
 
 // contexts
 import { ToggleProvider } from '@/contexts/use-toggle-context';
+// sections
+import ContactView from '@/sections/contact/view';
+import HomeView from '@/sections/home/view';
+import ProjectView from '@/sections/project/view';
 
 // ----------------------------------------------------------------------
 
-export default function Home() {
+export default function App() {
   return (
     <ToggleProvider>
-      <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans">
-        <main className="flex min-h-screen w-full max-w-3xl items-center justify-center bg-white px-16 py-32">
-          <h1 className="text-5xl font-bold text-black sm:text-[5rem]">
-            Hello World
-          </h1>
-        </main>
-      </div>
+      <main className="relative h-svh overflow-hidden xl:h-screen">
+        <HomeView />
+
+        <ProjectView />
+
+        <ContactView />
+      </main>
     </ToggleProvider>
   );
 }
