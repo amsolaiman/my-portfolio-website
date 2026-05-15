@@ -18,6 +18,15 @@
   --font-mono: var(--font-fira-code);
 }
 
+html {
+  scroll-behavior: smooth;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

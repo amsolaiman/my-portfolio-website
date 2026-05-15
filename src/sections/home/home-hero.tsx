@@ -13,7 +13,7 @@ const PROFESSIONS = [
 
 export default function HomeHero() {
   return (
-    <div className="relative flex h-screen w-full flex-col items-start justify-between px-12 py-6">
+    <div className="relative flex min-h-screen w-full flex-col items-start justify-between px-12 py-6">
       <div className="flex w-full flex-col">
         <div className="relative aspect-2/1 w-3/4 overflow-hidden">
           <Image
