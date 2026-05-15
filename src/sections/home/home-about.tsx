@@ -1,3 +1,6 @@
+//
+import HomeSkills from './home-skills';
+
 // ----------------------------------------------------------------------
 
 export default function HomeAbout() {
@@ -14,6 +17,8 @@ export default function HomeAbout() {
 
       <div className="mt-32 grid grid-cols-2">
         <p className="text-secondary text-xs">/ Who I am</p>
+
+        <HomeSkills />
       </div>
     </div>
   );
