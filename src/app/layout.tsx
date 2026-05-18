@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { Bebas_Neue, Fira_Code } from 'next/font/google';
 // styles
+import 'lenis/dist/lenis.css';
 import './globals.css';
 
 // ----------------------------------------------------------------------
