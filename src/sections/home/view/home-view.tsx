@@ -1,5 +1,6 @@
 //
 import HomeAbout from '../home-about';
+import HomeCareer from '../home-career';
 import HomeHero from '../home-hero';
 
 // ----------------------------------------------------------------------
@@ -10,6 +11,8 @@ export default function HomeView() {
       <HomeHero />
 
       <HomeAbout />
+
+      <HomeCareer />
     </section>
   );
 }
