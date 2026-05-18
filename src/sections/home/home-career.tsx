@@ -2,6 +2,8 @@ import { format } from 'date-fns';
 
 // _store
 import experience, { IExperience } from '@/_store/experience';
+// utils
+import { cn } from '@/utils/tw-merge';
 
 // ----------------------------------------------------------------------
 
@@ -35,7 +37,7 @@ export default function HomeCareer() {
     <div className="w-full px-12 pt-32">
       <p className="text-secondary text-xs">/ P.002 / Career</p>
 
-      <h1 className="mt-8 font-sans text-8xl/[0.9]">Where I&apos;ve been</h1>
+      <h1 className="mt-8 font-sans text-8xl/[0.9]">Exp. since &apos;22</h1>
 
       <ul className="mt-6 w-1/2">
         {categorizeArray(experience).map((group) => (
@@ -57,21 +59,23 @@ export default function HomeCareer() {
 
                 return (
                   <li key={item.title} className="flex gap-6 py-8 pl-4">
-                    <span className="text-primary text-sm">●</span>
+                    <span className="text-primary text-xs">●</span>
 
                     <div>
-                      <h4 className="text-primary text-sm">{item.title}</h4>
+                      <h4 className="text-primary text-xs">{item.title}</h4>
 
-                      <button
-                        className="text-foreground hover:text-foreground/75 cursor-pointer text-lg"
-                        onClick={() => {
-                          if (item.employerLink) {
-                            window.open(item.employerLink, '_blank');
-                          }
-                        }}
+                      <a
+                        href={item.employerLink ?? undefined}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn(
+                          'text-foreground text-start text-base',
+                          !!item.employerLink &&
+                            'hover:text-foreground/75 cursor-pointer'
+                        )}
                       >
                         {item.employer}
-                      </button>
+                      </a>
 
                       <p className="text-foreground/50 text-xs">
                         {item.type}, {duration}

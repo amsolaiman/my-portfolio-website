@@ -36,7 +36,7 @@ export default function HomeServices() {
           {SKILL_SET.map((skill, index) => (
             <li
               key={skill + index}
-              className="text-foreground border-foreground/20 border-b py-4 text-end text-base uppercase first:pt-0"
+              className="text-foreground border-foreground/20 border-b py-4 text-end text-base first:pt-0"
             >
               {skill}
               <span className="text-primary ml-4">•</span>
@@ -47,7 +47,7 @@ export default function HomeServices() {
 
       <button
         onClick={handleToggleProject}
-        className="text-foreground hover:text-foreground/75 mt-6 cursor-pointer self-end text-end text-xs uppercase"
+        className="text-foreground hover:text-foreground/75 mt-6 cursor-pointer self-end text-end text-xs"
       >
         Check out my projects →
       </button>
