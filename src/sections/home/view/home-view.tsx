@@ -8,6 +8,7 @@ import HomeAbout from '../home-about';
 import HomeCareer from '../home-career';
 import HomeFooter from '../home-footer';
 import HomeHero from '../home-hero';
+import HomeQuote from '../home-quote';
 
 // ----------------------------------------------------------------------
 
@@ -47,6 +48,8 @@ export default function HomeView() {
       <HomeAbout />
 
       <HomeCareer />
+
+      <HomeQuote />
 
       <HomeFooter />
     </section>
