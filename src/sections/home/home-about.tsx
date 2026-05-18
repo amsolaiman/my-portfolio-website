@@ -1,5 +1,5 @@
 //
-import HomeSkills from './home-skills';
+import HomeServices from './home-services';
 
 // ----------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ export default function HomeAbout() {
       <div className="mt-32 grid grid-cols-2">
         <p className="text-secondary text-xs">/ Who I am</p>
 
-        <HomeSkills />
+        <HomeServices />
       </div>
     </div>
   );
