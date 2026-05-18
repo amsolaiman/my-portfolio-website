@@ -1,4 +1,7 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
+import Lenis from 'lenis';
 
 // contexts
 import { useToggleContext } from '@/contexts/use-toggle-context';
@@ -11,21 +14,33 @@ import ProjectList from '../project-list';
 // ----------------------------------------------------------------------
 
 export default function ProjectView() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const { openProject, handleToggleProject } = useToggleContext();
 
   useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      el.scrollLeft += e.deltaY;
+    const lenis = new Lenis({
+      wrapper: container,
+      content: container.firstElementChild as HTMLElement,
+      eventsTarget: container,
+      orientation: 'horizontal',
+      gestureOrientation: 'both',
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    const rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
     };
-
-    el.addEventListener('wheel', onWheel, { passive: false });
-    return () => el.removeEventListener('wheel', onWheel);
   }, []);
 
   return (
@@ -44,7 +59,7 @@ export default function ProjectView() {
         </p>
       </button>
 
-      <div ref={scrollRef} className="mr-16 w-full overflow-x-scroll">
+      <div ref={containerRef} className="mr-16 w-full overflow-x-scroll">
         <ProjectList />
       </div>
     </section>
