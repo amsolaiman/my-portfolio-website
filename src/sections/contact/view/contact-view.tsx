@@ -1,7 +1,12 @@
+'use client';
+
 // contexts
 import { useToggleContext } from '@/contexts/use-toggle-context';
 // utils
 import { cn } from '@/utils/tw-merge';
+
+//
+import ContactDetails from '../contact-details';
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +29,9 @@ export default function ContactView() {
         </p>
       </button>
 
-      <div className="mr-16 w-full">Contents here...</div>
+      <div className="mr-16 w-full">
+        <ContactDetails />
+      </div>
     </section>
   );
 }
