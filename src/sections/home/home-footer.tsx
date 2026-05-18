@@ -34,7 +34,7 @@ export default function HomeFooter() {
 
         <button
           onClick={handleToggleContact}
-          className="text-foreground hover:text-foreground/75 cursor-pointer text-xs uppercase"
+          className="text-foreground hover:text-foreground/75 cursor-pointer text-xs"
         >
           Let&apos;s get creative →
         </button>
