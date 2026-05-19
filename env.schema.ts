@@ -2,6 +2,20 @@ import * as Yup from 'yup';
 
 // ----------------------------------------------------------------------
 
+const isValidDomain = (url: string, expectedDomains: string[]) => {
+  try {
+    const { hostname } = new URL(url);
+
+    return expectedDomains.some(
+      (domain) => hostname === domain || hostname.endsWith(`.${domain}`)
+    );
+  } catch {
+    return false;
+  }
+};
+
+// ----------------------------------------------------------------------
+
 export const envSchema = Yup.object({
   // HOST
   HOST_URL: Yup.string().url().required('HOST_URL is required'),
@@ -19,6 +33,29 @@ export const envSchema = Yup.object({
   SANITY_STUDIO_DATASET: Yup.string().required(
     'SANITY_STUDIO_DATASET is required'
   ),
+  // CONTENT
+  DEFAULT_EMAIL_ADDRESS: Yup.string()
+    .email()
+    .required('DEFAULT_EMAIL_ADDRESS is required'),
+  DEFAULT_SOCIAL_LINK_GITHUB: Yup.string()
+    .url()
+    .test(
+      'is-github-url',
+      'DEFAULT_SOCIAL_LINK_GITHUB must be a valid GitHub URL',
+      (value) => !value || isValidDomain(value, ['github.com'])
+    )
+    .required('DEFAULT_SOCIAL_LINK_GITHUB is required'),
+  DEFAULT_SOCIAL_LINK_LINKEDIN: Yup.string()
+    .url()
+    .test(
+      'is-linkedin-url',
+      'DEFAULT_SOCIAL_LINK_LINKEDIN must be a valid LinkedIn URL',
+      (value) => !value || isValidDomain(value, ['linkedin.com'])
+    )
+    .required('DEFAULT_SOCIAL_LINK_LINKEDIN is required'),
+  DEFAULT_RESUME_URL: Yup.string()
+    .url()
+    .required('DEFAULT_RESUME_URL is required'),
 });
 
 export const envClientSchema = Yup.object({
@@ -33,6 +70,29 @@ export const envClientSchema = Yup.object({
   NEXT_PUBLIC_SANITY_STUDIO_DATASET: Yup.string().required(
     'NEXT_PUBLIC_SANITY_STUDIO_DATASET is required'
   ),
+  // CONTENT
+  NEXT_PUBLIC_DEFAULT_EMAIL_ADDRESS: Yup.string()
+    .email()
+    .required('NEXT_PUBLIC_DEFAULT_EMAIL_ADDRESS is required'),
+  NEXT_PUBLIC_DEFAULT_SOCIAL_LINK_GITHUB: Yup.string()
+    .url()
+    .test(
+      'is-github-url',
+      'NEXT_PUBLIC_DEFAULT_SOCIAL_LINK_GITHUB must be a valid GitHub URL',
+      (value) => !value || isValidDomain(value, ['github.com'])
+    )
+    .required('NEXT_PUBLIC_DEFAULT_SOCIAL_LINK_GITHUB is required'),
+  NEXT_PUBLIC_DEFAULT_SOCIAL_LINK_LINKEDIN: Yup.string()
+    .url()
+    .test(
+      'is-linkedin-url',
+      'NEXT_PUBLIC_DEFAULT_SOCIAL_LINK_LINKEDIN must be a valid LinkedIn URL',
+      (value) => !value || isValidDomain(value, ['linkedin.com'])
+    )
+    .required('NEXT_PUBLIC_DEFAULT_SOCIAL_LINK_LINKEDIN is required'),
+  NEXT_PUBLIC_DEFAULT_RESUME_URL: Yup.string()
+    .url()
+    .required('NEXT_PUBLIC_DEFAULT_RESUME_URL is required'),
 });
 
 export type EnvSchemaType = Yup.InferType<typeof envSchema>;
