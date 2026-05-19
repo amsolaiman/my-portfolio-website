@@ -1,5 +1,11 @@
+// contexts
+import { useGlobalContent } from '@/contexts/use-global-content';
 // constants
-import { EMAIL_ADDRESS, RESUME_URL, SOCIAL_LINKS } from '@/constants/channel';
+import {
+  FALLBACK_EMAIL_ADDRESS,
+  FALLBACK_RESUME_URL,
+  FALLBACK_SOCIAL_LINKS,
+} from '@/constants/channel';
 
 //
 import ContactWidget from './contact-widget';
@@ -7,6 +13,13 @@ import ContactWidget from './contact-widget';
 // ----------------------------------------------------------------------
 
 export default function ContactDetails() {
+  const { email, resume, socialLink } = useGlobalContent();
+
+  const socialLinks = !!socialLink.length ? socialLink : FALLBACK_SOCIAL_LINKS;
+
+  const resumeUrl = resume || FALLBACK_RESUME_URL;
+  const emailAddress = email || FALLBACK_EMAIL_ADDRESS;
+
   return (
     <div className="flex h-full w-full flex-col justify-between px-12 py-8">
       <p className="text-xs">/ P.004 / Open Channel</p>
@@ -16,7 +29,7 @@ export default function ContactDetails() {
           Let&apos;s talk & build something great together. Check out my&nbsp;
           <a
             className="hover:text-secondary underline"
-            href={RESUME_URL}
+            href={resumeUrl}
             download
             target="_blank"
             rel="noopener noreferrer"
@@ -28,9 +41,9 @@ export default function ContactDetails() {
 
         <a
           className="hover:text-secondary cursor-pointer font-sans text-7xl"
-          href={`mailto:${EMAIL_ADDRESS}`}
+          href={`mailto:${emailAddress}`}
         >
-          {EMAIL_ADDRESS}
+          {emailAddress}
         </a>
       </div>
 
@@ -38,7 +51,7 @@ export default function ContactDetails() {
         <ContactWidget />
 
         <div className="flex items-center gap-10">
-          {SOCIAL_LINKS.map((social) => (
+          {socialLinks.map((social) => (
             <a
               key={social.label}
               className="text-foreground/75 hover:border-secondary cursor-pointer border-b-2 border-transparent text-base"
