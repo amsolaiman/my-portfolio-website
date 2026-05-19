@@ -17,6 +17,20 @@ validateEnvClient(nextEnv);
 const nextConfig: NextConfig = {
   /* config options here */
   env: nextEnv,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
