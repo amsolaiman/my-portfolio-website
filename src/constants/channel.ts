@@ -2,23 +2,20 @@ import { ChannelSocialLinkType } from '@/types/constant';
 
 // ----------------------------------------------------------------------
 
-export const RESUME_URL =
-  'https://raw.githubusercontent.com/amsolaiman/amsolaiman/main/assets/resume.pdf';
+export const RESUME_URL = process.env.NEXT_PUBLIC_DEFAULT_RESUME_URL;
 
-export const EMAIL_ADDRESS = 'abdulmoiz.solaiman@outlook.com';
+export const EMAIL_ADDRESS = process.env.NEXT_PUBLIC_DEFAULT_EMAIL_ADDRESS;
 
 export const SOCIAL_LINKS: ChannelSocialLinkType[] = [
   {
-    label: 'LinkedIn',
-    link: 'https://www.linkedin.com/',
-  },
-  {
+    _key: 'github-link',
     label: 'GitHub',
-    link: 'https://github.com/',
+    link: process.env.NEXT_PUBLIC_DEFAULT_SOCIAL_LINK_GITHUB!,
   },
   {
-    label: 'Telegram',
-    link: 'https://telegram.org/',
+    _key: 'linkedin-link',
+    label: 'LinkedIn',
+    link: process.env.NEXT_PUBLIC_DEFAULT_SOCIAL_LINK_LINKEDIN!,
   },
 ];
 
