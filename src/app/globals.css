@@ -27,14 +27,13 @@ html {
   display: none;
 }
 
-body {
+body:not(:has(#sanity)) {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-fira-code), sans-serif;
   text-transform: uppercase;
 }
 
-a,
-button {
+body:not(:has(#sanity)) button {
   text-transform: uppercase;
 }
