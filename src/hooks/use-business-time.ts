@@ -3,19 +3,33 @@
 import { useEffect, useState } from 'react';
 import { toZonedTime } from 'date-fns-tz';
 
+// contexts
+import { useGlobalContent } from '@/contexts/use-global-content';
 // constants
+import {
+  FALLBACK_BUSINESS_DAYS,
+  FALLBACK_BUSINESS_HOURS,
+} from '@/constants/channel';
 import { DEFAULT_TIMEZONE } from '@/constants/content';
-import { BUSINESS_DAYS, BUSINESS_HOURS } from '@/constants/channel';
 
 // ----------------------------------------------------------------------
 
 const ONE_MINUTE_IN_MS = 60_000;
 
-function isBusinessDay(day: number) {
-  return day >= BUSINESS_DAYS.START && day <= BUSINESS_DAYS.END;
+interface BusinessTimeType {
+  startDay: number;
+  endDay: number;
+  startHour: number;
+  endHour: number;
 }
 
-function getNextCheckDelay(time: Date) {
+// ----------------------------------------------------------------------
+
+function isBusinessDay(day: number, range: BusinessTimeType) {
+  return day >= range.startDay && day <= range.endDay;
+}
+
+function getNextCheckDelay(time: Date, range: BusinessTimeType) {
   const year = time.getFullYear();
   const month = time.getMonth();
   const date = time.getDate();
@@ -27,16 +41,16 @@ function getNextCheckDelay(time: Date) {
 
   // During business hours → next change is closing
   if (
-    isBusinessDay(day) &&
-    hours >= BUSINESS_HOURS.START &&
-    hours < BUSINESS_HOURS.END
+    isBusinessDay(day, range) &&
+    hours >= range.startHour &&
+    hours < range.endHour
   ) {
-    return makeTime(BUSINESS_HOURS.END).getTime() - time.getTime();
+    return makeTime(range.endHour).getTime() - time.getTime();
   }
 
   // Before opening → next change is opening today
-  if (isBusinessDay(day) && hours < BUSINESS_HOURS.START) {
-    return makeTime(BUSINESS_HOURS.START).getTime() - time.getTime();
+  if (isBusinessDay(day, range) && hours < range.startHour) {
+    return makeTime(range.startHour).getTime() - time.getTime();
   }
 
   // Otherwise → find next business day open
@@ -49,12 +63,12 @@ function getNextCheckDelay(time: Date) {
 
     const nextDay = next.getDay();
 
-    if (isBusinessDay(nextDay)) {
+    if (isBusinessDay(nextDay, range)) {
       const open = new Date(
         next.getFullYear(),
         next.getMonth(),
         next.getDate(),
-        BUSINESS_HOURS.START,
+        range.startHour,
         0,
         0,
         0
@@ -68,34 +82,51 @@ function getNextCheckDelay(time: Date) {
   return ONE_MINUTE_IN_MS;
 }
 
+export function useBusinessTimeRange(): BusinessTimeType {
+  const { businessDays, businessHours } = useGlobalContent();
+
+  return {
+    startDay: businessDays?.start || FALLBACK_BUSINESS_DAYS.START,
+    endDay: businessDays?.end || FALLBACK_BUSINESS_DAYS.END,
+    startHour: businessHours?.start || FALLBACK_BUSINESS_HOURS.START,
+    endHour: businessHours?.end || FALLBACK_BUSINESS_HOURS.END,
+  };
+}
+
 export function useBusinessTime() {
+  const range = useBusinessTimeRange();
+
   const [isOnline, setIsOnline] = useState(false);
 
-  useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
+  useEffect(
+    () => {
+      let timeout: ReturnType<typeof setTimeout>;
 
-    const check = () => {
-      const now = new Date();
-      const phTime = toZonedTime(now, DEFAULT_TIMEZONE);
+      const check = () => {
+        const now = new Date();
+        const phTime = toZonedTime(now, DEFAULT_TIMEZONE);
 
-      const day = phTime.getDay();
-      const hours = phTime.getHours();
+        const day = phTime.getDay();
+        const hours = phTime.getHours();
 
-      const online =
-        isBusinessDay(day) &&
-        hours >= BUSINESS_HOURS.START &&
-        hours < BUSINESS_HOURS.END;
+        const online =
+          isBusinessDay(day, range) &&
+          hours >= range.startHour &&
+          hours < range.endHour;
 
-      setIsOnline(online);
+        setIsOnline(online);
 
-      const delay = getNextCheckDelay(phTime);
-      timeout = setTimeout(check, delay);
-    };
+        const delay = getNextCheckDelay(phTime, range);
+        timeout = setTimeout(check, delay);
+      };
 
-    check();
+      check();
 
-    return () => clearTimeout(timeout);
-  }, []);
+      return () => clearTimeout(timeout);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   return isOnline;
 }
