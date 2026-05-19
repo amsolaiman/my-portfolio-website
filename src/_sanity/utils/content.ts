@@ -20,6 +20,11 @@ export async function getGlobalContentData(): Promise<IContent> {
     },
     businessDays,
     businessHours,
+    skills,
+    "portraitImage": {
+      "src": portraitImage.asset->url,
+      "alt": portraitImage.alt
+    },
     city,
     country,
   }`;

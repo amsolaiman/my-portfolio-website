@@ -190,6 +190,63 @@ const content = defineType({
     }),
 
     defineField({
+      name: 'skills',
+      title: 'Skill set',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'item',
+          type: 'string',
+        }),
+      ],
+      options: {
+        layout: 'tags',
+      },
+      validation: (Rule) =>
+        Rule.required()
+          .min(5)
+          .custom((skills) => {
+            if (!skills) return true;
+
+            if (!Array.isArray(skills)) return true;
+
+            const normalized = skills.map((s) => {
+              if (typeof s !== 'string') {
+                return '';
+              }
+
+              return s.toLowerCase().trim();
+            });
+
+            const unique = new Set(normalized);
+
+            return unique.size === normalized.length
+              ? true
+              : 'Values must be unique';
+          }),
+    }),
+
+    defineField({
+      name: 'portraitImage',
+      title: 'Portrait image',
+      type: 'image',
+      description:
+        'Accepts PNG, JPG/JPEG and WEBP images only. Recommended aspect ratio is approximately 3:4 (width to height).',
+      options: {
+        hotspot: true,
+        accept: 'image/png, image/jpeg, image/webp',
+      },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt',
+          type: 'string',
+        }),
+      ],
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
       name: 'city',
       title: 'City',
       type: 'string',

@@ -19,6 +19,11 @@ export interface IContent {
     start: number;
     end: number;
   };
+  skills: string[];
+  portraitImage: {
+    src: string;
+    alt: string;
+  };
   city: string;
   country: string;
 }
