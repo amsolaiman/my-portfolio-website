@@ -1,26 +1,12 @@
-// utils
-import { cn } from '@/utils/tw-merge';
 // constants
-import { DEFAULT_TIMEZONE } from '@/constants/content';
 import { EMAIL_ADDRESS, RESUME_URL, SOCIAL_LINKS } from '@/constants/channel';
-// components
-import DigitalClock from '@/components/digital-clock';
+
+//
+import ContactWidget from './contact-widget';
 
 // ----------------------------------------------------------------------
 
 export default function ContactDetails() {
-  //#region Business Hours Logic
-  const now = new Date();
-
-  const phTime = new Date(
-    now.toLocaleString('en-US', { timeZone: DEFAULT_TIMEZONE })
-  );
-  const day = phTime.getDay();
-  const hours = phTime.getHours();
-
-  const BUSINESS_HOURS = day >= 1 && day <= 6 && hours >= 9 && hours < 18;
-  //#endregion
-
   return (
     <div className="flex h-full w-full flex-col justify-between px-12 py-8">
       <p className="text-xs">/ P.004 / Open Channel</p>
@@ -49,24 +35,7 @@ export default function ContactDetails() {
       </div>
 
       <div className="flex items-end justify-between">
-        <div>
-          <p className="text-sm">
-            <span
-              className={cn(
-                BUSINESS_HOURS ? 'text-foreground' : 'text-foreground/75'
-              )}
-            >
-              ({BUSINESS_HOURS ? 'Online' : 'Offline'})&nbsp;
-            </span>
-            Now, <DigitalClock />
-          </p>
-
-          <p className="text-foreground/75 text-xs">
-            Mon-Sat, 9:00 AM-6:00 PM
-            <br />
-            Based in Marawi, Philippines
-          </p>
-        </div>
+        <ContactWidget />
 
         <div className="flex items-center gap-10">
           {SOCIAL_LINKS.map((social) => (
