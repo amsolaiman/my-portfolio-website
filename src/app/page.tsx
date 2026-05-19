@@ -1,5 +1,3 @@
-'use client';
-
 // contexts
 import { ToggleProvider } from '@/contexts/use-toggle-context';
 // sections

@@ -1,3 +1,5 @@
+import { ChannelSocialLinkType } from './constant';
+
 // ----------------------------------------------------------------------
 
 export interface IContent {
@@ -6,11 +8,7 @@ export interface IContent {
   description: string;
   email: string;
   resume: string;
-  socialLink: {
-    _key: string;
-    label: string;
-    link: string;
-  }[];
+  socialLink: ChannelSocialLinkType[];
   businessDays?: {
     start: number;
     end: number;

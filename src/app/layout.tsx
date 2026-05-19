@@ -5,6 +5,8 @@ import { Bebas_Neue, Fira_Code } from 'next/font/google';
 import 'lenis/dist/lenis.css';
 import './globals.css';
 
+// contexts
+import { GlobalContentProvider } from '@/contexts/use-global-content';
 // utils
 import { getGlobalContentData } from '@/_sanity/utils/content';
 // constants
@@ -60,17 +62,21 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const globalContent = await getGlobalContentData();
+
   return (
     <html lang="en">
       <body
         className={`${bebasNeue.variable} ${firaCode.variable} antialiased`}
       >
-        {children}
+        <GlobalContentProvider value={globalContent}>
+          {children}
+        </GlobalContentProvider>
       </body>
     </html>
   );

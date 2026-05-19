@@ -2,11 +2,12 @@ import { ChannelSocialLinkType } from '@/types/constant';
 
 // ----------------------------------------------------------------------
 
-export const RESUME_URL = process.env.NEXT_PUBLIC_DEFAULT_RESUME_URL;
+export const FALLBACK_RESUME_URL = process.env.NEXT_PUBLIC_DEFAULT_RESUME_URL;
 
-export const EMAIL_ADDRESS = process.env.NEXT_PUBLIC_DEFAULT_EMAIL_ADDRESS;
+export const FALLBACK_EMAIL_ADDRESS =
+  process.env.NEXT_PUBLIC_DEFAULT_EMAIL_ADDRESS;
 
-export const SOCIAL_LINKS: ChannelSocialLinkType[] = [
+export const FALLBACK_SOCIAL_LINKS: ChannelSocialLinkType[] = [
   {
     _key: 'github-link',
     label: 'GitHub',
