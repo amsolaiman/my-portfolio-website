@@ -1,12 +1,16 @@
 import { format } from 'date-fns-tz';
 
+// context
+import { useGlobalContent } from '@/contexts/use-global-content';
 // utils
 import { cn } from '@/utils/tw-merge';
 // hooks
-import { useBusinessTime } from '@/hooks/use-business-time';
+import {
+  useBusinessTime,
+  useBusinessTimeRange,
+} from '@/hooks/use-business-time';
 // constants
-import { BASE_LOCATION } from '@/constants/content';
-import { BUSINESS_DAYS, BUSINESS_HOURS } from '@/constants/channel';
+import { FALLBACK_BASE_LOCATION } from '@/constants/content';
 // components
 import DigitalClock from '@/components/digital-clock';
 
@@ -17,6 +21,10 @@ const DAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 export default function ContactWidget() {
   const isBusinessTime = useBusinessTime();
 
+  const { startDay, endDay, startHour, endHour } = useBusinessTimeRange();
+
+  const { city, country } = useGlobalContent();
+
   const formatHour = (hour: number) => {
     const date = new Date();
 
@@ -24,8 +32,11 @@ export default function ContactWidget() {
     return format(date, 'h:mm a');
   };
 
-  const businessDaysLabel = `${DAY_LABELS[BUSINESS_DAYS.START]}-${DAY_LABELS[BUSINESS_DAYS.END]}`;
-  const businessHoursLabel = `${formatHour(BUSINESS_HOURS.START)}-${formatHour(BUSINESS_HOURS.END)}`;
+  const businessDaysLabel = `${DAY_LABELS[startDay]}-${DAY_LABELS[endDay]}`;
+  const businessHoursLabel = `${formatHour(startHour)}-${formatHour(endHour)}`;
+
+  const baseLocation =
+    city && country ? `${city}, ${country}` : FALLBACK_BASE_LOCATION;
 
   return (
     <div className="flex flex-col">
@@ -43,7 +54,7 @@ export default function ContactWidget() {
       <p className="text-foreground/75 text-xs">
         {businessDaysLabel}, {businessHoursLabel}
         <br />
-        Based in {BASE_LOCATION}
+        Based in {baseLocation}
       </p>
     </div>
   );

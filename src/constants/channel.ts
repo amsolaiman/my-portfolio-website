@@ -20,12 +20,12 @@ export const FALLBACK_SOCIAL_LINKS: ChannelSocialLinkType[] = [
   },
 ];
 
-export const BUSINESS_DAYS = {
+export const FALLBACK_BUSINESS_DAYS = {
   START: 1, // Monday
   END: 5, // Friday
 };
 
-export const BUSINESS_HOURS = {
+export const FALLBACK_BUSINESS_HOURS = {
   START: 8, // 8 AM
   END: 17, // 5 PM
 };
