@@ -1,3 +1,6 @@
+//
+import { IContent } from './data';
+
 // ----------------------------------------------------------------------
 
 export type ToggleContextType = {
@@ -6,3 +9,5 @@ export type ToggleContextType = {
   handleToggleProject: () => void;
   handleToggleContact: () => void;
 };
+
+export type GlobalContentContextType = IContent | null;
