@@ -21,7 +21,7 @@ const firaCode = Fira_Code({
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: 'jasafanar workshop',
+  title: 'jasafanar portfolio',
   description:
     'Where design and engineering move as one——every detail with intent. No complexity. Just fast, clear and intentional frontend experiences.',
   icons: [

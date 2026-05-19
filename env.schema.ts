@@ -12,6 +12,13 @@ export const envSchema = Yup.object({
     .oneOf(['true', 'false'])
     .default('false')
     .optional(),
+  // SANITY.IO
+  SANITY_STUDIO_PROJECT_ID: Yup.string().required(
+    'SANITY_STUDIO_PROJECT_ID is required'
+  ),
+  SANITY_STUDIO_DATASET: Yup.string().required(
+    'SANITY_STUDIO_DATASET is required'
+  ),
 });
 
 export const envClientSchema = Yup.object({
@@ -19,6 +26,13 @@ export const envClientSchema = Yup.object({
   NEXT_PUBLIC_HOST_URL: Yup.string()
     .url()
     .required('NEXT_PUBLIC_HOST_URL is required'),
+  // SANITY.IO
+  NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID: Yup.string().required(
+    'NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID is required'
+  ),
+  NEXT_PUBLIC_SANITY_STUDIO_DATASET: Yup.string().required(
+    'NEXT_PUBLIC_SANITY_STUDIO_DATASET is required'
+  ),
 });
 
 export type EnvSchemaType = Yup.InferType<typeof envSchema>;
