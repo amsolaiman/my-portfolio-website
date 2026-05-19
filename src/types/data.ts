@@ -20,7 +20,7 @@ export interface IContent {
   skills: string[];
   portraitImage: {
     src: string;
-    alt: string;
+    alt?: string;
   };
   city: string;
   country: string;
