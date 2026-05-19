@@ -1,6 +1,9 @@
 // ----------------------------------------------------------------------
 
-export const SKILL_SET = [
+export const FALLBACK_IMAGE_URL =
+  'https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd';
+
+export const FALLBACK_SKILL_SET = [
   'Next.js',
   'Typescript',
   'React Native',

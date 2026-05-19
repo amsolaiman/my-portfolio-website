@@ -1,12 +1,17 @@
 // contexts
 import { useToggleContext } from '@/contexts/use-toggle-context';
+import { useGlobalContent } from '@/contexts/use-global-content';
 // constants
-import { SKILL_SET } from '@/constants/content';
+import { FALLBACK_SKILL_SET } from '@/constants/content';
 
 // ----------------------------------------------------------------------
 
 export default function HomeServices() {
+  const { skills } = useGlobalContent();
+
   const { handleToggleProject } = useToggleContext();
+
+  const skillSet = skills || FALLBACK_SKILL_SET;
 
   return (
     <div className="flex w-full flex-col">
@@ -32,8 +37,8 @@ export default function HomeServices() {
           </p>
         </div>
 
-        <ul>
-          {SKILL_SET.map((skill, index) => (
+        <ul className="flex flex-col">
+          {skillSet.map((skill, index) => (
             <li
               key={skill + index}
               className="text-foreground border-foreground/20 border-b py-4 text-end text-base first:pt-0"
@@ -42,15 +47,15 @@ export default function HomeServices() {
               <span className="text-primary ml-4">•</span>
             </li>
           ))}
+
+          <button
+            onClick={handleToggleProject}
+            className="text-foreground hover:text-foreground/75 mt-6 cursor-pointer self-end text-xs"
+          >
+            Check out my projects →
+          </button>
         </ul>
       </div>
-
-      <button
-        onClick={handleToggleProject}
-        className="text-foreground hover:text-foreground/75 mt-6 cursor-pointer self-end text-end text-xs"
-      >
-        Check out my projects →
-      </button>
     </div>
   );
 }

@@ -2,10 +2,15 @@ import Image from 'next/image';
 
 // contexts
 import { useToggleContext } from '@/contexts/use-toggle-context';
+import { useGlobalContent } from '@/contexts/use-global-content';
+// constants
+import { FALLBACK_IMAGE_URL } from '@/constants/content';
 
 // ----------------------------------------------------------------------
 
 export default function HomeFooter() {
+  const { portraitImage } = useGlobalContent();
+
   const { handleToggleContact } = useToggleContext();
 
   return (
@@ -17,8 +22,8 @@ export default function HomeFooter() {
 
         <div className="relative mt-2 aspect-3/4 w-full overflow-hidden">
           <Image
-            src="/assets/me.webp"
-            alt="Me"
+            src={portraitImage.src || FALLBACK_IMAGE_URL}
+            alt={portraitImage.alt || ''}
             fill
             priority
             draggable={false}
