@@ -21,3 +21,13 @@ export const SOCIAL_LINKS: ChannelSocialLinkType[] = [
     link: 'https://telegram.org/',
   },
 ];
+
+export const BUSINESS_DAYS = {
+  START: 1, // Monday
+  END: 5, // Friday
+};
+
+export const BUSINESS_HOURS = {
+  START: 8, // 8 AM
+  END: 17, // 5 PM
+};
