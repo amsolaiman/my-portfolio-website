@@ -1,3 +1,5 @@
+'use client';
+
 // contexts
 import { useToggleContext } from '@/contexts/use-toggle-context';
 import { useGlobalContent } from '@/contexts/use-global-content';

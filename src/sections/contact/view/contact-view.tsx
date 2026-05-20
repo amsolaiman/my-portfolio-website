@@ -5,7 +5,7 @@ import { useToggleContext } from '@/contexts/use-toggle-context';
 // utils
 import { cn } from '@/utils/tw-merge';
 
-//
+// sections
 import ContactDetails from '../contact-details';
 
 // ----------------------------------------------------------------------
