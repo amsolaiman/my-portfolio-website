@@ -4,6 +4,8 @@
 import { useToggleContext } from '@/contexts/use-toggle-context';
 // utils
 import { cn } from '@/utils/tw-merge';
+// hooks
+import { useBreakpoint } from '@/hooks/use-breakpoint';
 
 // sections
 import ContactDetails from '../contact-details';
@@ -11,7 +13,13 @@ import ContactDetails from '../contact-details';
 // ----------------------------------------------------------------------
 
 export default function ContactView() {
+  const upXl = useBreakpoint('up', 'xl');
+
   const { openContact, handleToggleContact } = useToggleContext();
+
+  if (!upXl) {
+    return null;
+  }
 
   return (
     <section
