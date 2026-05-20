@@ -50,14 +50,14 @@ async function Timeline() {
   }
 
   return (
-    <ul className="mt-6 w-1/2">
+    <ul className="mt-6 w-full md:w-2/3 xl:w-1/2">
       {categorizeArray(experience).map((group) => (
         <li key={group.group} className="flex">
-          <p className="border-primary w-full max-w-32 border-r-2 pt-8 text-sm">
+          <p className="hidden w-full max-w-24 pt-8 text-sm md:block xl:max-w-32">
             {group.group}
           </p>
 
-          <ul className="w-full">
+          <ul className="border-primary w-full border-l-2">
             {group.items.map((item) => {
               const startDate = format(item.startDate, 'MMM yyyy');
 
@@ -69,7 +69,7 @@ async function Timeline() {
               const duration = `${startDate} - ${endDate}`;
 
               return (
-                <li key={item.title} className="flex gap-6 py-8 pl-4">
+                <li key={item.title} className="flex gap-4 py-8 pl-4 xl:gap-6">
                   <span className="text-primary text-xs">●</span>
 
                   <div>
@@ -104,10 +104,12 @@ async function Timeline() {
 
 export default function HomeCareer() {
   return (
-    <div className="w-full px-12 pt-32">
+    <div className="w-full p-4 pt-32 xl:px-12">
       <p className="text-secondary text-xs">/ P.002 / Career</p>
 
-      <h1 className="mt-8 font-sans text-8xl/[0.9]">Exp. since &apos;22</h1>
+      <h1 className="mt-8 font-sans text-6xl xl:text-8xl/[0.9]">
+        Exp. since &apos;22
+      </h1>
 
       <Suspense fallback={<HomeCareerSkeleton />}>
         <Timeline />
