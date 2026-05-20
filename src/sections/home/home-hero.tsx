@@ -3,6 +3,9 @@ import Image from 'next/image';
 // components
 import DigitalClock from '@/components/digital-clock';
 
+//
+import HomeToggleButtons from './components/home-toggle-buttons';
+
 // ----------------------------------------------------------------------
 
 const PROFESSIONS = [
@@ -13,38 +16,42 @@ const PROFESSIONS = [
 
 export default function HomeHero() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-start justify-between px-12 py-6">
-      <div className="flex w-full flex-col">
-        <div className="relative aspect-2/1 w-3/4 overflow-hidden">
-          <Image
-            src="/assets/banner.svg"
-            alt="Name Banner"
-            fill
-            priority
-            draggable={false}
-            className="object-contain object-bottom-left"
-          />
-        </div>
+    <div className="flex min-h-svh w-full flex-col xl:min-h-screen">
+      <div className="flex flex-1 flex-col items-start justify-between p-4 xl:px-12 xl:py-6">
+        <div className="relative flex w-full flex-col">
+          <div className="relative aspect-2/1 w-full overflow-hidden xl:w-3/4">
+            <Image
+              src="/assets/banner.svg"
+              alt="Name Banner"
+              fill
+              priority
+              draggable={false}
+              className="object-contain object-bottom-left"
+            />
+          </div>
 
-        <div className="z-1 flex w-3/4 justify-end">
-          <div className="-mt-2 flex flex-wrap gap-4">
-            {PROFESSIONS.map((profession, index) => (
-              <p key={index} className="text-sm [&_span]:mr-4">
-                <span>/</span>
-                {profession}
-              </p>
-            ))}
+          <div className="z-1 flex w-full justify-end xl:w-3/4">
+            <div className="-mt-1 flex flex-col flex-wrap items-end gap-2 md:-mt-2 xl:flex-row xl:items-center xl:gap-4">
+              {PROFESSIONS.map((profession, index) => (
+                <p key={index} className="text-sm [&_span]:mr-4">
+                  <span>/</span>
+                  {profession}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
+
+        <div className="border-primary flex w-full items-center justify-center pt-12 md:justify-between xl:border-t-2 xl:pt-2">
+          <p className="hidden text-xs md:block">
+            Now, <DigitalClock />
+          </p>
+
+          <p className="text-foreground/50 text-xs">↓ Scroll to tune in</p>
+        </div>
       </div>
 
-      <div className="border-primary flex w-full items-center justify-between border-t-2 pt-2">
-        <p className="text-xs">
-          Now, <DigitalClock />
-        </p>
-
-        <p className="text-foreground/50 text-xs">↓ Scroll to tune in</p>
-      </div>
+      <HomeToggleButtons />
     </div>
   );
 }
