@@ -2,6 +2,13 @@ import { ChannelSocialLinkType } from './constant';
 
 // ----------------------------------------------------------------------
 
+type ImageType = {
+  src: string;
+  alt?: string;
+};
+
+// ----------------------------------------------------------------------
+
 type ExperienceType =
   | 'full-time'
   | 'part-time'
@@ -33,6 +40,21 @@ export interface IGroupedExperience {
 
 // ----------------------------------------------------------------------
 
+export interface IProject {
+  _id: string;
+  name: string;
+  description: string;
+  client?: string;
+  type: string;
+  techStack: string[];
+  isOngoing: boolean;
+  date?: Date | null;
+  posterImage: ImageType;
+  align: 'start' | 'center' | 'end';
+}
+
+// ----------------------------------------------------------------------
+
 export interface IContent {
   _id: string;
   title: string;
@@ -49,10 +71,7 @@ export interface IContent {
     end: number;
   };
   skills: string[];
-  portraitImage: {
-    src: string;
-    alt?: string;
-  };
+  portraitImage: ImageType;
   city: string;
   country: string;
 }
