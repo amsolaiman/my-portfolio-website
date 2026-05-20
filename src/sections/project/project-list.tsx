@@ -1,10 +1,35 @@
-// _store
-import projects from '@/_store/projects';
+import { Suspense } from 'react';
+
+// _sanity
+import { getProjectData } from '@/_sanity/utils/project';
 
 //
 import ProjectItem from './project-item';
+import ProjectListSkeleton from './components/project-list-skeleton';
 
 // ----------------------------------------------------------------------
+
+async function Listing() {
+  const projects = await getProjectData();
+
+  if (!projects.length) {
+    return (
+      <div className="flex h-full items-center px-0">
+        <p className="text-foreground text-xs">
+          Oops! I&apos;ll look into this.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex w-max gap-40 py-8 pr-12">
+      {projects.map((project, index) => (
+        <ProjectItem key={project.name} project={project} index={index + 1} />
+      ))}
+    </div>
+  );
+}
 
 export default function ProjectList() {
   return (
@@ -20,11 +45,9 @@ export default function ProjectList() {
         </h1>
       </div>
 
-      <div className="flex w-max gap-40 py-8 pr-12">
-        {projects.map((project, index) => (
-          <ProjectItem key={project.name} project={project} index={index + 1} />
-        ))}
-      </div>
+      <Suspense fallback={<ProjectListSkeleton />}>
+        <Listing />
+      </Suspense>
     </div>
   );
 }
