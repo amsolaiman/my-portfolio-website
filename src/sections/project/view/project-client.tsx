@@ -7,6 +7,8 @@ import Lenis from 'lenis';
 import { useToggleContext } from '@/contexts/use-toggle-context';
 // utils
 import { cn } from '@/utils/tw-merge';
+// hooks
+import { useBreakpoint } from '@/hooks/use-breakpoint';
 
 // ----------------------------------------------------------------------
 
@@ -15,6 +17,8 @@ export default function ProjectClient({
 }: {
   children: React.ReactNode;
 }) {
+  const upXl = useBreakpoint('up', 'xl');
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { openProject, handleToggleProject } = useToggleContext();
@@ -43,6 +47,10 @@ export default function ProjectClient({
       lenis.destroy();
     };
   }, []);
+
+  if (!upXl) {
+    return null;
+  }
 
   return (
     <section
