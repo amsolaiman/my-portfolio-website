@@ -8,6 +8,7 @@ import './globals.css';
 // contexts
 import { GlobalContentProvider } from '@/contexts/use-global-content';
 // utils
+import { getProjectData } from '@/_sanity/utils/project';
 import { getGlobalContentData } from '@/_sanity/utils/content';
 // constants
 import {
@@ -68,6 +69,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const globalContent = await getGlobalContentData();
+
+  // TODO: remove when data is applied
+  const projects = await getProjectData();
+  console.log(projects);
 
   return (
     <html lang="en">
