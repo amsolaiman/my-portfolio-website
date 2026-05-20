@@ -9,7 +9,6 @@ import './globals.css';
 import { GlobalContentProvider } from '@/contexts/use-global-content';
 // utils
 import { getGlobalContentData } from '@/_sanity/utils/content';
-import { getExperienceData } from '@/_sanity/utils/experience';
 // constants
 import {
   FALLBACK_METADATA_DESCRIPTION,
@@ -69,10 +68,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const globalContent = await getGlobalContentData();
-
-  // TODO: remove when data is applied
-  const experience = await getExperienceData();
-  console.log(experience);
 
   return (
     <html lang="en">
