@@ -26,6 +26,11 @@ export interface IExperience {
   };
 }
 
+export interface IGroupedExperience {
+  group: string;
+  items: IExperience[];
+}
+
 // ----------------------------------------------------------------------
 
 export interface IContent {
