@@ -3,6 +3,9 @@
 import React, { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 
+// hooks
+import { useBreakpoint } from '@/hooks/use-breakpoint';
+
 // ----------------------------------------------------------------------
 
 export default function HomeClient({
@@ -10,9 +13,13 @@ export default function HomeClient({
 }: {
   children: React.ReactNode;
 }) {
+  const upXl = useBreakpoint('up', 'xl');
+
   const containerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    if (!upXl) return;
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -33,7 +40,7 @@ export default function HomeClient({
       cancelAnimationFrame(rafId);
       lenis.destroy();
     };
-  }, []);
+  }, [upXl]);
 
   return (
     <section
