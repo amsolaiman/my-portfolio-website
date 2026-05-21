@@ -24,6 +24,8 @@ export default function ProjectClient({
   const { openProject, handleToggleProject } = useToggleButtons();
 
   useEffect(() => {
+    if (!upXl) return;
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -46,14 +48,32 @@ export default function ProjectClient({
       cancelAnimationFrame(rafId);
       lenis.destroy();
     };
-  }, []);
+  }, [upXl]);
 
   if (!upXl) {
-    return null;
+    return (
+      <section
+        key="project-view-mobile"
+        className={cn(
+          'bg-secondary absolute inset-0 z-10 flex w-screen flex-col overflow-hidden transition-transform duration-500 ease-in-out',
+          openProject ? 'translate-y-0' : 'translate-y-full'
+        )}
+      >
+        <button
+          onClick={handleToggleProject}
+          className="bg-secondary sticky top-0 w-full p-2 text-start text-sm"
+        >
+          ↓ Close
+        </button>
+
+        <div className="flex h-max w-full overflow-y-scroll">{children}</div>
+      </section>
+    );
   }
 
   return (
     <section
+      key="project-view-desktop"
       className={cn(
         'bg-secondary absolute inset-y-0 right-0 z-10 flex w-screen transition-transform duration-500 ease-in-out',
         openProject ? 'translate-x-0' : 'translate-x-[calc(100vw-128px)]'
