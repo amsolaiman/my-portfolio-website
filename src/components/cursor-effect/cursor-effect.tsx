@@ -23,6 +23,7 @@ export default function CursorEffect() {
 
   const { smoothX, smoothY } = useMousePosition();
 
+  const isTextBtnHovered = useMouseHover(CursorIdentfierEnum.TEXT_BTN);
   const isProjectBtnHovered = useMouseHover(CursorIdentfierEnum.PROJECT_BTN);
   const isContactBtnHovered = useMouseHover(CursorIdentfierEnum.CONTACT_BTN);
 
@@ -32,7 +33,7 @@ export default function CursorEffect() {
       ? ToggleButtonsEnum.CONTACT
       : null;
 
-  const cursorSize = getCursorSize(!!toggleBtnHoveredTarget);
+  const cursorSize = getCursorSize(!!toggleBtnHoveredTarget, isTextBtnHovered);
 
   const label = getCursorLabel(
     toggleBtnHoveredTarget,
@@ -46,7 +47,10 @@ export default function CursorEffect() {
 
   return (
     <motion.div
-      className="border-foreground pointer-events-none fixed z-50 flex h-10 w-10 items-center justify-center rounded-full border"
+      className={cn(
+        'border-foreground pointer-events-none fixed z-50 flex items-center justify-center rounded-full border transition-colors duration-300',
+        cursorSize === 0 && 'border-transparent'
+      )}
       style={{
         left: smoothX,
         top: smoothY,

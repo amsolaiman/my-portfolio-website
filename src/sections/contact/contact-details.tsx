@@ -10,6 +10,8 @@ import {
   FALLBACK_RESUME_URL,
   FALLBACK_SOCIAL_LINKS,
 } from '@/constants/channel';
+// components
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 
 //
 import ContactWidget from './contact-widget';
@@ -34,6 +36,7 @@ export default function ContactDetails() {
         <p className="text-background mb-6 text-sm font-medium xl:mb-10">
           Let&apos;s talk & build something great together. Check out my&nbsp;
           <a
+            data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
             className="hover:text-secondary underline"
             href={resumeUrl}
             download
@@ -46,6 +49,7 @@ export default function ContactDetails() {
         </p>
 
         <a
+          data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
           className="hover:text-secondary cursor-pointer font-sans text-6xl xl:text-7xl"
           href={`mailto:${emailAddress}`}
         >
@@ -59,6 +63,7 @@ export default function ContactDetails() {
         <div className="flex flex-col items-end gap-4 xl:flex-row xl:items-center xl:gap-10">
           {socialLinks.map((social) => (
             <a
+              data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
               key={social.label}
               className="text-foreground/75 hover:border-secondary cursor-pointer border-b-2 border-transparent text-base"
               href={social.link}
