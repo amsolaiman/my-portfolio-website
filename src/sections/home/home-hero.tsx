@@ -33,8 +33,8 @@ export default function HomeHero() {
           <div className="z-1 flex w-full justify-end xl:w-3/4">
             <div className="-mt-1 flex flex-col flex-wrap items-end gap-2 md:-mt-2 xl:flex-row xl:items-center xl:gap-4">
               {PROFESSIONS.map((profession, index) => (
-                <p key={index} className="text-sm [&_span]:mr-4">
-                  <span>/</span>
+                <p key={index} className="text-sm">
+                  <span className="mr-2 xl:mr-4">/</span>
                   {profession}
                 </p>
               ))}
