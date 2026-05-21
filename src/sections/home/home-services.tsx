@@ -5,6 +5,8 @@ import { useGlobalContent } from '@/contexts/use-global-content';
 import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 // constants
 import { FALLBACK_SKILL_SET } from '@/constants/content';
+// components
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 
 // ----------------------------------------------------------------------
 
@@ -51,6 +53,7 @@ export default function HomeServices() {
           ))}
 
           <button
+            data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
             onClick={handleToggleProject}
             className="text-foreground hover:text-foreground/75 mt-6 hidden cursor-pointer self-end text-xs xl:block"
           >

@@ -7,6 +7,7 @@ import { getExperienceData } from '@/_sanity/utils/experience';
 import { cn } from '@/utils/tw-merge';
 // types
 import { IExperience, IGroupedExperience } from '@/types/data';
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 
 //
 import HomeCareerSkeleton from './components/home-career-skeleton';
@@ -76,6 +77,7 @@ async function Timeline() {
                     <h4 className="text-primary text-xs">{item.title}</h4>
 
                     <a
+                      data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
                       href={item.employer.link ?? undefined}
                       target="_blank"
                       rel="noopener noreferrer"
