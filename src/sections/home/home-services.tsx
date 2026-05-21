@@ -1,8 +1,8 @@
 'use client';
 
 // contexts
-import { useToggleContext } from '@/contexts/use-toggle-context';
 import { useGlobalContent } from '@/contexts/use-global-content';
+import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 // constants
 import { FALLBACK_SKILL_SET } from '@/constants/content';
 
@@ -11,7 +11,7 @@ import { FALLBACK_SKILL_SET } from '@/constants/content';
 export default function HomeServices() {
   const { skills } = useGlobalContent();
 
-  const { handleToggleProject } = useToggleContext();
+  const { handleToggleProject } = useToggleButtons();
 
   const skillSet = skills || FALLBACK_SKILL_SET;
 

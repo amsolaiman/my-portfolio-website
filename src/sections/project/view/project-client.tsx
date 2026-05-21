@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 
 // contexts
-import { useToggleContext } from '@/contexts/use-toggle-context';
+import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 // utils
 import { cn } from '@/utils/tw-merge';
 // hooks
@@ -21,7 +21,7 @@ export default function ProjectClient({
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const { openProject, handleToggleProject } = useToggleContext();
+  const { openProject, handleToggleProject } = useToggleButtons();
 
   useEffect(() => {
     const container = containerRef.current;
