@@ -15,14 +15,40 @@ import ContactDetails from '../contact-details';
 export default function ContactView() {
   const upXl = useBreakpoint('up', 'xl');
 
-  const { openContact, handleToggleContact } = useToggleButtons();
+  const { openContact, handleToggleContact, setOpenProject } =
+    useToggleButtons();
+
+  const handleToggleMobile = () => {
+    handleToggleContact();
+    setOpenProject(false);
+  };
 
   if (!upXl) {
-    return null;
+    return (
+      <section
+        key="contact-view-mobile"
+        className={cn(
+          'bg-primary absolute inset-0 z-20 flex w-screen flex-col overflow-hidden transition-transform duration-500 ease-in-out',
+          openContact ? 'translate-y-0' : 'translate-y-full'
+        )}
+      >
+        <button
+          onClick={handleToggleMobile}
+          className="bg-primary sticky top-0 w-full p-2 text-start text-sm"
+        >
+          ↓ Close
+        </button>
+
+        <div className="h-full w-full">
+          <ContactDetails />
+        </div>
+      </section>
+    );
   }
 
   return (
     <section
+      key="contact-view-desktop"
       className={cn(
         'bg-primary absolute inset-y-0 right-0 z-20 flex w-screen transition-transform duration-500 ease-in-out',
         openContact ? 'translate-x-16' : 'translate-x-[calc(100vw-64px)]'
