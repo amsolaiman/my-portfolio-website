@@ -1,51 +1,44 @@
 'use client';
 
-import { useEffect } from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 
+// context
+import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 // hooks
 import { useBreakpoint } from '@/hooks/use-breakpoint';
+// utils
+import { cn } from '@/utils/tw-merge';
+
+//
+import { getCursorLabel, getCursorSize } from './utils';
+import { useMouseHover, useMousePosition } from './hooks';
+import { CursorIdentfierEnum, ToggleButtonsEnum } from './types';
 
 // ----------------------------------------------------------------------
 
 export default function CursorEffect() {
   const upXl = useBreakpoint('up', 'xl');
 
-  const CURSOR_SIZE = 40;
+  const { openProject, openContact } = useToggleButtons();
 
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  const { smoothX, smoothY } = useMousePosition();
 
-  const smoothOptions = {
-    damping: 20,
-    stiffness: 300,
-    mass: 0.5,
-  };
+  const isProjectBtnHovered = useMouseHover(CursorIdentfierEnum.PROJECT_BTN);
+  const isContactBtnHovered = useMouseHover(CursorIdentfierEnum.CONTACT_BTN);
 
-  const smoothX = useSpring(x, smoothOptions);
-  const smoothY = useSpring(y, smoothOptions);
+  const toggleBtnHoveredTarget = isProjectBtnHovered
+    ? ToggleButtonsEnum.PROJECT
+    : isContactBtnHovered
+      ? ToggleButtonsEnum.CONTACT
+      : null;
 
-  //#region Track Mouse Movement
-  useEffect(() => {
-    let rafId: number;
+  const cursorSize = getCursorSize(!!toggleBtnHoveredTarget);
 
-    const updateMouseMove = (e: MouseEvent) => {
-      cancelAnimationFrame(rafId);
-
-      rafId = requestAnimationFrame(() => {
-        x.set(e.clientX - CURSOR_SIZE / 2);
-        y.set(e.clientY - CURSOR_SIZE / 2);
-      });
-    };
-
-    window.addEventListener('mousemove', updateMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', updateMouseMove);
-      cancelAnimationFrame(rafId);
-    };
-  }, [x, y, CURSOR_SIZE]);
-  //#endregion
+  const label = getCursorLabel(
+    toggleBtnHoveredTarget,
+    openProject,
+    openContact
+  );
 
   if (!upXl) {
     return null;
@@ -53,16 +46,38 @@ export default function CursorEffect() {
 
   return (
     <motion.div
-      className="border-foreground pointer-events-none fixed z-50 h-10 w-10 rounded-full border"
+      className="border-foreground pointer-events-none fixed z-50 flex h-10 w-10 items-center justify-center rounded-full border"
       style={{
         left: smoothX,
         top: smoothY,
+        translateX: '-50%',
+        translateY: '-50%',
         willChange: 'transform',
       }}
       animate={{
-        width: CURSOR_SIZE,
-        height: CURSOR_SIZE,
+        width: cursorSize,
+        height: cursorSize,
       }}
-    />
+    >
+      <AnimatePresence mode="wait">
+        {label && (
+          <motion.p
+            key={label}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0 }}
+            transition={{
+              damping: 20,
+              stiffness: 300,
+            }}
+            className={cn(
+              !!toggleBtnHoveredTarget && 'text-foreground text-xl'
+            )}
+          >
+            {label}
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
