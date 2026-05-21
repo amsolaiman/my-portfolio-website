@@ -1,7 +1,11 @@
+'use client';
+
 import Image from 'next/image';
 
 // utils
 import { cn } from '@/utils/tw-merge';
+// hooks
+import { useBreakpoint } from '@/hooks/use-breakpoint';
 // types
 import { IProject } from '@/types/data';
 // constants
@@ -15,17 +19,24 @@ type Props = {
 };
 
 export default function ProjectItem({ project, index }: Props) {
+  const upMd = useBreakpoint('up', 'md');
+
   return (
     <div
-      className={cn('flex flex-col gap-2', {
-        'self-start': project.align === 'start',
-        'self-center': project.align === 'center',
-        'self-end': project.align === 'end',
-      })}
+      className={cn(
+        'flex w-full flex-col md:w-72',
+        upMd
+          ? {
+              'self-start': project.align === 'start',
+              'self-center': project.align === 'center',
+              'self-end': project.align === 'end',
+            }
+          : 'self-start'
+      )}
     >
-      <p className="text-xs">({String(index).padStart(2, '0')})</p>
+      <p className="mb-2 text-xs">({String(index).padStart(2, '0')})</p>
 
-      <div className="relative aspect-3/4 w-72">
+      <div className="relative aspect-3/4 w-full">
         <Image
           src={project.posterImage.src || FALLBACK_IMAGE_URL}
           alt={project.posterImage.alt || project.name}
@@ -36,7 +47,7 @@ export default function ProjectItem({ project, index }: Props) {
         />
       </div>
 
-      <p className="text-base">{project.name}</p>
+      <p className="text-base xl:mt-2">{project.name}</p>
     </div>
   );
 }

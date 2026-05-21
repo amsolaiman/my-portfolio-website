@@ -14,7 +14,7 @@ async function Listing() {
 
   if (!projects.length) {
     return (
-      <div className="flex h-full items-center px-0">
+      <div className="flex items-center px-4 xl:h-full xl:px-0">
         <p className="text-foreground text-xs">
           Oops! I&apos;ll look into this.
         </p>
@@ -23,7 +23,7 @@ async function Listing() {
   }
 
   return (
-    <div className="flex w-max gap-40 py-8 pr-12">
+    <div className="flex w-screen flex-col gap-10 px-2 py-8 md:px-4 xl:w-max xl:flex-row xl:gap-40 xl:pr-12 xl:pl-0">
       {projects.map((project, index) => (
         <ProjectItem key={project.name} project={project} index={index + 1} />
       ))}
@@ -33,13 +33,13 @@ async function Listing() {
 
 export default function ProjectList() {
   return (
-    <div className="flex h-full w-max">
-      <div className="shrink-0 p-12 pr-32">
+    <div className="flex h-max w-full flex-col xl:h-full xl:w-max xl:flex-row">
+      <div className="shrink-0 p-4 xl:p-12 xl:pr-32">
         <p className="text-background text-xs font-medium">
           / P.003 / Projects
         </p>
 
-        <h1 className="mt-8 font-sans text-8xl/[0.9]">
+        <h1 className="mt-8 font-sans text-6xl xl:text-8xl/[0.9]">
           What
           <br />I build
         </h1>
