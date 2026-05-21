@@ -57,13 +57,13 @@ export default function HomeFooter() {
 
       <HomeToggleButtons />
 
-      <p className="[&_span]:text-foreground/50 p-4 text-center font-mono text-xs uppercase xl:hidden">
-        <span className="md:hidden">
+      <p className="p-4 text-center font-mono text-xs uppercase xl:hidden">
+        <span className="text-foreground md:hidden">
           Now, <DigitalClock />
           <br />
         </span>
 
-        <span>{COPYRIGHT_TEXT}</span>
+        <span className="text-foreground/50">{COPYRIGHT_TEXT}</span>
       </p>
     </div>
   );
