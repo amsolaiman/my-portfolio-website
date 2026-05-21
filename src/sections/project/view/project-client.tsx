@@ -9,6 +9,8 @@ import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 import { cn } from '@/utils/tw-merge';
 // hooks
 import { useBreakpoint } from '@/hooks/use-breakpoint';
+// components
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 
 // ----------------------------------------------------------------------
 
@@ -80,6 +82,7 @@ export default function ProjectClient({
       )}
     >
       <button
+        data-hover-cursor={CursorIdentfierEnum.PROJECT_BTN}
         onClick={handleToggleProject}
         className="text-foreground/75 hover:text-foreground flex h-full w-16 cursor-pointer items-end justify-start transition-colors duration-300"
       >
