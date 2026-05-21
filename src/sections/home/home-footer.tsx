@@ -9,6 +9,7 @@ import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 import { FALLBACK_IMAGE_URL } from '@/constants/content';
 // components
 import DigitalClock from '@/components/digital-clock';
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 
 //
 import HomeToggleButtons from './components/home-toggle-buttons';
@@ -47,6 +48,7 @@ export default function HomeFooter() {
           <p className="text-foreground/50 text-xs">{COPYRIGHT_TEXT}</p>
 
           <button
+            data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
             onClick={handleToggleContact}
             className="text-foreground hover:text-foreground/75 cursor-pointer text-xs"
           >

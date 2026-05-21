@@ -2,9 +2,16 @@ import { ToggleButtonsEnum, ToggleButtonHoverTargetType } from './types';
 
 // ----------------------------------------------------------------------
 
-export function getCursorSize(isToggleBtnHovered: boolean): number {
+export function getCursorSize(
+  isToggleBtnHovered: boolean,
+  isTextBtnHovered: boolean
+): number {
   if (isToggleBtnHovered) {
     return 80;
+  }
+
+  if (isTextBtnHovered) {
+    return 0;
   }
 
   return 40;
