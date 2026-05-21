@@ -6,6 +6,8 @@ import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 import { cn } from '@/utils/tw-merge';
 // hooks
 import { useBreakpoint } from '@/hooks/use-breakpoint';
+// components
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 
 // sections
 import ContactDetails from '../contact-details';
@@ -55,6 +57,7 @@ export default function ContactView() {
       )}
     >
       <button
+        data-hover-cursor={CursorIdentfierEnum.CONTACT_BTN}
         onClick={handleToggleContact}
         className="text-foreground/75 hover:text-foreground flex h-full w-16 cursor-pointer items-end justify-start transition-colors duration-300"
       >
