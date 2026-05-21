@@ -3,8 +3,8 @@
 import Image from 'next/image';
 
 // contexts
-import { useToggleContext } from '@/contexts/use-toggle-context';
 import { useGlobalContent } from '@/contexts/use-global-content';
+import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 // constants
 import { FALLBACK_IMAGE_URL } from '@/constants/content';
 // components
@@ -20,7 +20,7 @@ const COPYRIGHT_TEXT = `©${new Date().getFullYear()} Abdul Moiz Solaiman - moiz
 export default function HomeFooter() {
   const { portraitImage } = useGlobalContent();
 
-  const { handleToggleContact } = useToggleContext();
+  const { handleToggleContact } = useToggleButtons();
 
   return (
     <div className="mt-32 flex w-full flex-col xl:mt-24 xl:min-h-screen">

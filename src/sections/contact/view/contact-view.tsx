@@ -1,7 +1,7 @@
 'use client';
 
 // contexts
-import { useToggleContext } from '@/contexts/use-toggle-context';
+import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 // utils
 import { cn } from '@/utils/tw-merge';
 // hooks
@@ -15,7 +15,7 @@ import ContactDetails from '../contact-details';
 export default function ContactView() {
   const upXl = useBreakpoint('up', 'xl');
 
-  const { openContact, handleToggleContact } = useToggleContext();
+  const { openContact, handleToggleContact } = useToggleButtons();
 
   if (!upXl) {
     return null;

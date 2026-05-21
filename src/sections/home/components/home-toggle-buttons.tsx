@@ -1,12 +1,12 @@
 'use client';
 
 // contexts
-import { useToggleContext } from '@/contexts/use-toggle-context';
+import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 
 // ----------------------------------------------------------------------
 
 export default function HomeToggleButtons() {
-  const { handleToggleProject, handleToggleContact } = useToggleContext();
+  const { handleToggleProject, handleToggleContact } = useToggleButtons();
 
   return (
     <div className="flex w-full flex-col">
