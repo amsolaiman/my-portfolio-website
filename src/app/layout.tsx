@@ -7,6 +7,7 @@ import './globals.css';
 
 // contexts
 import { GlobalContentProvider } from '@/contexts/use-global-content';
+import { ToggleButtonsProvider } from '@/contexts/use-toggle-buttons';
 // utils
 import { getGlobalContentData } from '@/_sanity/utils/content';
 // constants
@@ -75,7 +76,7 @@ export default async function RootLayout({
         className={`${bebasNeue.variable} ${firaCode.variable} antialiased`}
       >
         <GlobalContentProvider value={globalContent}>
-          {children}
+          <ToggleButtonsProvider>{children}</ToggleButtonsProvider>
         </GlobalContentProvider>
       </body>
     </html>
