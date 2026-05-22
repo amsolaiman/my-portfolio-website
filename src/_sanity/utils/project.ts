@@ -24,6 +24,11 @@ export async function getProjectData(): Promise<IProject[]> {
       "src": bannerImage.asset->url,
       "alt": bannerImage.alt
     },
+    images[] {
+      _key,
+      "src": asset->url,
+      "alt": alt
+    },
     previewUrl {
       link,
       type
