@@ -50,6 +50,7 @@ export interface IProject {
   isOngoing: boolean;
   date?: Date | null;
   posterImage: ImageType;
+  bannerImage: ImageType;
   align: 'start' | 'center' | 'end';
 }
 
