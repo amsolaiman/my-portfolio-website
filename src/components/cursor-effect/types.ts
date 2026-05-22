@@ -2,6 +2,7 @@
 
 export enum CursorIdentfierEnum {
   TEXT_BTN = 'text-btn',
+  CARD_BTN = 'card-btn',
   PROJECT_BTN = 'project-btn',
   CONTACT_BTN = 'contact-btn',
 }

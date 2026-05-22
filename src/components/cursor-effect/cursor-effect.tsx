@@ -24,6 +24,7 @@ export default function CursorEffect() {
   const { smoothX, smoothY } = useMousePosition();
 
   const isTextBtnHovered = useMouseHover(CursorIdentfierEnum.TEXT_BTN);
+  const isCardBtnHovered = useMouseHover(CursorIdentfierEnum.CARD_BTN);
   const isProjectBtnHovered = useMouseHover(CursorIdentfierEnum.PROJECT_BTN);
   const isContactBtnHovered = useMouseHover(CursorIdentfierEnum.CONTACT_BTN);
 
@@ -33,13 +34,17 @@ export default function CursorEffect() {
       ? ToggleButtonsEnum.CONTACT
       : null;
 
-  const cursorSize = getCursorSize(!!toggleBtnHoveredTarget, isTextBtnHovered);
-
-  const label = getCursorLabel(
-    toggleBtnHoveredTarget,
-    openProject,
-    openContact
+  const cursorSize = getCursorSize(
+    !!toggleBtnHoveredTarget,
+    isTextBtnHovered,
+    isCardBtnHovered
   );
+
+  const label = !!toggleBtnHoveredTarget
+    ? getCursorLabel(toggleBtnHoveredTarget, openProject, openContact)
+    : isCardBtnHovered
+      ? 'View'
+      : null;
 
   if (!upXl) {
     return null;
@@ -48,8 +53,9 @@ export default function CursorEffect() {
   return (
     <motion.div
       className={cn(
-        'border-foreground pointer-events-none fixed z-50 flex items-center justify-center rounded-full border transition-colors duration-300',
-        cursorSize === 0 && 'border-transparent'
+        'border-foreground pointer-events-none fixed z-50 flex items-center justify-center rounded-full border bg-transparent transition-colors duration-300',
+        cursorSize === 0 && 'border-transparent',
+        isCardBtnHovered && 'bg-foreground/75'
       )}
       style={{
         left: smoothX,
@@ -74,9 +80,10 @@ export default function CursorEffect() {
               damping: 20,
               stiffness: 300,
             }}
-            className={cn(
-              !!toggleBtnHoveredTarget && 'text-foreground text-xl'
-            )}
+            className={cn({
+              'text-foreground text-xl': !!toggleBtnHoveredTarget,
+              'text-background/75 text-xs': isCardBtnHovered,
+            })}
           >
             {label}
           </motion.p>
