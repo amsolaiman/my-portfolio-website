@@ -148,6 +148,31 @@ const projects = defineType({
     }),
 
     defineField({
+      name: 'images',
+      title: 'Gallery images',
+      type: 'array',
+      description: 'Accepts PNG, JPG/JPEG and WEBP images only.',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+            accept: 'image/png, image/jpeg, image/webp',
+          },
+          fields: [
+            defineField({
+              name: 'alt',
+              title: 'Alt',
+              type: 'string',
+            }),
+          ],
+          validation: (Rule) => Rule.required(),
+        },
+      ],
+      validation: (Rule) => Rule.required().min(3),
+    }),
+
+    defineField({
       name: 'previewUrl',
       title: 'Preview URL',
       type: 'object',

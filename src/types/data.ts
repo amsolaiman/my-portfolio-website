@@ -51,6 +51,7 @@ export interface IProject {
   date?: Date | null;
   posterImage: ImageType;
   bannerImage: ImageType;
+  images: Array<ImageType & { _key: string }>;
   previewUrl?: {
     link: string;
     type: string;
