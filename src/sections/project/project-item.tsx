@@ -9,6 +9,7 @@ import { cn } from '@/utils/tw-merge';
 import { useBreakpoint } from '@/hooks/use-breakpoint';
 // types
 import { IProject } from '@/types/data';
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 // constants
 import { FALLBACK_IMAGE_URL } from '@/constants/content';
 
@@ -44,6 +45,7 @@ export default function ProjectItem({ project, index }: Props) {
         <p className="mb-2 text-xs">({String(index).padStart(2, '0')})</p>
 
         <button
+          data-hover-cursor={CursorIdentfierEnum.CARD_BTN}
           onClick={() => setOpen(true)}
           className="relative aspect-3/4 w-full cursor-pointer"
         >

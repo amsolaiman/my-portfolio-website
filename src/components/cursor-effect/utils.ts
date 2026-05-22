@@ -4,7 +4,8 @@ import { ToggleButtonsEnum, ToggleButtonHoverTargetType } from './types';
 
 export function getCursorSize(
   isToggleBtnHovered: boolean,
-  isTextBtnHovered: boolean
+  isTextBtnHovered: boolean,
+  isCardBtnHovered: boolean
 ): number {
   if (isToggleBtnHovered) {
     return 80;
@@ -12,6 +13,10 @@ export function getCursorSize(
 
   if (isTextBtnHovered) {
     return 0;
+  }
+
+  if (isCardBtnHovered) {
+    return 100;
   }
 
   return 40;
