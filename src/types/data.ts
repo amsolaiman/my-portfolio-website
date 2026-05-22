@@ -51,6 +51,11 @@ export interface IProject {
   date?: Date | null;
   posterImage: ImageType;
   bannerImage: ImageType;
+  previewUrl?: {
+    link: string;
+    type: string;
+  };
+  designUrl?: string;
   align: 'start' | 'center' | 'end';
 }
 
