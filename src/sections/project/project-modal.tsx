@@ -132,7 +132,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
             </ul>
 
             {(data.previewUrl || data.designUrl) && (
-              <div className="flex items-center gap-6 xl:gap-10">
+              <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6 xl:gap-10">
                 {data.previewUrl && (
                   <a
                     data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
@@ -160,6 +160,24 @@ export default function ProjectModal({ data, open, onClose }: Props) {
             )}
           </div>
         </div>
+
+        <p className="text-secondary mt-32 mb-2 text-xs">/ Gallery</p>
+
+        <ul className="space-y-4">
+          {data.images.map((image, index) => (
+            <li key={image._key}>
+              <Image
+                src={image.src || FALLBACK_IMAGE_URL}
+                alt={image.alt || `${data.name} - Image ${index + 1}`}
+                width={1600}
+                height={900}
+                priority
+                draggable={false}
+                className="h-auto w-full object-contain"
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     </div>,
     document.body
