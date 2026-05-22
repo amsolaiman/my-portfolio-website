@@ -247,6 +247,26 @@ const content = defineType({
     }),
 
     defineField({
+      name: 'bannerImage',
+      title: 'Banner image',
+      type: 'image',
+      description:
+        'Accepts PNG, JPG/JPEG and WEBP images only. Recommended aspect ratio is approximately 16:9 (width to height).',
+      options: {
+        hotspot: true,
+        accept: 'image/png, image/jpeg, image/webp',
+      },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt',
+          type: 'string',
+        }),
+      ],
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
       name: 'city',
       title: 'City',
       type: 'string',

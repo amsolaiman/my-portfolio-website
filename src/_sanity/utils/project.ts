@@ -20,6 +20,10 @@ export async function getProjectData(): Promise<IProject[]> {
       "src": posterImage.asset->url,
       "alt": posterImage.alt
     },
+    "bannerImage": {
+      "src": bannerImage.asset->url,
+      "alt": bannerImage.alt
+    },
     align
   }`;
 
