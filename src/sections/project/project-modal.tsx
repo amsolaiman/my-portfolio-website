@@ -82,7 +82,21 @@ export default function ProjectModal({ data, open, onClose }: Props) {
         </div>
 
         <div className="mt-20 mb-2 grid grid-cols-2 xl:mt-32">
-          <div />
+          {data.previewUrl ? (
+            <a
+              data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
+              className="text-foreground hover:text-foreground/75 w-fit text-xs"
+              href={data.previewUrl.link}
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View {data.previewUrl.type} ↗
+            </a>
+          ) : (
+            <div />
+          )}
+
           <p className="text-foreground/50 text-end text-xs xl:text-start">
             ↓ Scroll for more
           </p>
@@ -116,6 +130,34 @@ export default function ProjectModal({ data, open, onClose }: Props) {
                 </li>
               ))}
             </ul>
+
+            {(data.previewUrl || data.designUrl) && (
+              <div className="flex items-center gap-6 xl:gap-10">
+                {data.previewUrl && (
+                  <a
+                    data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
+                    className="text-foreground hover:text-foreground/75 hover:border-secondary cursor-pointer border-b-2 border-transparent text-base"
+                    href={data.previewUrl.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View {data.previewUrl.type} ↗
+                  </a>
+                )}
+
+                {data.designUrl && (
+                  <a
+                    data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
+                    className="text-foreground hover:text-foreground/75 hover:border-secondary cursor-pointer border-b-2 border-transparent text-base"
+                    href={data.designUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View design ↗
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

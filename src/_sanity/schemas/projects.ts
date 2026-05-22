@@ -148,6 +148,56 @@ const projects = defineType({
     }),
 
     defineField({
+      name: 'previewUrl',
+      title: 'Preview URL',
+      type: 'object',
+      validation: (Rule) =>
+        Rule.custom((value) => {
+          if (value?.type && !value?.link) {
+            return 'Link is required';
+          }
+          if (value?.link && !value?.type) {
+            return 'Type is required';
+          }
+          return true;
+        }),
+      fields: [
+        defineField({
+          name: 'link',
+          title: 'Link',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https'],
+            }),
+        }),
+
+        defineField({
+          name: 'type',
+          title: 'Preview type',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Live', value: 'live' },
+              { title: 'Demo', value: 'demo' },
+            ],
+            layout: 'radio',
+          },
+        }),
+      ],
+    }),
+
+    defineField({
+      name: 'designUrl',
+      title: 'Design URL',
+      type: 'url',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https'],
+        }),
+    }),
+
+    defineField({
       name: 'align',
       title: 'Alignment',
       type: 'string',
