@@ -92,7 +92,7 @@ export default function ProjectClient({
       </button>
 
       <div ref={containerRef} className="mr-16 w-full overflow-x-scroll">
-        {children}
+        <div className="flex h-full grow">{children}</div>
       </div>
     </section>
   );

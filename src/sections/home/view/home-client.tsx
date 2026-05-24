@@ -45,9 +45,9 @@ export default function HomeClient({
   return (
     <section
       ref={containerRef}
-      className="bg-background relative flex h-full w-screen grow flex-col overflow-y-scroll xl:pr-32"
+      className="bg-background relative h-full w-screen overflow-y-scroll xl:pr-32"
     >
-      {children}
+      <div className="flex w-full grow flex-col">{children}</div>
     </section>
   );
 }
