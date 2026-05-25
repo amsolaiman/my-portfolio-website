@@ -9,21 +9,22 @@ type ImageType = {
 
 // ----------------------------------------------------------------------
 
-type ExperienceType =
-  | 'full-time'
-  | 'part-time'
-  | 'self-employed'
-  | 'freelance'
-  | 'contract'
-  | 'internship'
-  | 'apprenticeship'
-  | 'seasonal'
-  | 'student';
+export enum ExperienceTypeEnum {
+  FULL_TIME = 'full-time',
+  PART_TIME = 'part-time',
+  SELF_EMPLOYED = 'self-employed',
+  FREELANCE = 'freelance',
+  CONTRACT = 'contract',
+  INTERNSHIP = 'internship',
+  APPRENTICESHIP = 'apprenticeship',
+  SEASONAL = 'seasonal',
+  STUDENT = 'student',
+}
 
 export interface IExperience {
   _id: string;
   title: string;
-  type: ExperienceType;
+  type: ExperienceTypeEnum;
   isCurrent: boolean;
   startDate: Date;
   endDate?: Date | null;
