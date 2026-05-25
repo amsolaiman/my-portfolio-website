@@ -6,6 +6,13 @@ import { client } from '../client';
 
 // ----------------------------------------------------------------------
 
+/**
+ * Fetch all experience entries from Sanity, ordered by start date descending.
+ *
+ * @returns An array of `IExperience` objects.
+ *          - Start and end dates parsed as `Date` instances.
+ *          - End date is `null` if not set.
+ */
 export async function getExperienceData(): Promise<IExperience[]> {
   const query = `*[_type == "experience"] | order(startDate desc) {
     _id,
@@ -29,8 +36,18 @@ export async function getExperienceData(): Promise<IExperience[]> {
   }));
 }
 
-// ----------------------------------------------------------------------
-
+/**
+ * Calculate the total years of professional experience from Sanity,
+ * excluding roles from EXCLUDED_TYPES.
+ *
+ * -  The calculation uses the earliest `isCurrent` entry's start date as a cutoff
+ * -  Any experience that begins after that date is excluded to avoid
+ *    double-counting overlapping roles.
+ * -  The current experience is measured up to today, while past experiences
+ *    use their recorded end date.
+ *
+ * @returns The total years of experience, rounded down to the nearest integer.
+ */
 const MS_PER_YEAR = 1000 * 60 * 60 * 24 * 365;
 
 const EXCLUDED_TYPES = [
