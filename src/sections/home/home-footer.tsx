@@ -7,6 +7,7 @@ import { useGlobalContent } from '@/contexts/use-global-content';
 import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 // constants
 import { FALLBACK_IMAGE_URL } from '@/constants/content';
+import { FALLBACK_COPYRIGHT_TEXT } from '@/constants/meta';
 // components
 import DigitalClock from '@/components/digital-clock';
 import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
@@ -16,12 +17,12 @@ import HomeToggleButtons from './components/home-toggle-buttons';
 
 // ----------------------------------------------------------------------
 
-const COPYRIGHT_TEXT = `©${new Date().getFullYear()} Abdul Moiz Solaiman - moizsolaiman.com`;
-
 export default function HomeFooter() {
-  const { portraitImage } = useGlobalContent();
+  const { portraitImage, copyright } = useGlobalContent();
 
   const { handleToggleContact } = useToggleButtons();
+
+  const copyrightText = `©${new Date().getFullYear()} ${copyright || FALLBACK_COPYRIGHT_TEXT}`;
 
   return (
     <div className="mt-32 flex w-full flex-col xl:mt-24 xl:min-h-screen">
@@ -45,7 +46,7 @@ export default function HomeFooter() {
         </div>
 
         <div className="absolute bottom-8 hidden w-full items-center justify-between px-12 xl:flex">
-          <p className="text-foreground/50 text-xs">{COPYRIGHT_TEXT}</p>
+          <p className="text-foreground/50 text-xs">{copyrightText}</p>
 
           <button
             data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
@@ -59,13 +60,13 @@ export default function HomeFooter() {
 
       <HomeToggleButtons />
 
-      <p className="p-4 text-center font-mono text-xs uppercase xl:hidden">
+      <p className="p-4 text-center text-xs xl:hidden">
         <span className="text-foreground md:hidden">
           Now, <DigitalClock />
           <br />
         </span>
 
-        <span className="text-foreground/50">{COPYRIGHT_TEXT}</span>
+        <span className="text-foreground/50">{copyrightText}</span>
       </p>
     </div>
   );

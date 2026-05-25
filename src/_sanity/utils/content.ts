@@ -27,6 +27,7 @@ export async function getGlobalContentData(): Promise<IContent> {
     },
     city,
     country,
+    copyright
   }`;
 
   const data = await client.fetch(query);

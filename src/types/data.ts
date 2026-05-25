@@ -81,4 +81,5 @@ export interface IContent {
   portraitImage: ImageType;
   city: string;
   country: string;
+  copyright: string;
 }
