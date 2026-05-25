@@ -3,7 +3,7 @@ import type { NextConfig } from 'next';
 import { env, validateEnvClient } from './env.schema';
 
 const nextEnv = {
-  NEXT_PUBLIC_HOST_URL: env.HOST_URL,
+  NEXT_PUBLIC_BASE_URL: env.BASE_URL,
   NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID: env.SANITY_STUDIO_PROJECT_ID,
   NEXT_PUBLIC_SANITY_STUDIO_DATASET: env.SANITY_STUDIO_DATASET,
   NEXT_PUBLIC_DEFAULT_EMAIL_ADDRESS: env.DEFAULT_EMAIL_ADDRESS,

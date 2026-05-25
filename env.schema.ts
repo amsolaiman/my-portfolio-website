@@ -17,8 +17,8 @@ const isValidDomain = (url: string, expectedDomains: string[]) => {
 // ----------------------------------------------------------------------
 
 export const envSchema = Yup.object({
-  // HOST
-  HOST_URL: Yup.string().url().required('HOST_URL is required'),
+  // WEBSITE
+  BASE_URL: Yup.string().url().required('BASE_URL is required'),
   // BASIC AUTH
   BASIC_AUTH_USERNAME: Yup.string().required('BASIC_AUTH_USERNAME is required'),
   BASIC_AUTH_PASSWORD: Yup.string().required('BASIC_AUTH_PASSWORD is required'),
@@ -59,10 +59,10 @@ export const envSchema = Yup.object({
 });
 
 export const envClientSchema = Yup.object({
-  // HOST
-  NEXT_PUBLIC_HOST_URL: Yup.string()
+  // WEBSITE
+  NEXT_PUBLIC_BASE_URL: Yup.string()
     .url()
-    .required('NEXT_PUBLIC_HOST_URL is required'),
+    .required('NEXT_PUBLIC_BASE_URL is required'),
   // SANITY.IO
   NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID: Yup.string().required(
     'NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID is required'
