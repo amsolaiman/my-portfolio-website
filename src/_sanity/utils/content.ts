@@ -9,9 +9,7 @@ import { client } from '../client';
 /**
  * Fetch the global content document from Sanity.
  *
- * @returns The singleton `IContent` object containing site-wide data such as
- *          title, description, contact details, social links, skills,
- *          portrait image, business hours, etc.
+ * @returns The singleton `IContent` object containing site-wide data.
  */
 export async function getGlobalContentData(): Promise<IContent> {
   const query = `*[_id == "global-content"][0]{

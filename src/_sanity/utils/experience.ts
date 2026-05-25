@@ -9,8 +9,9 @@ import { client } from '../client';
 /**
  * Fetch all experience entries from Sanity, ordered by start date descending.
  *
- * @returns An array of `IExperience` objects with `startDate` and `endDate`
- *          parsed as `Date` instances (endDate is `null` if not set).
+ * @returns An array of `IExperience` objects.
+ *          - Start and end dates parsed as `Date` instances.
+ *          - End date is `null` if not set.
  */
 export async function getExperienceData(): Promise<IExperience[]> {
   const query = `*[_type == "experience"] | order(startDate desc) {
