@@ -259,6 +259,14 @@ const content = defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
+
+    defineField({
+      name: 'copyright',
+      title: 'Copyright',
+      type: 'string',
+      description: `Value will be displayed with a "©${new Date().getFullYear()}" prefix in the live preview.`,
+      validation: (Rule) => Rule.required(),
+    }),
   ],
 });
 
