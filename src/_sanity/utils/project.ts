@@ -6,6 +6,13 @@ import { client } from '../client';
 
 // ----------------------------------------------------------------------
 
+/**
+ * Fetch all project entries from Sanity.
+ *
+ * @returns An array of `IProject` objects with poster/banner images and
+ *          gallery images resolved to their URLs, and `date` parsed as a
+ *          `Date` instance (or `null` if not set).
+ */
 export async function getProjectData(): Promise<IProject[]> {
   const query = `*[_type == "project"] {
     _id,
