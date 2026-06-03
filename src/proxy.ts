@@ -32,6 +32,11 @@ export function proxy(request: NextRequest) {
     return withCors(new NextResponse(null, { status: 200 }));
   }
 
+  // Skip Basic Auth for Sanity revalidation webhook
+  if (request.nextUrl.pathname === '/api/revalidate') {
+    return NextResponse.next();
+  }
+
   const username = process.env.BASIC_AUTH_USERNAME;
   const password = process.env.BASIC_AUTH_PASSWORD;
   const bypassAuth = process.env.BASIC_AUTH_BYPASS === 'true';
