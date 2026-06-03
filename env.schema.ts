@@ -33,6 +33,13 @@ export const envSchema = Yup.object({
   SANITY_STUDIO_DATASET: Yup.string().required(
     'SANITY_STUDIO_DATASET is required'
   ),
+  SANITY_STUDIO_REVALIDATION_SECRET: Yup.string()
+    .required('SANITY_STUDIO_REVALIDATION_SECRET is required')
+    .min(128, 'SANITY_STUDIO_REVALIDATION_SECRET must be a 64-byte hex string')
+    .matches(
+      /^[a-f0-9]+$/,
+      'SANITY_STUDIO_REVALIDATION_SECRET must be a valid hex string'
+    ),
   // CONTENT
   DEFAULT_EMAIL_ADDRESS: Yup.string()
     .email()
