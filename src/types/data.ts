@@ -1,3 +1,6 @@
+import { PortableTextBlock } from '@portabletext/react';
+
+//
 import { ChannelSocialLinkType } from './constant';
 
 // ----------------------------------------------------------------------
@@ -44,7 +47,7 @@ export interface IGroupedExperience {
 export interface IProject {
   _id: string;
   name: string;
-  description: string;
+  description: PortableTextBlock[];
   client?: string;
   type: string;
   techStack: string[];

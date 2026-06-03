@@ -10,6 +10,8 @@ import { IProject } from '@/types/data';
 import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 // constants
 import { FALLBACK_IMAGE_URL } from '@/constants/content';
+// components
+import RichTextRenderer from '@/components/rich-text-renderer';
 
 // ----------------------------------------------------------------------
 
@@ -126,9 +128,10 @@ export default function ProjectModal({ data, open, onClose }: Props) {
             <p className="text-secondary mb-8 text-xs">/ About the project</p>
 
             <div className="flex flex-col gap-12 xl:gap-20">
-              <h3 className="text-justify font-sans text-3xl opacity-50 md:text-start xl:text-5xl">
-                {data.description}
-              </h3>
+              <RichTextRenderer
+                value={data.description}
+                className="text-justify font-sans! text-3xl md:text-start xl:text-5xl"
+              />
 
               <ul className="border-foreground/20 divide-foreground/20 divide-y border-y">
                 {Object.entries(aboutInfo).map(([key, info]) => (

@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity';
+import { SparkleIcon } from '@sanity/icons';
 
 // ----------------------------------------------------------------------
 
@@ -17,9 +18,27 @@ const projects = defineType({
     defineField({
       name: 'description',
       title: 'Description',
-      type: 'text',
-      rows: 4,
-      validation: (Rule) => Rule.required(),
+      type: 'array',
+      description:
+        'Emphasis to certain words or phrases applies stand-out styling to them on the frontend.',
+      of: [
+        defineField({
+          name: 'block',
+          type: 'block',
+          marks: {
+            decorators: [
+              {
+                title: 'Emphasis',
+                value: 'em',
+                icon: SparkleIcon,
+              },
+            ],
+            annotations: [], // removes Link and any other annotations
+          },
+          styles: [], // removes font size options and any other styles
+          lists: [], // removes Bullet and Numbered list options and any other list types
+        }),
+      ],
     }),
 
     defineField({
