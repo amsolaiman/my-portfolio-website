@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { SparkleIcon } from '@sanity/icons';
+import { HighlightIcon } from '@sanity/icons';
 
 // ----------------------------------------------------------------------
 
@@ -20,7 +20,7 @@ const projects = defineType({
       title: 'Description',
       type: 'array',
       description:
-        'Emphasis to certain words or phrases applies stand-out styling to them on the frontend.',
+        'Highlighting certain words or phrases applies stand-out styling to them on the frontend.',
       of: [
         defineField({
           name: 'block',
@@ -28,9 +28,9 @@ const projects = defineType({
           marks: {
             decorators: [
               {
-                title: 'Emphasis',
+                title: 'Highlight',
                 value: 'em',
-                icon: SparkleIcon,
+                icon: HighlightIcon,
               },
             ],
             annotations: [], // removes Link and any other annotations
