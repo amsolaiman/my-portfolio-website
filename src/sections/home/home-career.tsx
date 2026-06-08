@@ -2,7 +2,10 @@ import { format } from 'date-fns';
 import { Suspense } from 'react';
 
 // _sanity
-import { getExperienceData } from '@/_sanity/utils/experience';
+import {
+  getExperienceData,
+  getStartYearOfExperience,
+} from '@/_sanity/utils/experience';
 // utils
 import { cn } from '@/utils/tw-merge';
 // types
@@ -104,13 +107,17 @@ async function Timeline() {
   );
 }
 
-export default function HomeCareer() {
+export default async function HomeCareer() {
+  const startYear = await getStartYearOfExperience();
+
+  const renderStartYear = startYear ? `'${startYear.slice(-2)}` : '...';
+
   return (
     <div className="w-full p-4 pt-32 xl:px-12">
       <p className="text-secondary text-xs">/ P.002 / Career</p>
 
       <h1 className="mt-8 font-sans text-6xl xl:text-8xl/[0.9]">
-        Exp. since &apos;22
+        Exp. since {renderStartYear}
       </h1>
 
       <Suspense fallback={<HomeCareerSkeleton />}>
