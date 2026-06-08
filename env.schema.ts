@@ -19,6 +19,10 @@ const isValidDomain = (url: string, expectedDomains: string[]) => {
 export const envSchema = Yup.object({
   // WEBSITE
   BASE_URL: Yup.string().url().required('BASE_URL is required'),
+  REVALIDATION_SECRET: Yup.string()
+    .required('REVALIDATION_SECRET is required')
+    .min(128, 'REVALIDATION_SECRET must be a 64-byte hex string')
+    .matches(/^[a-f0-9]+$/, 'REVALIDATION_SECRET must be a valid hex string'),
   // BASIC AUTH
   BASIC_AUTH_USERNAME: Yup.string().required('BASIC_AUTH_USERNAME is required'),
   BASIC_AUTH_PASSWORD: Yup.string().required('BASIC_AUTH_PASSWORD is required'),
@@ -33,13 +37,6 @@ export const envSchema = Yup.object({
   SANITY_STUDIO_DATASET: Yup.string().required(
     'SANITY_STUDIO_DATASET is required'
   ),
-  SANITY_STUDIO_REVALIDATION_SECRET: Yup.string()
-    .required('SANITY_STUDIO_REVALIDATION_SECRET is required')
-    .min(128, 'SANITY_STUDIO_REVALIDATION_SECRET must be a 64-byte hex string')
-    .matches(
-      /^[a-f0-9]+$/,
-      'SANITY_STUDIO_REVALIDATION_SECRET must be a valid hex string'
-    ),
   // CONTENT
   DEFAULT_EMAIL_ADDRESS: Yup.string()
     .email()
