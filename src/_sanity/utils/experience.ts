@@ -6,6 +6,16 @@ import { client } from '../client';
 
 // ----------------------------------------------------------------------
 
+const MS_PER_YEAR = 1000 * 60 * 60 * 24 * 365;
+
+const EXCLUDED_TYPES = [
+  ExperienceTypeEnum.STUDENT,
+  ExperienceTypeEnum.SEASONAL,
+  ExperienceTypeEnum.APPRENTICESHIP,
+];
+
+// ----------------------------------------------------------------------
+
 /**
  * Fetch all experience entries from Sanity, ordered by start date descending.
  *
@@ -48,14 +58,6 @@ export async function getExperienceData(): Promise<IExperience[]> {
  *
  * @returns The total years of experience, rounded down to the nearest integer.
  */
-const MS_PER_YEAR = 1000 * 60 * 60 * 24 * 365;
-
-const EXCLUDED_TYPES = [
-  ExperienceTypeEnum.APPRENTICESHIP,
-  ExperienceTypeEnum.SEASONAL,
-  ExperienceTypeEnum.STUDENT,
-];
-
 export async function getYearsOfExperience(): Promise<number> {
   const query = `{
     "experiences": *[
@@ -110,4 +112,30 @@ export async function getYearsOfExperience(): Promise<number> {
   );
 
   return Math.floor(totalMs / MS_PER_YEAR);
+}
+
+/**
+ * Get the start year of the earliest professional experience from Sanity,
+ * excluding roles from EXCLUDED_TYPES.
+ *
+ * @returns The start year as a string (e.g. "2020")
+ *          or `null` if no matching entry exists.
+ */
+export async function getStartYearOfExperience(): Promise<string | null> {
+  const query = `*[
+    _type == "experience" &&
+    !(type in $excludedTypes)
+  ] | order(startDate asc) [0].startDate`;
+
+  const startDate = await client.fetch(query, {
+    excludedTypes: EXCLUDED_TYPES,
+  });
+
+  if (!startDate) {
+    return null;
+  }
+
+  const year = new Date(startDate).getFullYear();
+
+  return String(year);
 }
