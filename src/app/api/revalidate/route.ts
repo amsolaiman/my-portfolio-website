@@ -1,6 +1,9 @@
 import { revalidatePath } from 'next/cache';
 import { type NextRequest, NextResponse } from 'next/server';
 
+// constants
+import { PATHS } from '@/constants/paths';
+
 // ----------------------------------------------------------------------
 
 export async function POST(request: NextRequest) {
@@ -12,7 +15,7 @@ export async function POST(request: NextRequest) {
 
   try {
     // Revalidates every page that uses cached data
-    revalidatePath('/', 'layout');
+    revalidatePath(PATHS.root, 'layout');
 
     return NextResponse.json({ revalidated: true, now: Date.now() });
   } catch (error) {

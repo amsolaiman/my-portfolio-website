@@ -1,5 +1,8 @@
 import type { MetadataRoute } from 'next';
 
+// constants
+import { PATHS } from '@/constants/paths';
+
 // ----------------------------------------------------------------------
 
 export default function robots(): MetadataRoute.Robots {
@@ -10,7 +13,7 @@ export default function robots(): MetadataRoute.Robots {
     return {
       rules: {
         userAgent: '*',
-        disallow: '/',
+        disallow: PATHS.root,
       },
     };
   }
@@ -18,8 +21,8 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
-      allow: '/',
-      disallow: ['/studio', '/api'],
+      allow: PATHS.root,
+      disallow: [PATHS.studio, PATHS.api.root],
     },
     sitemap: baseUrl ? `${baseUrl}/sitemap.xml` : undefined,
   };

@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// constants
+import { PATHS } from '@/constants/paths';
+
 // ----------------------------------------------------------------------
 
 function withCors(response: NextResponse) {
@@ -32,8 +35,8 @@ export function proxy(request: NextRequest) {
     return withCors(new NextResponse(null, { status: 200 }));
   }
 
-  // Skip Basic Auth for Sanity revalidation webhook
-  if (request.nextUrl.pathname === '/api/revalidate') {
+  // Skip Basic Auth for revalidation webhook
+  if (request.nextUrl.pathname === PATHS.api.revalidate) {
     return NextResponse.next();
   }
 
