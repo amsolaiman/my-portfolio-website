@@ -84,7 +84,7 @@ export default function ProjectClient({
       <button
         data-hover-cursor={CursorIdentfierEnum.PROJECT_BTN}
         onClick={handleToggleProject}
-        className="text-foreground/75 hover:text-foreground flex h-full w-16 cursor-pointer items-end justify-start transition-colors duration-300"
+        className="text-foreground/75 hover:text-foreground flex h-full w-16 cursor-pointer items-end justify-start"
       >
         <p className="-mb-8 origin-top-left -rotate-90 pt-4 font-sans text-6xl whitespace-nowrap">
           Work
