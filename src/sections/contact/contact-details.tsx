@@ -65,7 +65,7 @@ export default function ContactDetails() {
             <a
               data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
               key={social.label}
-              className="text-foreground/75 hover:border-secondary cursor-pointer border-b-2 border-transparent text-base"
+              className="text-foreground hover:text-foreground/75 hover:border-secondary cursor-pointer border-b-2 border-transparent text-base"
               href={social.link}
               target="_blank"
               rel="noopener noreferrer"
