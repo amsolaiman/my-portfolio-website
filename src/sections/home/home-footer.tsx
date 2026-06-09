@@ -5,7 +5,10 @@ import Image from 'next/image';
 // contexts
 import { useGlobalContent } from '@/contexts/use-global-content';
 import { useToggleButtons } from '@/contexts/use-toggle-buttons';
+// hooks
+import { useRapidClick } from '@/hooks/use-rapid-click';
 // constants
+import { PATHS } from '@/constants/paths';
 import { FALLBACK_IMAGE_URL } from '@/constants/content';
 import { FALLBACK_COPYRIGHT_TEXT } from '@/constants/meta';
 // components
@@ -21,6 +24,8 @@ export default function HomeFooter() {
   const { portraitImage, copyright } = useGlobalContent();
 
   const { handleToggleContact } = useToggleButtons();
+
+  const handleClick = useRapidClick(PATHS.studio);
 
   const copyrightText = `©${new Date().getFullYear()} ${copyright || FALLBACK_COPYRIGHT_TEXT}`;
 
@@ -46,7 +51,9 @@ export default function HomeFooter() {
         </div>
 
         <div className="absolute bottom-8 hidden w-full items-center justify-between px-12 xl:flex">
-          <p className="text-foreground/50 text-xs">{copyrightText}</p>
+          <p onClick={handleClick} className="text-foreground/50 text-xs">
+            {copyrightText}
+          </p>
 
           <button
             data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
@@ -66,7 +73,9 @@ export default function HomeFooter() {
           <br />
         </span>
 
-        <span className="text-foreground/50">{copyrightText}</span>
+        <span onClick={handleClick} className="text-foreground/50">
+          {copyrightText}
+        </span>
       </p>
     </div>
   );
