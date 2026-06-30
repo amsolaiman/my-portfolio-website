@@ -40,8 +40,8 @@ export default function HomeFooter() {
 
           <div className="relative mt-2 aspect-3/4 w-full overflow-hidden">
             <Image
-              src={portraitImage.src || FALLBACK_IMAGE_URL}
-              alt={portraitImage.alt || ''}
+              src={portraitImage?.src || FALLBACK_IMAGE_URL}
+              alt={portraitImage?.alt || ''}
               fill
               priority
               draggable={false}

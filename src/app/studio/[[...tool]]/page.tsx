@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     ...studioMetadata,
-    title: `Studio | ${globalContent.title || FALLBACK_METADATA_TITLE}`,
+    title: `Studio | ${globalContent?.title || FALLBACK_METADATA_TITLE}`,
   };
 }
 
