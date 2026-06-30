@@ -35,8 +35,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const globalContent = await getGlobalContentData();
 
   return {
-    title: globalContent.title || FALLBACK_METADATA_TITLE,
-    description: globalContent.description || FALLBACK_METADATA_DESCRIPTION,
+    title: globalContent?.title || FALLBACK_METADATA_TITLE,
+    description: globalContent?.description || FALLBACK_METADATA_DESCRIPTION,
     icons: [
       {
         rel: 'icon',
@@ -68,7 +68,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const globalContent = await getGlobalContentData();
+  const globalContent = (await getGlobalContentData()) ?? {
+    title: FALLBACK_METADATA_TITLE,
+    description: FALLBACK_METADATA_DESCRIPTION,
+  };
 
   return (
     <html lang="en">

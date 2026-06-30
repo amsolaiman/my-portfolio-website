@@ -23,7 +23,7 @@ export default function ContactDetails() {
 
   const { email, resume, socialLink } = useGlobalContent();
 
-  const socialLinks = !!socialLink.length ? socialLink : FALLBACK_SOCIAL_LINKS;
+  const socialLinks = socialLink || FALLBACK_SOCIAL_LINKS;
 
   const resumeUrl = resume || FALLBACK_RESUME_URL;
   const emailAddress = email || FALLBACK_EMAIL_ADDRESS;
