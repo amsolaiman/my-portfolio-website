@@ -32,8 +32,8 @@ body:not(:has(#sanity)) {
   color: var(--foreground);
   font-family: var(--font-fira-code), sans-serif;
   text-transform: uppercase;
-}
 
-body:not(:has(#sanity)) button {
-  text-transform: uppercase;
+  button {
+    text-transform: uppercase;
+  }
 }
