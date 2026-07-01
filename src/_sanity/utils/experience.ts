@@ -4,6 +4,8 @@ import { ExperienceTypeEnum, IExperience } from '@/types/data';
 //
 import { client } from '../client';
 
+import { mergeIntervals, subtractBlocks, type Interval } from './helpers';
+
 // ----------------------------------------------------------------------
 
 const MS_PER_YEAR = 1000 * 60 * 60 * 24 * 365;
@@ -37,9 +39,9 @@ export async function getExperienceData(): Promise<IExperience[]> {
     }
   }`;
 
-  const data = await client.fetch(query);
+  const data = (await client.fetch(query)) as IExperience[];
 
-  return data.map((item: IExperience) => ({
+  return data.map((item) => ({
     ...item,
     startDate: new Date(item.startDate),
     endDate: item.endDate ? new Date(item.endDate) : null,
@@ -50,66 +52,95 @@ export async function getExperienceData(): Promise<IExperience[]> {
  * Calculate the total years of professional experience from Sanity,
  * excluding roles from EXCLUDED_TYPES.
  *
- * -  The calculation uses the earliest `isCurrent` entry's start date as a cutoff
- * -  Any experience that begins after that date is excluded to avoid
- *    double-counting overlapping roles.
- * -  The current experience is measured up to today, while past experiences
- *    use their recorded end date.
+ * Rules:
+ * -  Current roles (`isCurrent: true`) are always counted in full, measured
+ *    up to today. If two or more current roles overlap, they're merged into
+ *    one continuous block (not double-counted), but current roles are never
+ *    reduced by past roles.
+ *
+ * -  Past roles that overlap a current role lose that overlapping time to
+ *    the current role.
+ *
+ * -  Whatever's left of past roles is then resolved against each other:
+ *    sorted by start date, each role's counted start is clamped to the end
+ *    of previously-counted time (so a later-starting role loses overlap to
+ *    an earlier one), and a role fully contained within already-counted
+ *    time is dropped entirely.
  *
  * @returns The total years of experience, rounded down to the nearest integer.
  */
 export async function getYearsOfExperience(): Promise<number> {
-  const query = `{
-    "experiences": *[
-      _type == "experience" &&
-      !(type in $excludedTypes)
-    ] {
-      _id,
-      type,
-      isCurrent,
-      startDate,
-      endDate
-    },
-    "cutoffDate": *[
-      _type == "experience" &&
-      isCurrent == true &&
-      !(type in $excludedTypes)
-    ] | order(startDate asc) [0].startDate
+  const query = `*[
+    _type == "experience" &&
+    !(type in $excludedTypes)
+  ] {
+    _id,
+    type,
+    isCurrent,
+    startDate,
+    endDate
   }`;
 
-  const { experiences, cutoffDate } = await client.fetch(query, {
+  const experiences = (await client.fetch(query, {
     excludedTypes: EXCLUDED_TYPES,
-  });
+  })) as IExperience[];
 
-  const now = new Date().toISOString();
+  const now = Date.now();
 
-  // Filter out entries that start after the cutoff
-  // cutoffDate — the start date of the earliest `isCurrent` entry
-  const filtered = (experiences as IExperience[])
-    .filter((exp) => {
-      if (!cutoffDate) {
-        return true;
-      }
-      return exp.startDate <= cutoffDate;
-    })
-    .map((exp) => {
-      const start = new Date(exp.startDate).getTime();
+  const toInterval = (exp: IExperience): Interval | null => {
+    const start = new Date(exp.startDate).getTime();
+    const end =
+      exp.isCurrent || !exp.endDate ? now : new Date(exp.endDate).getTime();
 
-      if (exp.isCurrent && exp.startDate === cutoffDate) {
-        return { start, end: new Date(now).getTime() };
-      }
+    if (end <= start) {
+      return null;
+    }
 
-      const end = exp.endDate
-        ? new Date(exp.endDate).getTime()
-        : new Date(now).getTime();
+    return { start, end };
+  };
 
-      return { start, end };
-    });
+  const currentIntervals: Interval[] = [];
+  const pastIntervals: Interval[] = [];
 
-  const totalMs = filtered.reduce(
+  for (const exp of experiences) {
+    const interval = toInterval(exp);
+
+    if (!interval) {
+      continue;
+    }
+
+    (exp.isCurrent ? currentIntervals : pastIntervals).push(interval);
+  }
+
+  // Current roles: merged with each other, always counted in full.
+  const currentBlocks = mergeIntervals(currentIntervals);
+  const currentTotalMs = currentBlocks.reduce(
     (sum, { start, end }) => sum + (end - start),
     0
   );
+
+  // Past roles: first strip anything that overlaps a current block...
+  const pastRemaining = pastIntervals.flatMap((interval) =>
+    subtractBlocks(interval, currentBlocks)
+  );
+
+  // ...then resolve overlaps among what's left of past roles, sorted by
+  // start date, earlier-starting role wins the overlap.
+  const sortedPast = pastRemaining.sort((a, b) => a.start - b.start);
+
+  let pastTotalMs = 0;
+  let cursor = -Infinity;
+
+  for (const { start, end } of sortedPast) {
+    const effectiveStart = Math.max(start, cursor);
+
+    if (effectiveStart < end) {
+      pastTotalMs += end - effectiveStart;
+      cursor = Math.max(cursor, end);
+    }
+  }
+
+  const totalMs = currentTotalMs + pastTotalMs;
 
   return Math.floor(totalMs / MS_PER_YEAR);
 }
