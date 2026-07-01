@@ -86,6 +86,7 @@ const content = defineType({
               description: 'Name of the platform (e.g., GitHub, LinkedIn).',
               validation: (Rule) => Rule.required(),
             }),
+
             defineField({
               name: 'link',
               title: 'URL',
