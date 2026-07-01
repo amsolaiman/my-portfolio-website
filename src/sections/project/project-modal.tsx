@@ -28,7 +28,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
 
   const aboutInfo = {
     client: data.client,
-    year: data.isOngoing ? 'Ongoing' : data.date?.getFullYear(),
+    year: data.isOngoing ? 'Ongoing' : data.endDate?.getFullYear(),
     techs: data.techStack.map((tech) => tech.trim()).join(', '),
   };
 

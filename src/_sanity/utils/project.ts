@@ -14,7 +14,7 @@ import { client } from '../client';
  *          - Date parsed as a `Date` instance (or `null` if not set).
  */
 export async function getProjectData(): Promise<IProject[]> {
-  const query = `*[_type == "project"] {
+  const query = `*[_type == "project"] | order(startDate asc) {
     _id,
     name,
     description,
@@ -22,7 +22,8 @@ export async function getProjectData(): Promise<IProject[]> {
     type,
     techStack,
     isOngoing,
-    date,
+    startDate,
+    endDate,
     "posterImage": {
       "src": posterImage.asset->url,
       "alt": posterImage.alt
@@ -44,10 +45,11 @@ export async function getProjectData(): Promise<IProject[]> {
     align
   }`;
 
-  const data = await client.fetch(query);
+  const data = (await client.fetch(query)) as IProject[];
 
-  return data.map((item: IProject) => ({
+  return data.map((item) => ({
     ...item,
-    date: item.date ? new Date(item.date) : null,
+    startDate: new Date(item.startDate),
+    endDate: item.endDate ? new Date(item.endDate) : null,
   }));
 }

@@ -107,7 +107,14 @@ const projects = defineType({
     }),
 
     defineField({
-      name: 'date',
+      name: 'startDate',
+      title: 'Date started',
+      type: 'date',
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: 'endDate',
       title: 'Date completed',
       type: 'date',
       description: 'Leave empty if this item is an ongoing project.',

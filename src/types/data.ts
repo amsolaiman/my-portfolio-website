@@ -52,7 +52,8 @@ export interface IProject {
   type: string;
   techStack: string[];
   isOngoing: boolean;
-  date?: Date | null;
+  startDate: Date;
+  endDate?: Date | null;
   posterImage: ImageType;
   bannerImage: ImageType;
   images: Array<ImageType & { _key: string }>;
