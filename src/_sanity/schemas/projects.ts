@@ -1,5 +1,6 @@
 import { defineType, defineField } from 'sanity';
 import { HighlightIcon } from '@sanity/icons';
+import { parseISO, isBefore, isEqual } from 'date-fns';
 
 // ----------------------------------------------------------------------
 
@@ -121,13 +122,22 @@ const projects = defineType({
       readOnly: ({ document }) => !!document?.isOngoing,
       validation: (Rule) =>
         Rule.custom((value, context) => {
-          const isOngoing = context.document?.isOngoing;
+          const isOngoing = context.document?.isOngoing as boolean | undefined;
+          const startDate = context.document?.startDate as string | undefined;
 
           if (isOngoing && value) {
             return 'Must be empty';
           }
           if (!isOngoing && !value) {
             return 'Required';
+          }
+          if (value && startDate) {
+            const start = parseISO(startDate);
+            const end = parseISO(value);
+
+            if (isBefore(end, start) || isEqual(end, start)) {
+              return 'Must be later than start date';
+            }
           }
           return true;
         }),
