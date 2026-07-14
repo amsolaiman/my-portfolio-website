@@ -1,4 +1,5 @@
 import { defineType, defineField } from 'sanity';
+import { parseISO, isBefore, isEqual } from 'date-fns';
 
 // ----------------------------------------------------------------------
 
@@ -56,13 +57,22 @@ const experience = defineType({
       readOnly: ({ document }) => !!document?.isCurrent,
       validation: (Rule) =>
         Rule.custom((value, context) => {
-          const isCurrent = context.document?.isCurrent;
+          const isCurrent = context.document?.isCurrent as boolean | undefined;
+          const startDate = context.document?.startDate as string | undefined;
 
           if (isCurrent && value) {
             return 'Must be empty';
           }
           if (!isCurrent && !value) {
             return 'Required';
+          }
+          if (value && startDate) {
+            const start = parseISO(startDate);
+            const end = parseISO(value);
+
+            if (isBefore(end, start) || isEqual(end, start)) {
+              return 'Must be later than start date';
+            }
           }
           return true;
         }),
