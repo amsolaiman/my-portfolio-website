@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/amsolaiman/my-portfolio-website/compare/v1.0.0...v1.1.0) (2026-08-10)
+
+### Features
+
+- extend project schema with start/end date fields ([#77](https://github.com/amsolaiman/my-portfolio-website/issues/77)) ([d5317ca](https://github.com/amsolaiman/my-portfolio-website/commit/d5317ca2f9323806034c725cc0401b3a04afabf1))
+
+### Bug Fixes
+
+- add null guards for global content in root layout & metadata ([#74](https://github.com/amsolaiman/my-portfolio-website/issues/74)) ([59369f6](https://github.com/amsolaiman/my-portfolio-website/commit/59369f6b0cc930aa3d24ca826122c93df10ba835))
+- correctly handle overlapping & concurrent roles in years-of-experience calculation ([#75](https://github.com/amsolaiman/my-portfolio-website/issues/75)) ([72877b9](https://github.com/amsolaiman/my-portfolio-website/commit/72877b98f3a76591c774d023839a60c71666c427))
+- validate schema end-date is after start-date ([#78](https://github.com/amsolaiman/my-portfolio-website/issues/78)) ([01fd8a0](https://github.com/amsolaiman/my-portfolio-website/commit/01fd8a0ce7849c33a328e49b6427b86235c17663))
+
 ## 1.0.0 (2026-06-30)
 
 ### ⚠ BREAKING CHANGES
