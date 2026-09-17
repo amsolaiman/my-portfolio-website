@@ -9,6 +9,7 @@ import './globals.scss';
 import { GlobalContentProvider } from '@/contexts/use-global-content';
 import { ToggleButtonsProvider } from '@/contexts/use-toggle-buttons';
 // utils
+import { cn } from '@/utils/tw-merge';
 import { getGlobalContentData } from '@/_sanity/utils/content';
 // constants
 import {
@@ -34,9 +35,20 @@ const firaCode = Fira_Code({
 export async function generateMetadata(): Promise<Metadata> {
   const globalContent = await getGlobalContentData();
 
+  const title = globalContent?.title ?? FALLBACK_METADATA_TITLE;
+  const description =
+    globalContent?.description ?? FALLBACK_METADATA_DESCRIPTION;
+
   return {
-    title: globalContent?.title || FALLBACK_METADATA_TITLE,
-    description: globalContent?.description || FALLBACK_METADATA_DESCRIPTION,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: FALLBACK_METADATA_TITLE,
+      url: process.env.NEXT_PUBLIC_BASE_URL!,
+      type: 'website',
+    },
     icons: [
       {
         rel: 'icon',
@@ -73,10 +85,24 @@ export default async function RootLayout({
     description: FALLBACK_METADATA_DESCRIPTION,
   };
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: FALLBACK_METADATA_TITLE,
+    url: process.env.NEXT_PUBLIC_BASE_URL!,
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+
       <body
-        className={`${bebasNeue.variable} ${firaCode.variable} antialiased`}
+        className={cn(bebasNeue.variable, firaCode.variable, 'antialiased')}
       >
         <GlobalContentProvider value={globalContent}>
           <ToggleButtonsProvider>{children}</ToggleButtonsProvider>
