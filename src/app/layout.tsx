@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Bebas_Neue, Fira_Code } from 'next/font/google';
 // styles
 import 'lenis/dist/lenis.css';
-import './globals.scss';
+import './globals.css';
 
 // contexts
 import { GlobalContentProvider } from '@/contexts/use-global-content';
