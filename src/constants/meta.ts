@@ -1,8 +1,8 @@
 // ----------------------------------------------------------------------
 
-export const FALLBACK_METADATA_TITLE = 'jasafanar portfolio';
+export const FALLBACK_METADATA_TITLE = 'moiz:solaiman';
 
 export const FALLBACK_METADATA_DESCRIPTION =
-  'Where design and engineering move as one——every detail with intent. No complexity. Just fast, clear and intentional frontend experiences.';
+  'Portfolio website of Abdul Moiz Solaiman, web developer and designer based in the Philippines.';
 
 export const FALLBACK_COPYRIGHT_TEXT = `${FALLBACK_METADATA_TITLE}. All rights reserved.`;
