@@ -34,7 +34,7 @@ export default function HomeServices() {
             that prioritize clarity over complexity.
           </p>
 
-          <p className="text-foreground/50 text-justify text-xs xl:text-start">
+          <p className="text-justify text-xs text-gray-400 xl:text-start">
             Interests span modern frontend development, design systems &
             performance-first builds. Turn ideas into well-structured products
             that work seamlessly for both users & the teams maintaining them.

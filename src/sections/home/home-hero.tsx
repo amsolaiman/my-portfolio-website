@@ -47,7 +47,7 @@ export default function HomeHero() {
             Now, <DigitalClock />
           </p>
 
-          <p className="text-foreground/50 text-xs">↓ Scroll to tune in</p>
+          <p className="text-xs text-gray-400">↓ Scroll to tune in</p>
         </div>
       </div>
 

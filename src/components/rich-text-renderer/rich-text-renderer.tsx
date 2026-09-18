@@ -22,7 +22,7 @@ export default function RichTextRenderer({ value, className }: Props) {
       ),
     },
     marks: {
-      em: ({ children }) => <span className="opacity-50">{children}</span>,
+      em: ({ children }) => <span className="text-gray-400">{children}</span>,
     },
   };
 
