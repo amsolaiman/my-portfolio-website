@@ -2,14 +2,18 @@ import type { MetadataRoute } from 'next';
 
 // constants
 import { PATHS } from '@/constants/paths';
+// utils
+import { getEnvironment } from '@/utils/environment';
 
 // ----------------------------------------------------------------------
 
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
 
+  const isProduction = getEnvironment() === 'PROD';
+
   // Block all crawlers in non-production environments
-  if (process.env.NODE_ENV !== 'production') {
+  if (!isProduction) {
     return {
       rules: {
         userAgent: '*',
