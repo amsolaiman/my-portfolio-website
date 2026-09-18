@@ -11,7 +11,7 @@ export default async function HomeAbout() {
 
   return (
     <div className="w-full p-4 pt-32 xl:px-12">
-      <h3 className="text-justify font-sans text-3xl xl:max-w-7xl xl:text-start xl:text-5xl [&_span]:opacity-50">
+      <h3 className="text-justify font-sans text-3xl xl:max-w-7xl xl:text-start xl:text-5xl [&_span]:text-gray-400">
         Web developer<span>+</span>designer based in the Philippines with&nbsp;
         {expYears}+ years of experience. The focus:
         <span>

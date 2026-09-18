@@ -47,7 +47,7 @@ async function Timeline() {
 
   if (!experience.length) {
     return (
-      <p className="text-foreground/50 mt-6 mb-32 text-xs">
+      <p className="mt-6 mb-32 text-xs text-gray-400">
         Oops! I&apos;ll work on this.
       </p>
     );
@@ -93,7 +93,7 @@ async function Timeline() {
                       {item.employer.name}
                     </a>
 
-                    <p className="text-foreground/50 text-xs">
+                    <p className="text-xs text-gray-400">
                       {item.type}, {duration}
                     </p>
                   </div>

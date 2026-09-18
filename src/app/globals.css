@@ -6,6 +6,18 @@
 
   --foreground: #ffffff;
   --background: #181818;
+
+  --gray-50: #fafafa;
+  --gray-100: #f5f5f5;
+  --gray-200: #e6e6e6;
+  --gray-300: #d3d3d3;
+  --gray-400: #8c8c8c;
+  --gray-500: #727272;
+  --gray-600: #535353;
+  --gray-700: #404040;
+  --gray-800: #272727;
+  --gray-900: #1a1a1a;
+  --gray-950: #0b0b0b;
 }
 
 @theme inline {
@@ -13,6 +25,18 @@
   --color-secondary: var(--secondary);
   --color-foreground: var(--foreground);
   --color-background: var(--background);
+
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+  --color-gray-950: var(--gray-950);
 
   --font-sans: var(--font-bebas-neue);
   --font-mono: var(--font-fira-code);

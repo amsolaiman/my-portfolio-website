@@ -89,7 +89,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
             {data.name}
           </div>
 
-          <div className="text-foreground/50 [&_span]:text-primary text-sm">
+          <div className="[&_span]:text-primary text-sm text-gray-400">
             <span>■</span> {data.type}
           </div>
 
@@ -109,7 +109,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
               <div />
             )}
 
-            <p className="text-foreground/50 text-end text-xs xl:text-start">
+            <p className="text-end text-xs text-gray-400 xl:text-start">
               ↓ Scroll for more
             </p>
           </div>

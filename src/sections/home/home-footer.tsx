@@ -33,7 +33,7 @@ export default function HomeFooter() {
     <div className="mt-32 flex w-full flex-col xl:mt-24 xl:min-h-screen">
       <div className="relative flex flex-1 flex-col items-center justify-center">
         <div className="flex w-full max-w-80 flex-col items-end">
-          <p className="text-foreground/50 [&_span]:text-secondary hidden text-xs whitespace-nowrap xl:block">
+          <p className="[&_span]:text-secondary hidden text-xs whitespace-nowrap text-gray-400 xl:block">
             <span>/ Motivation</span> / Game of Thrones S04 EP06, Min
             28:23-28:35
           </p>
@@ -51,7 +51,7 @@ export default function HomeFooter() {
         </div>
 
         <div className="absolute bottom-8 hidden w-full items-center justify-between px-12 xl:flex">
-          <p onClick={handleClick} className="text-foreground/50 text-xs">
+          <p onClick={handleClick} className="text-xs text-gray-400">
             {copyrightText}
           </p>
 
@@ -73,7 +73,7 @@ export default function HomeFooter() {
           <br />
         </span>
 
-        <span onClick={handleClick} className="text-foreground/50">
+        <span onClick={handleClick} className="text-gray-400">
           {copyrightText}
         </span>
       </p>

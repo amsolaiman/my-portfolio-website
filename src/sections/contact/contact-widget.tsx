@@ -42,16 +42,14 @@ export default function ContactWidget() {
     <div className="flex flex-col">
       <p className="text-sm">
         <span
-          className={cn(
-            isBusinessTime ? 'text-foreground' : 'text-foreground/75'
-          )}
+          className={cn(isBusinessTime ? 'text-foreground' : 'text-gray-300')}
         >
           ({isBusinessTime ? 'Online' : 'Offline'})&nbsp;
         </span>
         Now, <DigitalClock />
       </p>
 
-      <p className="text-foreground/75 text-xs">
+      <p className="text-xs text-gray-300">
         {businessDaysLabel}, {businessHoursLabel}
         <br />
         Based in {baseLocation}
