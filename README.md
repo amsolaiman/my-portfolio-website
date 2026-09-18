@@ -1,4 +1,4 @@
-# Jasafanar Portfolio Website
+# My Portfolio Website
 
 A modern portfolio website built with Next.js, Typescript, Tailwind, and Sanity.io. This project is designed to showcase career overview and timeline, project work, and contact details while keeping the site fast, accessible, and easy to manage.
 

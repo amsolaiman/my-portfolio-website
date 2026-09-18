@@ -268,6 +268,15 @@ const content = defineType({
       description: `Value will be displayed with a "©${new Date().getFullYear()}" prefix in the live preview.`,
       validation: (Rule) => Rule.required(),
     }),
+
+    defineField({
+      name: 'llmsTxt',
+      title: 'LLMs content',
+      type: 'text',
+      rows: 20,
+      description:
+        'Raw markdown content served at /llms.txt for AI crawlers and LLMs. Written in the llms.txt convention (https://llmstxt.org).',
+    }),
   ],
 });
 

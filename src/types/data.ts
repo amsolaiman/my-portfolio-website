@@ -87,4 +87,5 @@ export interface IContent {
   city: string;
   country: string;
   copyright: string;
+  llmsTxt?: string;
 }
