@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/amsolaiman/my-portfolio-website/compare/v1.1.0...v1.2.0) (2026-09-21)
+
+### Features
+
+- add llms.txt route for ai crawler discovery ([#82](https://github.com/amsolaiman/my-portfolio-website/issues/82)) ([35dc783](https://github.com/amsolaiman/my-portfolio-website/commit/35dc7833ea349687a6281efeac6fd0e1a30b8a88))
+- add open-graph sitename & website schema for seo ([#79](https://github.com/amsolaiman/my-portfolio-website/issues/79)) ([1a5e5dc](https://github.com/amsolaiman/my-portfolio-website/commit/1a5e5dc8312709864ed635827e6bf784566af6b6))
+
 ## [1.1.0](https://github.com/amsolaiman/my-portfolio-website/compare/v1.0.0...v1.1.0) (2026-08-10)
 
 ### Features
