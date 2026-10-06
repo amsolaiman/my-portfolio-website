@@ -31,27 +31,16 @@ export interface IWebsiteConfig {
 
 // ----------------------------------------------------------------------
 
-export interface IContent {
+export interface IGlobalContent {
   _id: string;
   title: string;
   description: string;
   email: string;
   resume: string;
-  socialLink: ChannelSocialLinkType[];
-  businessDays?: {
-    start: number;
-    end: number;
-  };
-  businessHours?: {
-    start: number;
-    end: number;
-  };
+  socialLinks: ChannelSocialLinkType[];
   skills: string[];
   portraitImage: ImageType;
-  city: string;
-  country: string;
   copyright: string;
-  llmsTxt?: string;
 }
 
 // ----------------------------------------------------------------------

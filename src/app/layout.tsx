@@ -84,10 +84,7 @@ export default async function RootLayout({
 }>) {
   const websiteConfig = await getWebsiteConfigData();
 
-  const globalContent = (await getGlobalContentData()) ?? {
-    title: FALLBACK_METADATA_TITLE,
-    description: FALLBACK_METADATA_DESCRIPTION,
-  };
+  const globalContent = await getGlobalContentData();
 
   const jsonLd = {
     '@context': 'https://schema.org',

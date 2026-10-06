@@ -13,7 +13,7 @@ export const structure: StructureResolver = (S) =>
 
       S.listItem()
         .title('Global Content')
-        .id('content-singleton')
+        .id('global-content-singleton')
         .child(S.document().schemaType('content').documentId('global-content')),
 
       // Add other document types below as usual

@@ -3,7 +3,7 @@
 import React from 'react';
 
 // types
-import { IContent } from '@/types/data';
+import { IGlobalContent } from '@/types/data';
 
 //
 import { GlobalContentContext } from './global-content-context';
@@ -12,7 +12,7 @@ import { GlobalContentContext } from './global-content-context';
 
 type Props = {
   children: React.ReactNode;
-  value: IContent;
+  value: IGlobalContent | null;
 };
 
 export function GlobalContentProvider({ children, value }: Props) {

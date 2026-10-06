@@ -21,9 +21,9 @@ import ContactWidget from './contact-widget';
 export default function ContactDetails() {
   const upMd = useBreakpoint('up', 'md');
 
-  const { email, resume, socialLink } = useGlobalContent();
+  const { email, resume, socialLinks } = useGlobalContent();
 
-  const socialLinks = socialLink || FALLBACK_SOCIAL_LINKS;
+  const socials = socialLinks || FALLBACK_SOCIAL_LINKS;
 
   const resumeUrl = resume || FALLBACK_RESUME_URL;
   const emailAddress = email || FALLBACK_EMAIL_ADDRESS;
@@ -61,7 +61,7 @@ export default function ContactDetails() {
         <ContactWidget />
 
         <div className="flex flex-col items-end gap-4 xl:flex-row xl:items-center xl:gap-10">
-          {socialLinks.map((social) => (
+          {socials.map((social) => (
             <a
               data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
               key={social.label}

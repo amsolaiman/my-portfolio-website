@@ -1,5 +1,5 @@
 // types
-import { IContent } from '@/types/data';
+import { IGlobalContent } from '@/types/data';
 
 //
 import { client } from '../client';
@@ -9,31 +9,27 @@ import { client } from '../client';
 /**
  * Fetch the global content document from Sanity.
  *
- * @returns The singleton `IContent` object containing site-wide data.
+ * @returns The singleton `IGlobalContent` object containing
+ *          site-wide content data.
  */
-export async function getGlobalContentData(): Promise<IContent> {
+export async function getGlobalContentData(): Promise<IGlobalContent> {
   const query = `*[_id == "global-content"][0]{
     _id,
     title,
     description,
     email,
     "resume": resume.asset->url,
-    socialLink[] {
+    socialLinks[] {
       _key,
       label,
       link
     },
-    businessDays,
-    businessHours,
     skills,
     "portraitImage": {
       "src": portraitImage.asset->url,
       "alt": portraitImage.alt
     },
-    city,
-    country,
-    copyright,
-    llmsTxt
+    copyright
   }`;
 
   const data = await client.fetch(query);
