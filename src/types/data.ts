@@ -12,6 +12,50 @@ type ImageType = {
 
 // ----------------------------------------------------------------------
 
+export interface IWebsiteConfig {
+  _id: string;
+  author: string;
+  logo: string;
+  businessDays?: {
+    start: number;
+    end: number;
+  };
+  businessHours?: {
+    start: number;
+    end: number;
+  };
+  city: string;
+  country: string;
+  llmsTxt?: string;
+}
+
+// ----------------------------------------------------------------------
+
+export interface IContent {
+  _id: string;
+  title: string;
+  description: string;
+  email: string;
+  resume: string;
+  socialLink: ChannelSocialLinkType[];
+  businessDays?: {
+    start: number;
+    end: number;
+  };
+  businessHours?: {
+    start: number;
+    end: number;
+  };
+  skills: string[];
+  portraitImage: ImageType;
+  city: string;
+  country: string;
+  copyright: string;
+  llmsTxt?: string;
+}
+
+// ----------------------------------------------------------------------
+
 export enum ExperienceTypeEnum {
   FULL_TIME = 'full-time',
   PART_TIME = 'part-time',
@@ -63,29 +107,4 @@ export interface IProject {
   };
   designUrl?: string;
   align: 'start' | 'center' | 'end';
-}
-
-// ----------------------------------------------------------------------
-
-export interface IContent {
-  _id: string;
-  title: string;
-  description: string;
-  email: string;
-  resume: string;
-  socialLink: ChannelSocialLinkType[];
-  businessDays?: {
-    start: number;
-    end: number;
-  };
-  businessHours?: {
-    start: number;
-    end: number;
-  };
-  skills: string[];
-  portraitImage: ImageType;
-  city: string;
-  country: string;
-  copyright: string;
-  llmsTxt?: string;
 }
