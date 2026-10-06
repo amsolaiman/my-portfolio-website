@@ -8,9 +8,11 @@ import './globals.css';
 // contexts
 import { GlobalContentProvider } from '@/contexts/use-global-content';
 import { ToggleButtonsProvider } from '@/contexts/use-toggle-buttons';
+import { WebsiteConfigProvider } from '@/contexts/use-website-config';
 // utils
 import { cn } from '@/utils/tw-merge';
 import { getGlobalContentData } from '@/_sanity/utils/content';
+import { getWebsiteConfigData } from '@/_sanity/utils/website';
 // constants
 import {
   FALLBACK_METADATA_DESCRIPTION,
@@ -80,6 +82,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const websiteConfig = await getWebsiteConfigData();
+
   const globalContent = (await getGlobalContentData()) ?? {
     title: FALLBACK_METADATA_TITLE,
     description: FALLBACK_METADATA_DESCRIPTION,
@@ -104,9 +108,11 @@ export default async function RootLayout({
       <body
         className={cn(bebasNeue.variable, firaCode.variable, 'antialiased')}
       >
-        <GlobalContentProvider value={globalContent}>
-          <ToggleButtonsProvider>{children}</ToggleButtonsProvider>
-        </GlobalContentProvider>
+        <WebsiteConfigProvider value={websiteConfig}>
+          <GlobalContentProvider value={globalContent}>
+            <ToggleButtonsProvider>{children}</ToggleButtonsProvider>
+          </GlobalContentProvider>
+        </WebsiteConfigProvider>
       </body>
     </html>
   );

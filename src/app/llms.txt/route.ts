@@ -3,24 +3,24 @@
 import { NextResponse } from 'next/server';
 
 // _sanity
-import { getGlobalContentData } from '@/_sanity/utils/content';
+import { getWebsiteConfigData } from '@/_sanity/utils/website';
 
 export async function GET() {
   try {
-    const globalContent = await getGlobalContentData();
+    const websiteConfig = await getWebsiteConfigData();
 
-    if (!globalContent) {
-      console.error('Global content not found');
+    if (!websiteConfig) {
+      console.error('Website config not found');
       return new NextResponse('Not found', {
         status: 404,
         headers: { 'Content-Type': 'text/plain' },
       });
     }
 
-    const llmFileContent = globalContent?.llmsTxt;
+    const llmFileContent = websiteConfig?.llmsTxt;
 
     if (!llmFileContent) {
-      console.error('llms.txt content not found in global content');
+      console.error('llms.txt content not found in website config');
       return new NextResponse('Not found', {
         status: 404,
         headers: { 'Content-Type': 'text/plain' },

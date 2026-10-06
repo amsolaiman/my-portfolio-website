@@ -1,18 +1,18 @@
 import { format } from 'date-fns-tz';
 
+// constants
+import { FALLBACK_BASE_CITY, FALLBACK_BASE_COUNTRY } from '@/constants/content';
 // context
-import { useGlobalContent } from '@/contexts/use-global-content';
-// utils
-import { cn } from '@/utils/tw-merge';
+import { useWebsiteConfig } from '@/contexts/use-website-config';
+// components
+import DigitalClock from '@/components/digital-clock';
 // hooks
 import {
   useBusinessTime,
   useBusinessTimeRange,
 } from '@/hooks/use-business-time';
-// constants
-import { FALLBACK_BASE_LOCATION } from '@/constants/content';
-// components
-import DigitalClock from '@/components/digital-clock';
+// utils
+import { cn } from '@/utils/tw-merge';
 
 // ----------------------------------------------------------------------
 
@@ -23,7 +23,8 @@ export default function ContactWidget() {
 
   const { startDay, endDay, startHour, endHour } = useBusinessTimeRange();
 
-  const { city, country } = useGlobalContent();
+  const websiteConfig = useWebsiteConfig();
+  const { city, country } = websiteConfig ?? {};
 
   const formatHour = (hour: number) => {
     const date = new Date();
@@ -35,8 +36,9 @@ export default function ContactWidget() {
   const businessDaysLabel = `${DAY_LABELS[startDay]}-${DAY_LABELS[endDay]}`;
   const businessHoursLabel = `${formatHour(startHour)}-${formatHour(endHour)}`;
 
-  const baseLocation =
-    city && country ? `${city}, ${country}` : FALLBACK_BASE_LOCATION;
+  const baseCity = city ?? FALLBACK_BASE_CITY;
+  const baseCountry = country ?? FALLBACK_BASE_COUNTRY;
+  const baseLocation = `${baseCity}, ${baseCountry}`;
 
   return (
     <div className="flex flex-col">

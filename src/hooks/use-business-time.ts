@@ -3,14 +3,14 @@
 import { useEffect, useState } from 'react';
 import { toZonedTime } from 'date-fns-tz';
 
-// contexts
-import { useGlobalContent } from '@/contexts/use-global-content';
 // constants
 import {
   FALLBACK_BUSINESS_DAYS,
   FALLBACK_BUSINESS_HOURS,
 } from '@/constants/channel';
 import { DEFAULT_TIMEZONE } from '@/constants/content';
+// contexts
+import { useWebsiteConfig } from '@/contexts/use-website-config';
 
 // ----------------------------------------------------------------------
 
@@ -83,13 +83,14 @@ function getNextCheckDelay(time: Date, range: BusinessTimeType) {
 }
 
 export function useBusinessTimeRange(): BusinessTimeType {
-  const { businessDays, businessHours } = useGlobalContent();
+  const websiteConfig = useWebsiteConfig();
+  const { businessDays, businessHours } = websiteConfig ?? {};
 
   return {
-    startDay: businessDays?.start || FALLBACK_BUSINESS_DAYS.START,
-    endDay: businessDays?.end || FALLBACK_BUSINESS_DAYS.END,
-    startHour: businessHours?.start || FALLBACK_BUSINESS_HOURS.START,
-    endHour: businessHours?.end || FALLBACK_BUSINESS_HOURS.END,
+    startDay: businessDays?.start ?? FALLBACK_BUSINESS_DAYS.START,
+    endDay: businessDays?.end ?? FALLBACK_BUSINESS_DAYS.END,
+    startHour: businessHours?.start ?? FALLBACK_BUSINESS_HOURS.START,
+    endHour: businessHours?.end ?? FALLBACK_BUSINESS_HOURS.END,
   };
 }
 

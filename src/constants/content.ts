@@ -13,6 +13,5 @@ export const FALLBACK_SKILL_SET = [
 
 export const FALLBACK_BASE_CITY = 'Marawi';
 export const FALLBACK_BASE_COUNTRY = 'Philippines';
-export const FALLBACK_BASE_LOCATION = `${FALLBACK_BASE_CITY}, ${FALLBACK_BASE_COUNTRY}`;
 
 export const DEFAULT_TIMEZONE = 'Asia/Manila';
