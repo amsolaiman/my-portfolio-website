@@ -1,11 +1,11 @@
 //
-import { IContent, IWebsiteConfig } from './data';
+import { IGlobalContent, IWebsiteConfig } from './data';
 
 // ----------------------------------------------------------------------
 
 export type WebsiteConfigContextType = IWebsiteConfig | null;
 
-export type GlobalContentContextType = IContent | null;
+export type GlobalContentContextType = IGlobalContent | null;
 
 export type ToggleButtonsContextType = {
   openProject: boolean;
