@@ -12,7 +12,7 @@ import { client } from '../client';
  * @returns The singleton `IWebsiteConfig` object containing
  *          site-wide configuration data.
  */
-export async function getWebsiteConfigData(): Promise<IWebsiteConfig> {
+export async function getWebsiteConfigData(): Promise<IWebsiteConfig | null> {
   const query = `*[_id == "website-config"][0]{
     _id,
     author,

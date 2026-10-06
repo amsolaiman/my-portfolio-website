@@ -87,7 +87,7 @@ const website = defineType({
                 };
                 const start = doc?.businessDays?.start;
 
-                if (!!start && !!end && end <= start) {
+                if (start !== undefined && end !== undefined && end < start) {
                   return 'Must be after or equal to start day';
                 }
 
@@ -126,11 +126,11 @@ const website = defineType({
               .max(24)
               .custom((end, context) => {
                 const doc = context.document as {
-                  businessDays?: { start?: number; end?: number };
+                  businessHours?: { start?: number; end?: number };
                 };
-                const start = doc?.businessDays?.start;
+                const start = doc?.businessHours?.start;
 
-                if (!!start && !!end && end <= start) {
+                if (start !== undefined && end !== undefined && end <= start) {
                   return 'Must be greater than start hour';
                 }
 
