@@ -6,10 +6,10 @@ import { structureTool } from 'sanity/structure';
 import schemas from '@/_sanity/schemas';
 import { structure } from '@/_sanity/structure';
 import { PATHS } from '@/constants/paths';
-import { FALLBACK_METADATA_TITLE } from '@/constants/meta';
+import { DEFAULT_WEBSITE_NAME } from '@/constants/meta';
 
 const sanityConfig = defineConfig({
-  title: FALLBACK_METADATA_TITLE,
+  title: DEFAULT_WEBSITE_NAME,
   basePath: PATHS.studio,
   projectId: process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_STUDIO_DATASET!,

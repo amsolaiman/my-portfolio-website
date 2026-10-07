@@ -12,9 +12,9 @@ import { getWebsiteConfigData } from '@/_sanity/utils/website';
 // constants
 import { FALLBACK_SOCIAL_LINKS } from '@/constants/channel';
 import {
-  FALLBACK_METADATA_DESCRIPTION,
-  FALLBACK_METADATA_TITLE,
-  WEBSITE_AUTHOR,
+  DEFAULT_WEBSITE_DESCRIPTION,
+  DEFAULT_WEBSITE_NAME,
+  DEFAULT_WEBSITE_AUTHOR,
 } from '@/constants/meta';
 // contexts
 import { GlobalContentProvider } from '@/contexts/use-global-content';
@@ -43,8 +43,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
 export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(BASE_URL),
-    title: FALLBACK_METADATA_TITLE,
-    description: FALLBACK_METADATA_DESCRIPTION,
+    title: DEFAULT_WEBSITE_NAME,
+    description: DEFAULT_WEBSITE_DESCRIPTION,
     icons: [
       {
         rel: 'icon',
@@ -88,7 +88,7 @@ export default async function RootLayout({
       {
         '@type': 'Person',
         '@id': `${BASE_URL}/#person`,
-        name: websiteConfig?.author ?? WEBSITE_AUTHOR,
+        name: websiteConfig?.author ?? DEFAULT_WEBSITE_AUTHOR,
         url: BASE_URL,
         sameAs: FALLBACK_SOCIAL_LINKS.map((link) => link.link),
         ...(currentRole && { jobTitle: currentRole.title }),
@@ -97,8 +97,8 @@ export default async function RootLayout({
         '@type': 'WebSite',
         '@id': `${BASE_URL}/#website`,
         url: BASE_URL,
-        name: FALLBACK_METADATA_TITLE,
-        description: FALLBACK_METADATA_DESCRIPTION,
+        name: DEFAULT_WEBSITE_NAME,
+        description: DEFAULT_WEBSITE_DESCRIPTION,
         inLanguage: 'en',
         publisher: {
           '@id': `${BASE_URL}/#person`,

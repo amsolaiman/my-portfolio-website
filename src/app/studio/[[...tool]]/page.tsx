@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { metadata as studioMetadata } from 'next-sanity/studio';
 
 // constants
-import { FALLBACK_METADATA_TITLE } from '@/constants/meta';
+import { DEFAULT_WEBSITE_NAME } from '@/constants/meta';
 
 import config from '../../../../sanity.config';
 
@@ -16,7 +16,7 @@ export { viewport } from 'next-sanity/studio';
 export async function generateMetadata(): Promise<Metadata> {
   return {
     ...studioMetadata,
-    title: `Studio | ${FALLBACK_METADATA_TITLE}`,
+    title: `Studio | ${DEFAULT_WEBSITE_NAME}`,
   };
 }
 

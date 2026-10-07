@@ -8,8 +8,8 @@ import CursorEffect from '@/components/cursor-effect';
 import { LoadingScreen } from '@/components/loading-screen';
 // constants
 import {
-  FALLBACK_METADATA_DESCRIPTION,
-  FALLBACK_METADATA_TITLE,
+  DEFAULT_WEBSITE_DESCRIPTION,
+  DEFAULT_WEBSITE_NAME,
 } from '@/constants/meta';
 import { PATHS } from '@/constants/paths';
 // sections
@@ -27,9 +27,8 @@ export async function generateMetadata(): Promise<Metadata> {
     getGlobalContentData(),
   ]);
 
-  const title = globalContent?.title ?? FALLBACK_METADATA_TITLE;
-  const description =
-    globalContent?.description ?? FALLBACK_METADATA_DESCRIPTION;
+  const title = globalContent?.title ?? DEFAULT_WEBSITE_NAME;
+  const description = globalContent?.description ?? DEFAULT_WEBSITE_DESCRIPTION;
 
   return {
     title,
@@ -42,7 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       url: BASE_URL,
-      siteName: FALLBACK_METADATA_TITLE,
+      siteName: DEFAULT_WEBSITE_NAME,
       locale: 'en_US',
       ...(websiteConfig?.logo && {
         images: [
@@ -76,8 +75,8 @@ export default async function App() {
     '@type': 'WebPage',
     '@id': `${baseUrl}/#webpage`,
     url: baseUrl,
-    name: globalContent?.title ?? FALLBACK_METADATA_TITLE,
-    description: globalContent?.description ?? FALLBACK_METADATA_DESCRIPTION,
+    name: globalContent?.title ?? DEFAULT_WEBSITE_NAME,
+    description: globalContent?.description ?? DEFAULT_WEBSITE_DESCRIPTION,
     inLanguage: 'en',
     isPartOf: {
       '@id': `${baseUrl}/#website`,

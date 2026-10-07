@@ -9,8 +9,10 @@ import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 import { useRapidClick } from '@/hooks/use-rapid-click';
 // constants
 import { PATHS } from '@/constants/paths';
-import { FALLBACK_IMAGE_URL } from '@/constants/content';
-import { FALLBACK_COPYRIGHT_TEXT } from '@/constants/meta';
+import {
+  FALLBACK_COPYRIGHT_TEXT,
+  FALLBACK_IMAGE_URL,
+} from '@/constants/content';
 // components
 import DigitalClock from '@/components/digital-clock';
 import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
