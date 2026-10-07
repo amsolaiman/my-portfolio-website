@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Metadata } from 'next';
+import { type Metadata } from 'next';
 import { Bebas_Neue, Fira_Code } from 'next/font/google';
 // styles
 import 'lenis/dist/lenis.css';
@@ -12,9 +12,9 @@ import { getWebsiteConfigData } from '@/_sanity/utils/website';
 // constants
 import { FALLBACK_SOCIAL_LINKS } from '@/constants/channel';
 import {
+  DEFAULT_WEBSITE_AUTHOR,
   DEFAULT_WEBSITE_DESCRIPTION,
   DEFAULT_WEBSITE_NAME,
-  DEFAULT_WEBSITE_AUTHOR,
 } from '@/constants/meta';
 // contexts
 import { GlobalContentProvider } from '@/contexts/use-global-content';

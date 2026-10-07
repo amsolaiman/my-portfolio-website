@@ -1,17 +1,18 @@
 'use client';
 
-import Image from 'next/image';
 import { useState } from 'react';
+import Image from 'next/image';
 
+// components
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
+// constants
+import { FALLBACK_IMAGE_URL } from '@/constants/content';
 // utils
 import { cn } from '@/utils/tw-merge';
 // hooks
 import { useBreakpoint } from '@/hooks/use-breakpoint';
 // types
 import { IProject } from '@/types/data';
-import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
-// constants
-import { FALLBACK_IMAGE_URL } from '@/constants/content';
 
 //
 import ProjectModal from './project-modal';

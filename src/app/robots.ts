@@ -1,4 +1,4 @@
-import type { MetadataRoute } from 'next';
+import { type MetadataRoute } from 'next';
 
 // constants
 import { PATHS } from '@/constants/paths';

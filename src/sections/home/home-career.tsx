@@ -1,16 +1,17 @@
-import { format } from 'date-fns';
 import { Suspense } from 'react';
+import { format } from 'date-fns';
 
-// _sanity
+// @sanity
 import {
   getExperienceData,
   getStartYearOfExperience,
 } from '@/_sanity/utils/experience';
-// utils
-import { cn } from '@/utils/tw-merge';
+// components
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 // types
 import { IExperience, IGroupedExperience } from '@/types/data';
-import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
+// utils
+import { cn } from '@/utils/tw-merge';
 
 //
 import HomeCareerSkeleton from './components/home-career-skeleton';

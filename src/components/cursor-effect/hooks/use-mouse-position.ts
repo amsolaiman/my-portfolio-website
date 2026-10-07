@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useSpring, useMotionValue } from 'motion/react';
+import { useMotionValue, useSpring } from 'motion/react';
 
 // ----------------------------------------------------------------------
 

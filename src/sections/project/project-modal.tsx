@@ -1,17 +1,17 @@
+import { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 import Image from 'next/image';
 import { createPortal } from 'react-dom';
-import { useEffect, useRef } from 'react';
 
+// components
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
+import RichTextRenderer from '@/components/rich-text-renderer';
+// constants
+import { FALLBACK_IMAGE_URL } from '@/constants/content';
 // hooks
 import { useBreakpoint } from '@/hooks/use-breakpoint';
 // types
 import { IProject } from '@/types/data';
-import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
-// constants
-import { FALLBACK_IMAGE_URL } from '@/constants/content';
-// components
-import RichTextRenderer from '@/components/rich-text-renderer';
 
 // ----------------------------------------------------------------------
 

@@ -1,4 +1,4 @@
-// sections
+//
 import ProjectList from '../project-list';
 
 //

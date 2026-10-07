@@ -3,14 +3,14 @@
 import React, { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 
-// contexts
-import { useToggleButtons } from '@/contexts/use-toggle-buttons';
-// utils
-import { cn } from '@/utils/tw-merge';
-// hooks
-import { useBreakpoint } from '@/hooks/use-breakpoint';
 // components
 import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
+// contexts
+import { useToggleButtons } from '@/contexts/use-toggle-buttons';
+// hooks
+import { useBreakpoint } from '@/hooks/use-breakpoint';
+// utils
+import { cn } from '@/utils/tw-merge';
 
 // ----------------------------------------------------------------------
 

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { type Metadata } from 'next';
 
 // @sanity
 import { getGlobalContentData } from '@/_sanity/utils/content';

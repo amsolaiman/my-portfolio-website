@@ -1,11 +1,11 @@
 import { format } from 'date-fns-tz';
 
+// components
+import DigitalClock from '@/components/digital-clock';
 // constants
 import { FALLBACK_BASE_CITY, FALLBACK_BASE_COUNTRY } from '@/constants/content';
 // context
 import { useWebsiteConfig } from '@/contexts/use-website-config';
-// components
-import DigitalClock from '@/components/digital-clock';
 // hooks
 import {
   useBusinessTime,

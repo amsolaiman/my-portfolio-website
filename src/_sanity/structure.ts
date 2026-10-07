@@ -1,4 +1,4 @@
-import type { StructureResolver } from 'sanity/structure';
+import { type StructureResolver } from 'sanity/structure';
 
 // ----------------------------------------------------------------------
 
@@ -8,12 +8,12 @@ export const structure: StructureResolver = (S) =>
     .items([
       S.listItem()
         .title('Website Config')
-        .id('website-config-singleton')
+        .id('website-config')
         .child(S.document().schemaType('website').documentId('website-config')),
 
       S.listItem()
         .title('Global Content')
-        .id('global-content-singleton')
+        .id('global-content')
         .child(S.document().schemaType('content').documentId('global-content')),
 
       // Add other document types below as usual
