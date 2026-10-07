@@ -38,16 +38,13 @@ const firaCode = Fira_Code({
 
 // ----------------------------------------------------------------------
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
+
 export async function generateMetadata(): Promise<Metadata> {
-  const globalContent = await getGlobalContentData();
-
-  const title = globalContent?.title ?? FALLBACK_METADATA_TITLE;
-  const description =
-    globalContent?.description ?? FALLBACK_METADATA_DESCRIPTION;
-
   return {
-    title,
-    description,
+    metadataBase: new URL(BASE_URL),
+    title: FALLBACK_METADATA_TITLE,
+    description: FALLBACK_METADATA_DESCRIPTION,
     icons: [
       {
         rel: 'icon',
@@ -79,9 +76,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
-
-  const [websiteConfig, globalContent, jobTitle] = await Promise.all([
+  const [websiteConfig, globalContent, currentRole] = await Promise.all([
     getWebsiteConfigData(),
     getGlobalContentData(),
     getCurrentExperience(),
@@ -92,21 +87,22 @@ export default async function RootLayout({
     '@graph': [
       {
         '@type': 'Person',
-        '@id': `${baseUrl}/#person`,
+        '@id': `${BASE_URL}/#person`,
         name: websiteConfig?.author ?? WEBSITE_AUTHOR,
-        url: baseUrl,
-        jobTitle: jobTitle?.title ?? '',
-        sameAs: FALLBACK_SOCIAL_LINKS.map((link) => link.link) ?? [],
+        url: BASE_URL,
+        sameAs: FALLBACK_SOCIAL_LINKS.map((link) => link.link),
+        ...(currentRole && { jobTitle: currentRole.title }),
       },
       {
         '@type': 'WebSite',
-        '@id': `${baseUrl}/#website`,
-        url: baseUrl,
+        '@id': `${BASE_URL}/#website`,
+        url: BASE_URL,
         name: FALLBACK_METADATA_TITLE,
-        description:
-          globalContent?.description ?? FALLBACK_METADATA_DESCRIPTION,
+        description: FALLBACK_METADATA_DESCRIPTION,
         inLanguage: 'en',
-        publisher: { '@id': `${baseUrl}/#person` },
+        publisher: {
+          '@id': `${BASE_URL}/#person`,
+        },
       },
     ],
   };
