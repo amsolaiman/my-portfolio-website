@@ -5,8 +5,10 @@ import { structureTool } from 'sanity/structure';
 
 import schemas from '@/_sanity/schemas';
 import { structure } from '@/_sanity/structure';
-import { PATHS } from '@/constants/paths';
 import { DEFAULT_WEBSITE_NAME } from '@/constants/meta';
+import { PATHS } from '@/constants/paths';
+
+// ----------------------------------------------------------------------
 
 const sanityConfig = defineConfig({
   title: DEFAULT_WEBSITE_NAME,

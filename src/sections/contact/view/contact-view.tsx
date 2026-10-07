@@ -1,15 +1,15 @@
 'use client';
 
-// contexts
-import { useToggleButtons } from '@/contexts/use-toggle-buttons';
-// utils
-import { cn } from '@/utils/tw-merge';
-// hooks
-import { useBreakpoint } from '@/hooks/use-breakpoint';
 // components
 import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
+// contexts
+import { useToggleButtons } from '@/contexts/use-toggle-buttons';
+// hooks
+import { useBreakpoint } from '@/hooks/use-breakpoint';
+// utils
+import { cn } from '@/utils/tw-merge';
 
-// sections
+//
 import ContactDetails from '../contact-details';
 
 // ----------------------------------------------------------------------

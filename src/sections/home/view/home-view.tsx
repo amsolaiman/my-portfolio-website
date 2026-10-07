@@ -1,4 +1,4 @@
-// sections
+//
 import HomeAbout from '../home-about';
 import HomeCareer from '../home-career';
 import HomeFooter from '../home-footer';

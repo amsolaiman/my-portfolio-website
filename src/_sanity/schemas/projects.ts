@@ -1,6 +1,6 @@
-import { defineType, defineField } from 'sanity';
 import { HighlightIcon } from '@sanity/icons';
-import { parseISO, isBefore, isEqual } from 'date-fns';
+import { isBefore, isEqual, parseISO } from 'date-fns';
+import { defineField, defineType } from 'sanity';
 
 // ----------------------------------------------------------------------
 

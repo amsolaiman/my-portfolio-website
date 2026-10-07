@@ -1,6 +1,5 @@
-import { NextStudio } from 'next-sanity/studio';
-import type { Metadata } from 'next';
-import { metadata as studioMetadata } from 'next-sanity/studio';
+import { type Metadata } from 'next';
+import { metadata as studioMetadata, NextStudio } from 'next-sanity/studio';
 
 // constants
 import { DEFAULT_WEBSITE_NAME } from '@/constants/meta';

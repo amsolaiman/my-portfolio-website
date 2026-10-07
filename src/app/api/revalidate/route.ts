@@ -1,5 +1,5 @@
 import { revalidatePath } from 'next/cache';
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 
 // constants
 import { PATHS } from '@/constants/paths';

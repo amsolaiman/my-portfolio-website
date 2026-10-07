@@ -1,12 +1,12 @@
 'use client';
 
+// components
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
+// constants
+import { FALLBACK_SKILL_SET } from '@/constants/content';
 // contexts
 import { useGlobalContent } from '@/contexts/use-global-content';
 import { useToggleButtons } from '@/contexts/use-toggle-buttons';
-// constants
-import { FALLBACK_SKILL_SET } from '@/constants/content';
-// components
-import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 
 // ----------------------------------------------------------------------
 

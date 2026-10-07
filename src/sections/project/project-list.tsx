@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-// _sanity
+// @sanity
 import { getProjectData } from '@/_sanity/utils/project';
 
 //

@@ -1,7 +1,7 @@
 'use client';
 
-import { formatInTimeZone } from 'date-fns-tz';
 import { useEffect, useState } from 'react';
+import { formatInTimeZone } from 'date-fns-tz';
 
 // constants
 import { DEFAULT_TIMEZONE } from '@/constants/content';

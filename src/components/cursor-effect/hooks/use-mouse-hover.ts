@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 
+// ----------------------------------------------------------------------
+
 /**
  * Usage: add `data-hover-cursor="<identifier>"` to any element you want tracked.
  * All elements sharing the same identifier will trigger the hovered state.
  *
  * e.g. <button data-hover-cursor="toggle-btn">Click me</button>
  */
-
 export default function useMouseHover(identifier: string) {
   const [isHovered, setIsHovered] = useState(false);
 

@@ -1,5 +1,4 @@
-'use client';
-
+// components
 import { SplashScreen } from '@/components/loading-screen';
 
 // ----------------------------------------------------------------------

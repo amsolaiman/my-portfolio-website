@@ -1,17 +1,17 @@
 'use client';
 
-// contexts
-import { useGlobalContent } from '@/contexts/use-global-content';
-// hooks
-import { useBreakpoint } from '@/hooks/use-breakpoint';
+// components
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 // constants
 import {
   FALLBACK_EMAIL_ADDRESS,
   FALLBACK_RESUME_URL,
   FALLBACK_SOCIAL_LINKS,
 } from '@/constants/channel';
-// components
-import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
+// contexts
+import { useGlobalContent } from '@/contexts/use-global-content';
+// hooks
+import { useBreakpoint } from '@/hooks/use-breakpoint';
 
 //
 import ContactWidget from './contact-widget';

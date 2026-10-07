@@ -2,7 +2,7 @@
 
 import { NextResponse } from 'next/server';
 
-// _sanity
+// @sanity
 import { getWebsiteConfigData } from '@/_sanity/utils/website';
 
 export async function GET() {

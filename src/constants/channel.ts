@@ -1,3 +1,4 @@
+// types
 import { ChannelSocialLinkType } from '@/types/constant';
 
 // ----------------------------------------------------------------------

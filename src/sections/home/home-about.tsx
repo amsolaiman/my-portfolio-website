@@ -1,4 +1,4 @@
-// _sanity
+// @sanity
 import { getYearsOfExperience } from '@/_sanity/utils/experience';
 
 //

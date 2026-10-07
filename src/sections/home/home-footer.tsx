@@ -2,20 +2,20 @@
 
 import Image from 'next/image';
 
+// components
+import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
+import DigitalClock from '@/components/digital-clock';
+// constants
+import {
+  FALLBACK_COPYRIGHT_TEXT,
+  FALLBACK_IMAGE_URL,
+} from '@/constants/content';
+import { PATHS } from '@/constants/paths';
 // contexts
 import { useGlobalContent } from '@/contexts/use-global-content';
 import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 // hooks
 import { useRapidClick } from '@/hooks/use-rapid-click';
-// constants
-import { PATHS } from '@/constants/paths';
-import {
-  FALLBACK_COPYRIGHT_TEXT,
-  FALLBACK_IMAGE_URL,
-} from '@/constants/content';
-// components
-import DigitalClock from '@/components/digital-clock';
-import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 
 //
 import HomeToggleButtons from './components/home-toggle-buttons';

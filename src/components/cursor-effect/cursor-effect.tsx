@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 
 // context
 import { useToggleButtons } from '@/contexts/use-toggle-buttons';
@@ -10,9 +10,9 @@ import { useBreakpoint } from '@/hooks/use-breakpoint';
 import { cn } from '@/utils/tw-merge';
 
 //
-import { getCursorLabel, getCursorSize } from './utils';
 import { useMouseHover, useMousePosition } from './hooks';
 import { CursorIdentfierEnum, ToggleButtonsEnum } from './types';
+import { getCursorLabel, getCursorSize } from './utils';
 
 // ----------------------------------------------------------------------
 
