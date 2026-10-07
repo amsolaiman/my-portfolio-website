@@ -5,19 +5,23 @@ import { Bebas_Neue, Fira_Code } from 'next/font/google';
 import 'lenis/dist/lenis.css';
 import './globals.css';
 
+// @sanity
+import { getCurrentExperience } from '@/_sanity/utils/experience';
+import { getGlobalContentData } from '@/_sanity/utils/content';
+import { getWebsiteConfigData } from '@/_sanity/utils/website';
+// constants
+import { FALLBACK_SOCIAL_LINKS } from '@/constants/channel';
+import {
+  FALLBACK_METADATA_DESCRIPTION,
+  FALLBACK_METADATA_TITLE,
+  WEBSITE_AUTHOR,
+} from '@/constants/meta';
 // contexts
 import { GlobalContentProvider } from '@/contexts/use-global-content';
 import { ToggleButtonsProvider } from '@/contexts/use-toggle-buttons';
 import { WebsiteConfigProvider } from '@/contexts/use-website-config';
 // utils
 import { cn } from '@/utils/tw-merge';
-import { getGlobalContentData } from '@/_sanity/utils/content';
-import { getWebsiteConfigData } from '@/_sanity/utils/website';
-// constants
-import {
-  FALLBACK_METADATA_DESCRIPTION,
-  FALLBACK_METADATA_TITLE,
-} from '@/constants/meta';
 
 // ----------------------------------------------------------------------
 
@@ -44,13 +48,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      siteName: FALLBACK_METADATA_TITLE,
-      url: process.env.NEXT_PUBLIC_BASE_URL!,
-      type: 'website',
-    },
     icons: [
       {
         rel: 'icon',
@@ -82,23 +79,47 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const websiteConfig = await getWebsiteConfigData();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
 
-  const globalContent = await getGlobalContentData();
+  const [websiteConfig, globalContent, jobTitle] = await Promise.all([
+    getWebsiteConfigData(),
+    getGlobalContentData(),
+    getCurrentExperience(),
+  ]);
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: FALLBACK_METADATA_TITLE,
-    url: process.env.NEXT_PUBLIC_BASE_URL!,
+    '@graph': [
+      {
+        '@type': 'Person',
+        '@id': `${baseUrl}/#person`,
+        name: websiteConfig?.author ?? WEBSITE_AUTHOR,
+        url: baseUrl,
+        jobTitle: jobTitle?.title ?? '',
+        sameAs: FALLBACK_SOCIAL_LINKS.map((link) => link.link) ?? [],
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${baseUrl}/#website`,
+        url: baseUrl,
+        name: FALLBACK_METADATA_TITLE,
+        description:
+          globalContent?.description ?? FALLBACK_METADATA_DESCRIPTION,
+        inLanguage: 'en',
+        publisher: { '@id': `${baseUrl}/#person` },
+      },
+    ],
   };
 
   return (
     <html lang="en">
       <head>
         <script
+          key="json-ld-layout"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+          }}
         />
       </head>
 
