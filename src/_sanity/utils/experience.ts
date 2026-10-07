@@ -49,6 +49,39 @@ export async function getExperienceData(): Promise<IExperience[]> {
 }
 
 /**
+ * Fetch the most recently started current experience from Sanity.
+ *
+ * @returns The latest current `IExperience`
+ *          or `null` if no current role exists.
+ */
+export async function getCurrentExperience(): Promise<IExperience | null> {
+  const query = `*[_type == "experience" && isCurrent == true] | order(startDate desc) [0] {
+    _id,
+    title,
+    type,
+    isCurrent,
+    startDate,
+    endDate,
+    employer {
+      name,
+      link
+    }
+  }`;
+
+  const data = (await client.fetch(query)) as IExperience | null;
+
+  if (!data) {
+    return null;
+  }
+
+  return {
+    ...data,
+    startDate: new Date(data.startDate),
+    endDate: data.endDate ? new Date(data.endDate) : null,
+  };
+}
+
+/**
  * Calculate the total years of professional experience from Sanity,
  * excluding roles from EXCLUDED_TYPES.
  *

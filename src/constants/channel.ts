@@ -2,10 +2,10 @@ import { ChannelSocialLinkType } from '@/types/constant';
 
 // ----------------------------------------------------------------------
 
-export const FALLBACK_RESUME_URL = process.env.NEXT_PUBLIC_DEFAULT_RESUME_URL;
+export const FALLBACK_RESUME_URL = process.env.NEXT_PUBLIC_DEFAULT_RESUME_URL!;
 
 export const FALLBACK_EMAIL_ADDRESS =
-  process.env.NEXT_PUBLIC_DEFAULT_EMAIL_ADDRESS;
+  process.env.NEXT_PUBLIC_DEFAULT_EMAIL_ADDRESS!;
 
 export const FALLBACK_SOCIAL_LINKS: ChannelSocialLinkType[] = [
   {
