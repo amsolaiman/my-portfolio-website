@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/amsolaiman/my-portfolio-website/compare/v1.2.0...v1.3.0) (2026-10-09)
+
+### Features
+
+- add a fallback ui when website config data is missing ([#88](https://github.com/amsolaiman/my-portfolio-website/issues/88)) ([021c550](https://github.com/amsolaiman/my-portfolio-website/commit/021c550fcf0733e421e51ad1f136423f58223522))
+- add website-config schema to sanity studio ([#84](https://github.com/amsolaiman/my-portfolio-website/issues/84)) ([09820df](https://github.com/amsolaiman/my-portfolio-website/commit/09820df3ebb519e4ac3550f8315eaede62748f5f))
+- improve structured data & page metadata for seo ([#90](https://github.com/amsolaiman/my-portfolio-website/issues/90)) ([1d1c703](https://github.com/amsolaiman/my-portfolio-website/commit/1d1c70328f376a9f9483057e84e33b710695ee63))
+
+### Bug Fixes
+
+- update & expand json-ld data in root layout ([#89](https://github.com/amsolaiman/my-portfolio-website/issues/89)) ([8dda254](https://github.com/amsolaiman/my-portfolio-website/commit/8dda254aa43ace73652c0d246b90ec80848f9739))
+
 ## [1.2.0](https://github.com/amsolaiman/my-portfolio-website/compare/v1.1.0...v1.2.0) (2026-09-21)
 
 ### Features
