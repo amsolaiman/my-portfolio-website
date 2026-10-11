@@ -53,11 +53,12 @@ export default function HomeFooter() {
         </div>
 
         <div className="absolute bottom-8 hidden w-full items-center justify-between px-12 xl:flex">
-          <p onClick={handleClick} className="text-xs text-gray-400">
+          <small onClick={handleClick} className="text-xs text-gray-400">
             {copyrightText}
-          </p>
+          </small>
 
           <button
+            type="button"
             data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
             onClick={handleToggleContact}
             className="text-foreground hover:text-foreground/75 cursor-pointer text-xs"
@@ -69,16 +70,16 @@ export default function HomeFooter() {
 
       <HomeToggleButtons />
 
-      <p className="p-4 text-center text-xs xl:hidden">
-        <span className="text-foreground md:hidden">
+      <div className="p-4 text-center text-xs xl:hidden">
+        <p className="text-foreground md:hidden">
           Now, <DigitalClock />
           <br />
-        </span>
+        </p>
 
-        <span onClick={handleClick} className="text-gray-400">
+        <small onClick={handleClick} className="text-xs text-gray-400">
           {copyrightText}
-        </span>
-      </p>
+        </small>
+      </div>
     </div>
   );
 }

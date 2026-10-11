@@ -19,26 +19,30 @@ export default function HomeHero() {
     <div className="flex min-h-svh w-full flex-col xl:min-h-screen">
       <div className="flex flex-1 flex-col items-start justify-between p-4 xl:px-12 xl:py-6">
         <div className="relative flex w-full flex-col">
-          <div className="relative aspect-2/1 w-full overflow-hidden xl:w-3/4">
+          <h1 className="relative aspect-2/1 w-full overflow-hidden xl:w-3/4">
+            <span className="sr-only">Abdul Moiz Solaiman</span>
             <Image
               src="/assets/banner.svg"
-              alt="Name Banner"
+              alt=""
+              aria-hidden
               fill
               priority
               draggable={false}
               className="object-contain object-bottom-left"
             />
-          </div>
+          </h1>
 
           <div className="z-1 flex w-full justify-end xl:w-3/4">
-            <div className="-mt-1 flex flex-col flex-wrap items-end gap-2 md:-mt-2 xl:flex-row xl:items-center xl:gap-4">
+            <ul className="-mt-1 flex flex-col flex-wrap items-end gap-2 md:-mt-2 xl:flex-row xl:items-center xl:gap-4">
               {PROFESSIONS.map((profession, index) => (
-                <p key={index} className="text-sm">
-                  <span className="mr-2 xl:mr-4">/</span>
+                <li key={index} className="text-sm">
+                  <span aria-hidden className="mr-2 xl:mr-4">
+                    /
+                  </span>
                   {profession}
-                </p>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
 

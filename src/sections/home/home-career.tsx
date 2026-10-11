@@ -10,8 +10,6 @@ import {
 import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 // types
 import { IExperience, IGroupedExperience } from '@/types/data';
-// utils
-import { cn } from '@/utils/tw-merge';
 
 //
 import HomeCareerSkeleton from './components/home-career-skeleton';
@@ -55,56 +53,70 @@ async function Timeline() {
   }
 
   return (
-    <ul className="mt-6 w-full md:w-2/3 xl:w-1/2">
+    <ol className="mt-6 w-full md:w-2/3 xl:w-1/2">
       {categorizeArray(experience).map((group) => (
         <li key={group.group} className="flex">
-          <p className="hidden w-full max-w-24 pt-8 text-sm md:block xl:max-w-32">
+          <p
+            aria-hidden
+            className="hidden w-full max-w-24 pt-8 text-sm md:block xl:max-w-32"
+          >
             {group.group}
           </p>
 
-          <ul className="border-primary w-full border-l-2">
+          <ol className="border-primary w-full border-l-2">
             {group.items.map((item) => {
-              const startDate = format(item.startDate, 'MMM yyyy');
+              const startISO = item.startDate.toISOString();
+              const endISO = item.endDate?.toISOString();
 
+              const startDate = format(item.startDate, 'MMM yyyy');
               const endDate =
                 !item.isCurrent && item.endDate
                   ? format(item.endDate, 'MMM yyyy')
                   : 'present';
 
-              const duration = `${startDate} - ${endDate}`;
-
               return (
-                <li key={item.title} className="flex gap-4 py-8 pl-4 xl:gap-6">
-                  <span className="text-primary text-xs">●</span>
+                <li key={item._id} className="flex gap-4 py-8 pl-4 xl:gap-6">
+                  <span aria-hidden className="text-primary text-xs">
+                    ●
+                  </span>
 
                   <div>
-                    <h4 className="text-primary text-xs">{item.title}</h4>
+                    <h3 className="text-primary text-xs">{item.title}</h3>
 
-                    <a
-                      data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-                      href={item.employer.link ?? undefined}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={cn(
-                        'text-foreground text-start text-base',
-                        !!item.employer.link &&
-                          'hover:text-foreground/75 cursor-pointer'
-                      )}
-                    >
-                      {item.employer.name}
-                    </a>
+                    {item.employer.link ? (
+                      <a
+                        data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
+                        href={item.employer.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-foreground hover:text-foreground/75 text-start text-base"
+                      >
+                        {item.employer.name}
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      </a>
+                    ) : (
+                      <p className="text-foreground text-base">
+                        {item.employer.name}
+                      </p>
+                    )}
 
                     <p className="text-xs text-gray-400">
-                      {item.type}, {duration}
+                      {item.type}, <time dateTime={startISO}>{startDate}</time>
+                      &nbsp;-&nbsp;
+                      {item.isCurrent || !item.endDate ? (
+                        'present'
+                      ) : (
+                        <time dateTime={endISO}>{endDate}</time>
+                      )}
                     </p>
                   </div>
                 </li>
               );
             })}
-          </ul>
+          </ol>
         </li>
       ))}
-    </ul>
+    </ol>
   );
 }
 
@@ -114,16 +126,22 @@ export default async function HomeCareer() {
   const renderStartYear = startYear ? `'${startYear.slice(-2)}` : '...';
 
   return (
-    <div className="w-full p-4 pt-32 xl:px-12">
+    <section
+      aria-labelledby="career-heading"
+      className="w-full p-4 pt-32 xl:px-12"
+    >
       <p className="text-secondary text-xs">/ P.002 / Career</p>
 
-      <h1 className="mt-8 font-sans text-6xl xl:text-8xl/[0.9]">
+      <h2
+        id="career-heading"
+        className="mt-8 font-sans text-6xl xl:text-8xl/[0.9]"
+      >
         Exp. since {renderStartYear}
-      </h1>
+      </h2>
 
       <Suspense fallback={<HomeCareerSkeleton />}>
         <Timeline />
       </Suspense>
-    </div>
+    </section>
   );
 }
