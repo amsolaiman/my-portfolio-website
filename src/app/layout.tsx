@@ -124,7 +124,9 @@ export default async function RootLayout({
       >
         <WebsiteConfigProvider value={websiteConfig}>
           <GlobalContentProvider value={globalContent}>
-            <ToggleButtonsProvider>{children}</ToggleButtonsProvider>
+            <ToggleButtonsProvider>
+              <main>{children}</main>
+            </ToggleButtonsProvider>
           </GlobalContentProvider>
         </WebsiteConfigProvider>
       </body>

@@ -11,17 +11,21 @@ export default function HomeToggleButtons() {
   return (
     <div className="flex w-full flex-col">
       <button
+        type="button"
+        aria-haspopup="dialog"
         onClick={handleToggleProject}
-        className="bg-secondary text-foreground flex justify-center px-4 pt-2 pb-1 xl:hidden"
+        className="bg-secondary text-foreground focus-visible:outline-foreground flex cursor-pointer justify-center px-4 pt-2 pb-1 font-sans text-4xl/[0.8em] whitespace-nowrap focus-visible:outline-2 focus-visible:-outline-offset-4 xl:hidden"
       >
-        <p className="font-sans text-4xl/[0.8em] whitespace-nowrap">Work</p>
+        Work
       </button>
 
       <button
+        type="button"
+        aria-haspopup="dialog"
         onClick={handleToggleContact}
-        className="bg-primary text-foreground flex justify-center px-4 pt-2 pb-1 xl:hidden"
+        className="bg-primary text-foreground focus-visible:outline-foreground flex cursor-pointer justify-center px-4 pt-2 pb-1 font-sans text-4xl/[0.8em] whitespace-nowrap focus-visible:outline-2 focus-visible:-outline-offset-4 xl:hidden"
       >
-        <p className="font-sans text-4xl/[0.8em] whitespace-nowrap">Contact</p>
+        Contact
       </button>
     </div>
   );

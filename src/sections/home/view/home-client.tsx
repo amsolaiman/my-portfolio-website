@@ -15,17 +15,19 @@ export default function HomeClient({
 }) {
   const upXl = useBreakpoint('up', 'xl');
 
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!upXl) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const container = containerRef.current;
     if (!container) return;
 
     const lenis = new Lenis({
       wrapper: container,
-      content: container.firstElementChild as HTMLElement,
+      content: container.firstElementChild as HTMLDivElement,
       eventsTarget: container,
     });
 
@@ -43,11 +45,11 @@ export default function HomeClient({
   }, [upXl]);
 
   return (
-    <section
+    <div
       ref={containerRef}
-      className="bg-background relative h-full w-screen overflow-y-scroll xl:pr-32"
+      className="bg-background relative h-full w-screen overflow-y-auto xl:pr-32"
     >
       <div className="flex w-full grow flex-col">{children}</div>
-    </section>
+    </div>
   );
 }
