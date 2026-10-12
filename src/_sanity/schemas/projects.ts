@@ -161,7 +161,7 @@ const projects = defineType({
           type: 'string',
         }),
       ],
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().assetRequired(),
     }),
 
     defineField({
@@ -181,7 +181,7 @@ const projects = defineType({
           type: 'string',
         }),
       ],
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().assetRequired(),
     }),
 
     defineField({
@@ -203,7 +203,7 @@ const projects = defineType({
               type: 'string',
             }),
           ],
-          validation: (Rule) => Rule.required(),
+          validation: (Rule) => Rule.required().assetRequired(),
         },
       ],
       validation: (Rule) => Rule.required().min(3),
