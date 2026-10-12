@@ -23,11 +23,17 @@ export default function robots(): MetadataRoute.Robots {
   }
 
   return {
-    rules: {
-      userAgent: '*',
-      allow: PATHS.root,
-      disallow: [PATHS.studio, PATHS.api.root],
-    },
+    rules: [
+      {
+        userAgent: '*',
+        allow: PATHS.root,
+        disallow: [PATHS.studio, PATHS.api.root],
+      },
+      {
+        userAgent: 'Googlebot-Image',
+        disallow: ['/assets/banner.svg'],
+      },
+    ],
     sitemap: baseUrl ? `${baseUrl}/sitemap.xml` : undefined,
   };
 }
