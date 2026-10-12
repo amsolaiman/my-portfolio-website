@@ -26,7 +26,7 @@ export default function HomeServices() {
 
       <h2
         id="services-heading"
-        className="mt-8 font-sans text-6xl xl:text-8xl/[0.9]"
+        className="mt-8 font-sans text-6xl text-white xl:text-8xl/[0.9]"
       >
         What
         <br />I offer
@@ -34,7 +34,7 @@ export default function HomeServices() {
 
       <div className="mt-6 grid grid-cols-1 space-x-20 xl:grid-cols-3">
         <div className="flex w-full flex-col gap-6 xl:col-span-2 xl:max-w-72">
-          <p className="text-justify text-xs xl:text-start">
+          <p className="text-justify text-xs text-white xl:text-start">
             I design & build digital experiences that communicate brands
             clearly. The focus is simple: fast, reliable & intuitive solutions
             that prioritize clarity over complexity.
@@ -52,7 +52,7 @@ export default function HomeServices() {
             {skillSet.map((skill, index) => (
               <li
                 key={skill + index}
-                className="text-foreground border-foreground/20 border-b py-4 text-end text-base first:pt-0"
+                className="border-b border-gray-700 py-4 text-end text-base text-white first:pt-0"
               >
                 {skill}
                 <span aria-hidden className="text-primary ml-4">
@@ -66,7 +66,7 @@ export default function HomeServices() {
             type="button"
             data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
             onClick={handleToggleProject}
-            className="text-foreground hover:text-foreground/75 mt-6 hidden cursor-pointer self-end text-xs xl:block"
+            className="mt-6 hidden cursor-pointer self-end text-xs text-white hover:text-white/75 xl:block"
           >
             Check out my projects →
           </button>

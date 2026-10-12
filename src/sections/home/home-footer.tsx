@@ -61,7 +61,7 @@ export default function HomeFooter() {
             type="button"
             data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
             onClick={handleToggleContact}
-            className="text-foreground hover:text-foreground/75 cursor-pointer text-xs"
+            className="cursor-pointer text-xs text-white hover:text-white/75"
           >
             Let&apos;s get creative →
           </button>
@@ -71,7 +71,7 @@ export default function HomeFooter() {
       <HomeToggleButtons />
 
       <div className="p-4 text-center text-xs xl:hidden">
-        <p className="text-foreground md:hidden">
+        <p className="text-white md:hidden">
           Now, <DigitalClock />
           <br />
         </p>
