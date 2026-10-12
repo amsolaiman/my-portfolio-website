@@ -30,14 +30,6 @@ const content = defineType({
     }),
 
     defineField({
-      name: 'email',
-      title: 'Email address',
-      type: 'string',
-      validation: (Rule) =>
-        Rule.required().email().error('Must be a valid email address'),
-    }),
-
-    defineField({
       name: 'resume',
       title: 'Resume',
       type: 'file',
