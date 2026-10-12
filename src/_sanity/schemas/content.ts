@@ -129,7 +129,7 @@ const content = defineType({
           type: 'string',
         }),
       ],
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().assetRequired(),
     }),
 
     defineField({

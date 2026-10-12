@@ -44,7 +44,7 @@ const website = defineType({
 
     defineField({
       name: 'email',
-      title: 'Email',
+      title: 'Email address',
       type: 'string',
       validation: (Rule) =>
         Rule.required().email().error('Must be a valid email address'),
@@ -59,7 +59,7 @@ const website = defineType({
       options: {
         accept: 'image/png, image/jpeg, image/webp',
       },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().assetRequired(),
     }),
 
     defineField({
