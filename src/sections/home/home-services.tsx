@@ -48,7 +48,7 @@ export default function HomeServices() {
         </div>
 
         <div className="mt-12 flex flex-col xl:mt-0">
-          <ul>
+          <ul role="list" aria-label="Skills">
             {skillSet.map((skill, index) => (
               <li
                 key={skill + index}

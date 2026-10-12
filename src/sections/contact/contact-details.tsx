@@ -10,8 +10,6 @@ import {
 } from '@/constants/channel';
 // contexts
 import { useGlobalContent } from '@/contexts/use-global-content';
-// hooks
-import { useBreakpoint } from '@/hooks/use-breakpoint';
 
 //
 import ContactWidget from './contact-widget';
@@ -19,8 +17,6 @@ import ContactWidget from './contact-widget';
 // ----------------------------------------------------------------------
 
 export default function ContactDetails() {
-  const upMd = useBreakpoint('up', 'md');
-
   const { email, resume, socialLinks } = useGlobalContent();
 
   const socials = socialLinks || FALLBACK_SOCIAL_LINKS;
@@ -29,52 +25,68 @@ export default function ContactDetails() {
   const emailAddress = email || FALLBACK_EMAIL_ADDRESS;
 
   return (
-    <div className="flex h-full w-full flex-col justify-between p-4 xl:px-12 xl:py-8">
+    <section
+      aria-labelledby="contact-heading"
+      className="flex h-full w-full flex-col justify-between p-4 xl:px-12 xl:py-8"
+    >
       <p className="text-xs">/ P.004 / Open Channel</p>
 
       <div>
-        <p className="text-background mb-6 text-sm font-medium xl:mb-10">
-          Let&apos;s talk & build something great together. Check out my&nbsp;
-          <a
-            data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-            className="hover:text-secondary underline"
-            href={resumeUrl}
-            download
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            resume
-          </a>
-          .
-        </p>
+        <div className="text-background mb-6 text-sm font-medium xl:mb-10">
+          <h2 id="contact-heading" className="inline">
+            Let&apos;s talk & build something great together.
+          </h2>
+          &nbsp;
+          <p className="inline">
+            Check out my&nbsp;
+            <a
+              data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
+              className="hover:text-secondary focus-visible:text-secondary underline"
+              href={resumeUrl}
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              resume
+            </a>
+            .
+          </p>
+        </div>
 
         <a
           data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
           className="hover:text-secondary cursor-pointer font-sans text-6xl xl:text-7xl"
           href={`mailto:${emailAddress}`}
         >
-          {upMd ? emailAddress : 'Email Me'}
+          <span className="md:hidden">Email Me</span>
+          <span className="hidden md:inline">{emailAddress}</span>
         </a>
       </div>
 
       <div className="flex flex-col-reverse justify-between gap-12 md:flex-row md:items-end">
         <ContactWidget />
 
-        <div className="flex flex-col items-end gap-4 xl:flex-row xl:items-center xl:gap-10">
+        <ul
+          role="list"
+          aria-label="Social links"
+          className="flex flex-col items-end gap-4 xl:flex-row xl:items-center xl:gap-10"
+        >
           {socials.map((social) => (
-            <a
-              data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-              key={social.label}
-              className="text-foreground hover:text-foreground/75 hover:border-secondary cursor-pointer border-b-2 border-transparent text-base"
-              href={social.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {social.label} ↗
-            </a>
+            <li key={social._key}>
+              <a
+                data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
+                className="text-foreground hover:text-foreground/75 hover:border-secondary cursor-pointer border-b-2 border-transparent text-base"
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {social.label}
+                <span aria-hidden> ↗</span>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-    </div>
+    </section>
   );
 }
