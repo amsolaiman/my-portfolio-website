@@ -53,9 +53,9 @@ export default function CursorEffect() {
   return (
     <motion.div
       className={cn(
-        'border-foreground pointer-events-none fixed z-50 flex items-center justify-center rounded-full border bg-transparent transition-colors duration-300',
+        'pointer-events-none fixed z-50 flex items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300',
         cursorSize === 0 && 'border-transparent',
-        isCardBtnHovered && 'bg-foreground/75'
+        isCardBtnHovered && 'bg-white/75'
       )}
       style={{
         left: smoothX,
@@ -81,8 +81,8 @@ export default function CursorEffect() {
               stiffness: 300,
             }}
             className={cn({
-              'text-foreground text-xl': !!toggleBtnHoveredTarget,
-              'text-background/75 text-xs': isCardBtnHovered,
+              'text-xl text-white': !!toggleBtnHoveredTarget,
+              'text-xs text-black/75': isCardBtnHovered,
             })}
           >
             {label}
