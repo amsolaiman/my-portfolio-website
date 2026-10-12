@@ -3,6 +3,8 @@
 import React, { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 
+// contexts
+import { useToggleButtons } from '@/contexts/use-toggle-buttons';
 // hooks
 import { useBreakpoint } from '@/hooks/use-breakpoint';
 
@@ -13,14 +15,14 @@ export default function HomeClient({
 }: {
   children: React.ReactNode;
 }) {
+  const { openContact, openProject } = useToggleButtons();
+
   const upXl = useBreakpoint('up', 'xl');
 
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!upXl) return;
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const container = containerRef.current;
     if (!container) return;
@@ -47,6 +49,7 @@ export default function HomeClient({
   return (
     <div
       ref={containerRef}
+      inert={openContact || openProject}
       className="bg-background relative h-full w-screen overflow-y-auto xl:pr-32"
     >
       <div className="flex w-full grow flex-col">{children}</div>
