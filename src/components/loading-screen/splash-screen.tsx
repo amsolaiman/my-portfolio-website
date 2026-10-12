@@ -19,7 +19,7 @@ export default function SplashScreen() {
   };
 
   return (
-    <div className="bg-background flex h-full w-full items-center justify-center">
+    <div className="bg-neutral flex h-full w-full items-center justify-center">
       <div className="bg-primary aspect-square h-16 xl:h-20" />
 
       <motion.div

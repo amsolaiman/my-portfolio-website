@@ -11,7 +11,7 @@ export default function MissingConfigView() {
   const handleClick = useRapidClick(PATHS.studio);
 
   return (
-    <div className="bg-background flex h-svh w-full flex-col gap-4 px-4 py-8 xl:h-screen xl:px-12">
+    <div className="bg-neutral flex h-svh w-full flex-col gap-4 px-4 py-8 xl:h-screen xl:px-12">
       <div
         onClick={handleClick}
         className="flex flex-1 items-end justify-center xl:justify-start"
@@ -21,7 +21,7 @@ export default function MissingConfigView() {
       </div>
 
       <div className="flex flex-1 flex-col items-center justify-between xl:flex-row xl:items-start">
-        <p className="text-center text-xs">
+        <p className="text-center text-xs text-white">
           Oops! The site is not properly configured.
         </p>
       </div>
