@@ -53,9 +53,9 @@ export default function ContactWidget() {
 
       <p className="text-xs text-gray-300">
         {businessDaysLabel}, {businessHoursLabel}
-        <br />
-        Based in {baseLocation}
       </p>
+
+      <p className="text-xs text-gray-300">Based in {baseLocation}</p>
     </div>
   );
 }
