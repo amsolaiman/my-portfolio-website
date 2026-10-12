@@ -6,7 +6,7 @@ export default function ProjectListSkeleton() {
       {[...Array(4)].map((_, index) => (
         <div
           key={index}
-          className="aspect-square h-24 bg-white/30 motion-safe:animate-pulse"
+          className="aspect-square h-24 animate-pulse bg-white/30"
         />
       ))}
     </div>
