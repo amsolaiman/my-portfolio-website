@@ -1,4 +1,6 @@
-import { useEffect, useRef } from 'react';
+'use client';
+
+import { useEffect, useId, useRef } from 'react';
 import Lenis from 'lenis';
 import Image from 'next/image';
 import { createPortal } from 'react-dom';
@@ -24,14 +26,42 @@ type Props = {
 export default function ProjectModal({ data, open, onClose }: Props) {
   const upXl = useBreakpoint('up', 'xl');
 
+  const titleId = useId();
+
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const aboutInfo = {
-    client: data.client,
-    year: data.isOngoing ? 'Ongoing' : data.endDate?.getFullYear(),
-    techs: data.techStack.map((tech) => tech.trim()).join(', '),
-  };
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const onCloseRef = useRef(onClose);
 
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
+  //#region Dialog behavior
+  useEffect(() => {
+    if (!open) return;
+
+    const trigger = document.activeElement as HTMLElement | null;
+    const main = document.querySelector('main');
+
+    main?.setAttribute('inert', '');
+    closeButtonRef.current?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onCloseRef.current();
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      main?.removeAttribute('inert');
+      trigger?.focus();
+    };
+  }, [open]);
+  //#endregion
+
+  //#region Smooth scroll
   useEffect(() => {
     if (!open || !upXl) return;
 
@@ -63,20 +93,40 @@ export default function ProjectModal({ data, open, onClose }: Props) {
       lenis.destroy();
     };
   }, [open, upXl]);
+  //#endregion
+
+  const aboutInfo = [
+    { label: 'Client', value: data.client },
+    {
+      label: 'Year',
+      value: data.isOngoing ? 'Ongoing' : data.endDate?.getFullYear(),
+    },
+    {
+      label: 'Techs',
+      value: data.techStack.map((tech) => tech.trim()).join(', '),
+    },
+  ].filter((item) => item.value);
 
   if (!open) {
     return null;
   }
 
   return createPortal(
-    <div className="bg-background fixed inset-0 z-30 h-svh w-screen overflow-hidden xl:h-screen">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={titleId}
+      className="bg-background fixed inset-0 z-30 h-svh w-screen overflow-hidden xl:h-screen"
+    >
       <div className="bg-background fixed inset-x-0 top-0 z-10 flex justify-end px-4 py-2">
         <button
+          ref={closeButtonRef}
+          type="button"
           data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
           className="text-foreground hover:text-foreground/75 cursor-pointer text-xs"
           onClick={onClose}
         >
-          Close X
+          Close <span aria-hidden>X</span>
         </button>
       </div>
 
@@ -85,13 +135,13 @@ export default function ProjectModal({ data, open, onClose }: Props) {
         className="h-full overflow-y-scroll px-2 pt-16 pb-8 md:px-4 xl:px-8 xl:pt-32"
       >
         <div className="flex w-full flex-col">
-          <div className="font-sans text-6xl xl:text-8xl/[0.9]">
+          <h2 id={titleId} className="font-sans text-6xl xl:text-8xl/[0.9]">
             {data.name}
-          </div>
+          </h2>
 
-          <div className="[&_span]:text-primary text-sm text-gray-400">
-            <span>■</span> {data.type}
-          </div>
+          <p className="[&_span]:text-primary text-sm text-gray-400">
+            <span aria-hidden>■</span> {data.type}
+          </p>
 
           <div className="mt-20 mb-2 grid grid-cols-2 xl:mt-32">
             {data.previewUrl ? (
@@ -103,7 +153,8 @@ export default function ProjectModal({ data, open, onClose }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View {data.previewUrl.type} ↗
+                View {data.previewUrl.type}
+                <span aria-hidden> ↗</span>
               </a>
             ) : (
               <div />
@@ -125,7 +176,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
           />
 
           <div className="mt-32 grid grid-cols-1 md:grid-cols-2">
-            <p className="text-secondary mb-8 text-xs">/ About the project</p>
+            <h3 className="text-secondary mb-8 text-xs">/ About the project</h3>
 
             <div className="flex flex-col gap-12 xl:gap-20">
               <RichTextRenderer
@@ -133,16 +184,16 @@ export default function ProjectModal({ data, open, onClose }: Props) {
                 className="text-justify font-sans! text-3xl md:text-start xl:text-5xl"
               />
 
-              <ul className="border-foreground/20 divide-foreground/20 divide-y border-y">
-                {Object.entries(aboutInfo).map(([key, info]) => (
-                  <li key={key} className="flex gap-4 py-6">
-                    <span className="text-primary min-w-20 text-xs xl:min-w-48">
-                      {key}
-                    </span>
-                    <p className="text-xs">{info}</p>
-                  </li>
+              <dl className="border-foreground/20 divide-foreground/20 divide-y border-y">
+                {aboutInfo.map(({ label, value }) => (
+                  <div key={label} className="flex gap-4 py-6">
+                    <dt className="text-primary min-w-20 text-xs xl:min-w-48">
+                      {label}
+                    </dt>
+                    <dd className="text-xs">{value}</dd>
+                  </div>
                 ))}
-              </ul>
+              </dl>
 
               {(data.previewUrl || data.designUrl) && (
                 <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6 xl:gap-10">
@@ -154,7 +205,8 @@ export default function ProjectModal({ data, open, onClose }: Props) {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      View {data.previewUrl.type} ↗
+                      View {data.previewUrl.type}
+                      <span aria-hidden> ↗</span>
                     </a>
                   )}
 
@@ -166,7 +218,8 @@ export default function ProjectModal({ data, open, onClose }: Props) {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      View design ↗
+                      View design
+                      <span aria-hidden> ↗</span>
                     </a>
                   )}
                 </div>
@@ -174,9 +227,9 @@ export default function ProjectModal({ data, open, onClose }: Props) {
             </div>
           </div>
 
-          <p className="text-secondary mt-32 mb-2 text-xs">/ Gallery</p>
+          <h3 className="text-secondary mt-32 mb-2 text-xs">/ Gallery</h3>
 
-          <ul className="space-y-4">
+          <ul role="list" className="space-y-4">
             {data.images.map((image, index) => (
               <li key={image._key}>
                 <Image

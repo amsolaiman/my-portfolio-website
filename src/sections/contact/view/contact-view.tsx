@@ -52,6 +52,7 @@ export default function ContactView() {
         )}
       >
         <button
+          type="button"
           onClick={handleToggleMobile}
           className="bg-primary sticky top-0 w-full p-2 text-start text-sm"
         >
