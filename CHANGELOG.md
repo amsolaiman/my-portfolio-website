@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/amsolaiman/my-portfolio-website/compare/v1.3.0...v1.3.1) (2026-10-12)
+
+### Bug Fixes
+
+- fix semantic html of contact panel; make closed panel inert ([#93](https://github.com/amsolaiman/my-portfolio-website/issues/93)) ([16ffb1c](https://github.com/amsolaiman/my-portfolio-website/commit/16ffb1c118d55da657b9190645f5764137ed0dc4))
+- fix semantic html of home sections & components ([#92](https://github.com/amsolaiman/my-portfolio-website/issues/92)) ([3fa7303](https://github.com/amsolaiman/my-portfolio-website/commit/3fa7303fbfdac3e639061da41fa6498801156a64))
+- fix semantic html of project panel ([#95](https://github.com/amsolaiman/my-portfolio-website/issues/95)) ([9c26fbe](https://github.com/amsolaiman/my-portfolio-website/commit/9c26fbedd7b92c13dfff938675a13fdef8455ba1))
+
 ## [1.3.0](https://github.com/amsolaiman/my-portfolio-website/compare/v1.2.0...v1.3.0) (2026-10-09)
 
 ### Features
