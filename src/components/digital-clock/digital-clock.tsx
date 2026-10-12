@@ -12,20 +12,22 @@ export default function DigitalClock() {
   const [time, setTime] = useState<string>('');
 
   useEffect(() => {
-    const updateClock = () => {
-      const now = new Date();
+    let timeout: ReturnType<typeof setTimeout>;
 
-      const formatted = formatInTimeZone(now, DEFAULT_TIMEZONE, 'h:mm:ss a');
-
-      setTime(`${formatted} PHT`);
+    const tick = () => {
+      setTime(
+        `${formatInTimeZone(new Date(), DEFAULT_TIMEZONE, 'h:mm:ss a')} PHT`
+      );
+      timeout = setTimeout(tick, 1000 - (Date.now() % 1000));
     };
 
-    updateClock();
-
-    const interval = setInterval(updateClock, 1000);
-
-    return () => clearInterval(interval);
+    tick();
+    return () => clearTimeout(timeout);
   }, []);
 
-  return time;
+  return (
+    <span className="tabular-nums" suppressHydrationWarning>
+      {time}
+    </span>
+  );
 }
