@@ -40,6 +40,7 @@ const projects = defineType({
           lists: [], // removes Bullet and Numbered list options and any other list types
         }),
       ],
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
@@ -65,7 +66,7 @@ const projects = defineType({
 
     defineField({
       name: 'techStack',
-      title: 'Techologies',
+      title: 'Technologies',
       type: 'array',
       of: [
         defineField({
