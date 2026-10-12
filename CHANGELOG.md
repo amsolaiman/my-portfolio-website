@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.2](https://github.com/amsolaiman/my-portfolio-website/compare/v1.3.1...v1.3.2) (2026-10-12)
+
+### Bug Fixes
+
+- fix validation of image fields in sanity schemas ([#99](https://github.com/amsolaiman/my-portfolio-website/issues/99)) ([aa15505](https://github.com/amsolaiman/my-portfolio-website/commit/aa15505e04e7eac602b6e8405038cfdaa5c5c1d4))
+- remove motion-safe on skeleton animations ([#101](https://github.com/amsolaiman/my-portfolio-website/issues/101)) ([465de1e](https://github.com/amsolaiman/my-portfolio-website/commit/465de1ed9c0c2f08a30d0b171079b95bd73c0769))
+
 ### [1.3.1](https://github.com/amsolaiman/my-portfolio-website/compare/v1.3.0...v1.3.1) (2026-10-12)
 
 ### Bug Fixes
