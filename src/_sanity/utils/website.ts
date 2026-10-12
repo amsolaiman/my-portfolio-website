@@ -16,6 +16,7 @@ export async function getWebsiteConfigData(): Promise<IWebsiteConfig | null> {
   const query = `*[_id == "website-config"][0]{
     _id,
     author,
+    email,
     "logo": logo.asset->url,
     businessDays,
     businessHours,

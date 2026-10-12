@@ -43,6 +43,14 @@ const website = defineType({
     }),
 
     defineField({
+      name: 'email',
+      title: 'Email',
+      type: 'string',
+      validation: (Rule) =>
+        Rule.required().email().error('Must be a valid email address'),
+    }),
+
+    defineField({
       name: 'logo',
       title: 'Logo',
       type: 'image',

@@ -10,6 +10,7 @@ import {
 } from '@/constants/channel';
 // contexts
 import { useGlobalContent } from '@/contexts/use-global-content';
+import { useWebsiteConfig } from '@/contexts/use-website-config';
 
 //
 import ContactWidget from './contact-widget';
@@ -17,7 +18,9 @@ import ContactWidget from './contact-widget';
 // ----------------------------------------------------------------------
 
 export default function ContactDetails() {
-  const { email, resume, socialLinks } = useGlobalContent();
+  const { email } = useWebsiteConfig();
+
+  const { resume, socialLinks } = useGlobalContent();
 
   const socials = socialLinks || FALLBACK_SOCIAL_LINKS;
 

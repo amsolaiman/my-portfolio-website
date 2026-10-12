@@ -17,7 +17,6 @@ export async function getGlobalContentData(): Promise<IGlobalContent> {
     _id,
     title,
     description,
-    email,
     "resume": resume.asset->url,
     socialLinks[] {
       _key,

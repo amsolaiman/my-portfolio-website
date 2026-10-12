@@ -15,6 +15,7 @@ type ImageType = {
 export interface IWebsiteConfig {
   _id: string;
   author: string;
+  email: string;
   logo: string;
   businessDays?: {
     start: number;
@@ -35,7 +36,6 @@ export interface IGlobalContent {
   _id: string;
   title: string;
   description: string;
-  email: string;
   resume: string;
   socialLinks: ChannelSocialLinkType[];
   skills: string[];
