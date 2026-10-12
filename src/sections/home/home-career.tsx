@@ -58,7 +58,7 @@ async function Timeline() {
         <li key={group.group} className="flex">
           <p
             aria-hidden
-            className="hidden w-full max-w-24 pt-8 text-sm md:block xl:max-w-32"
+            className="hidden w-full max-w-24 pt-8 text-sm text-white md:block xl:max-w-32"
           >
             {group.group}
           </p>
@@ -89,13 +89,13 @@ async function Timeline() {
                         href={item.employer.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-foreground hover:text-foreground/75 text-start text-base"
+                        className="text-start text-base text-white hover:text-white/75"
                       >
                         {item.employer.name}
                         <span className="sr-only"> (opens in a new tab)</span>
                       </a>
                     ) : (
-                      <p className="text-foreground text-base">
+                      <p className="text-base text-white">
                         {item.employer.name}
                       </p>
                     )}
@@ -134,7 +134,7 @@ export default async function HomeCareer() {
 
       <h2
         id="career-heading"
-        className="mt-8 font-sans text-6xl xl:text-8xl/[0.9]"
+        className="mt-8 font-sans text-6xl text-white xl:text-8xl/[0.9]"
       >
         Exp. since {renderStartYear}
       </h2>

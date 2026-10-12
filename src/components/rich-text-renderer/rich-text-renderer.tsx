@@ -18,7 +18,7 @@ export default function RichTextRenderer({ value, className }: Props) {
   const components: PortableTextComponents = {
     block: {
       normal: ({ children }) => (
-        <p className={cn('text-foreground text-xs', className)}>{children}</p>
+        <p className={cn('text-xs text-white', className)}>{children}</p>
       ),
     },
     marks: {

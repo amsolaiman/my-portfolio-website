@@ -15,9 +15,7 @@ async function Listing() {
   if (!projects.length) {
     return (
       <div className="flex items-center px-4 xl:h-full xl:px-0">
-        <p className="text-foreground text-xs">
-          Oops! I&apos;ll look into this.
-        </p>
+        <p className="text-xs text-white">Oops! I&apos;ll look into this.</p>
       </div>
     );
   }
@@ -41,13 +39,11 @@ export default function ProjectList() {
       className="flex h-max w-full flex-col xl:h-full xl:w-max xl:flex-row"
     >
       <div className="shrink-0 p-4 xl:p-12 xl:pr-32">
-        <p className="text-background text-xs font-medium">
-          / P.003 / Projects
-        </p>
+        <p className="text-xs font-medium text-black">/ P.003 / Projects</p>
 
         <h2
           id="projects-heading"
-          className="mt-8 font-sans text-6xl xl:text-8xl/[0.9]"
+          className="mt-8 font-sans text-6xl text-white xl:text-8xl/[0.9]"
         >
           What
           <br />I build

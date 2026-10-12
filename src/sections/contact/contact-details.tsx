@@ -32,10 +32,10 @@ export default function ContactDetails() {
       aria-labelledby="contact-heading"
       className="flex h-full w-full flex-col justify-between p-4 xl:px-12 xl:py-8"
     >
-      <p className="text-xs">/ P.004 / Open Channel</p>
+      <p className="text-xs text-white">/ P.004 / Open Channel</p>
 
       <div>
-        <div className="text-background mb-6 text-sm font-medium xl:mb-10">
+        <div className="mb-6 text-sm font-medium text-black xl:mb-10">
           <h2 id="contact-heading" className="inline">
             Let&apos;s talk & build something great together.
           </h2>
@@ -58,7 +58,7 @@ export default function ContactDetails() {
 
         <a
           data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-          className="hover:text-secondary cursor-pointer font-sans text-6xl xl:text-7xl"
+          className="hover:text-secondary cursor-pointer font-sans text-6xl text-white xl:text-7xl"
           href={`mailto:${emailAddress}`}
         >
           <span className="md:hidden">Email Me</span>
@@ -78,7 +78,7 @@ export default function ContactDetails() {
             <li key={social._key}>
               <a
                 data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-                className="text-foreground hover:text-foreground/75 hover:border-secondary cursor-pointer border-b-2 border-transparent text-base"
+                className="hover:border-secondary cursor-pointer border-b-2 border-transparent text-base text-white hover:text-white/75"
                 href={social.link}
                 target="_blank"
                 rel="noopener noreferrer"

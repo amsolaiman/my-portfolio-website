@@ -35,7 +35,7 @@ export default function HomeHero() {
           <div className="z-1 flex w-full justify-end xl:w-3/4">
             <ul className="-mt-1 flex flex-col flex-wrap items-end gap-2 md:-mt-2 xl:flex-row xl:items-center xl:gap-4">
               {PROFESSIONS.map((profession, index) => (
-                <li key={index} className="text-sm">
+                <li key={index} className="text-sm text-white">
                   <span aria-hidden className="mr-2 xl:mr-4">
                     /
                   </span>
@@ -47,7 +47,7 @@ export default function HomeHero() {
         </div>
 
         <div className="border-primary flex w-full items-center justify-center pt-12 md:justify-between xl:border-t-2 xl:pt-2">
-          <p className="hidden text-xs md:block">
+          <p className="hidden text-xs text-white md:block">
             Now, <DigitalClock />
           </p>
 

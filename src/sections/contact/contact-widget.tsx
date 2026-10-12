@@ -42,10 +42,8 @@ export default function ContactWidget() {
 
   return (
     <div className="flex flex-col">
-      <p className="text-sm">
-        <span
-          className={cn(isBusinessTime ? 'text-foreground' : 'text-gray-300')}
-        >
+      <p className="text-sm text-white">
+        <span className={cn(isBusinessTime ? 'text-white' : 'text-gray-300')}>
           ({isBusinessTime ? 'Online' : 'Offline'})&nbsp;
         </span>
         Now, <DigitalClock />

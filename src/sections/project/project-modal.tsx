@@ -116,14 +116,14 @@ export default function ProjectModal({ data, open, onClose }: Props) {
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
-      className="bg-background fixed inset-0 z-30 h-svh w-screen overflow-hidden xl:h-screen"
+      className="bg-neutral fixed inset-0 z-30 h-svh w-screen overflow-hidden xl:h-screen"
     >
-      <div className="bg-background fixed inset-x-0 top-0 z-10 flex justify-end px-4 py-2">
+      <div className="bg-neutral fixed inset-x-0 top-0 z-10 flex justify-end px-4 py-2">
         <button
           ref={closeButtonRef}
           type="button"
           data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-          className="text-foreground hover:text-foreground/75 cursor-pointer text-xs"
+          className="cursor-pointer text-xs text-white hover:text-white/75"
           onClick={onClose}
         >
           Close <span aria-hidden>X</span>
@@ -135,7 +135,10 @@ export default function ProjectModal({ data, open, onClose }: Props) {
         className="h-full overflow-y-scroll px-2 pt-16 pb-8 md:px-4 xl:px-8 xl:pt-32"
       >
         <div className="flex w-full flex-col">
-          <h2 id={titleId} className="font-sans text-6xl xl:text-8xl/[0.9]">
+          <h2
+            id={titleId}
+            className="font-sans text-6xl text-white xl:text-8xl/[0.9]"
+          >
             {data.name}
           </h2>
 
@@ -147,7 +150,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
             {data.previewUrl ? (
               <a
                 data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-                className="text-foreground hover:text-foreground/75 w-fit text-xs"
+                className="w-fit text-xs text-white hover:text-white/75"
                 href={data.previewUrl.link}
                 download
                 target="_blank"
@@ -184,13 +187,13 @@ export default function ProjectModal({ data, open, onClose }: Props) {
                 className="text-justify font-sans! text-3xl md:text-start xl:text-5xl"
               />
 
-              <dl className="border-foreground/20 divide-foreground/20 divide-y border-y">
+              <dl className="divide-y divide-gray-700 border-y border-gray-700">
                 {aboutInfo.map(({ label, value }) => (
                   <div key={label} className="flex gap-4 py-6">
                     <dt className="text-primary min-w-20 text-xs xl:min-w-48">
                       {label}
                     </dt>
-                    <dd className="text-xs">{value}</dd>
+                    <dd className="text-xs text-white">{value}</dd>
                   </div>
                 ))}
               </dl>
@@ -200,7 +203,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
                   {data.previewUrl && (
                     <a
                       data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-                      className="text-foreground hover:text-foreground/75 hover:border-secondary cursor-pointer border-b-2 border-transparent text-base"
+                      className="hover:border-secondary cursor-pointer border-b-2 border-transparent text-base text-white hover:text-white/75"
                       href={data.previewUrl.link}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -213,7 +216,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
                   {data.designUrl && (
                     <a
                       data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-                      className="text-foreground hover:text-foreground/75 hover:border-secondary cursor-pointer border-b-2 border-transparent text-base"
+                      className="hover:border-secondary cursor-pointer border-b-2 border-transparent text-base text-white hover:text-white/75"
                       href={data.designUrl}
                       target="_blank"
                       rel="noopener noreferrer"

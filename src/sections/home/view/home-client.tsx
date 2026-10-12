@@ -50,7 +50,7 @@ export default function HomeClient({
     <div
       ref={containerRef}
       inert={openContact || openProject}
-      className="bg-background relative h-full w-screen overflow-y-auto xl:pr-32"
+      className="bg-neutral relative h-full w-screen overflow-y-auto xl:pr-32"
     >
       <div className="flex w-full grow flex-col">{children}</div>
     </div>
