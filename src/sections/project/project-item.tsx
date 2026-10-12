@@ -40,7 +40,7 @@ export default function ProjectItem({ project, index }: Props) {
         ALIGN_CLASS[project.align]
       )}
     >
-      <p aria-hidden className="mb-2 text-xs">
+      <p aria-hidden className="mb-2 text-xs text-white">
         ({String(index).padStart(2, '0')})
       </p>
 
@@ -63,7 +63,7 @@ export default function ProjectItem({ project, index }: Props) {
         />
       </button>
 
-      <h3 className="text-base xl:mt-2">{project.name}</h3>
+      <h3 className="text-base text-white xl:mt-2">{project.name}</h3>
 
       <ProjectModal data={project} open={open} onClose={() => setOpen(false)} />
     </li>
