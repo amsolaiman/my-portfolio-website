@@ -92,7 +92,6 @@ async function Timeline() {
                         className="text-start text-base text-white hover:text-white/75"
                       >
                         {item.employer.name}
-                        <span className="sr-only"> (opens in a new tab)</span>
                       </a>
                     ) : (
                       <p className="text-base text-white">

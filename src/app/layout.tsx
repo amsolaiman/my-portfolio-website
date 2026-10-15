@@ -88,10 +88,14 @@ export default async function RootLayout({
       {
         '@type': 'Person',
         '@id': `${BASE_URL}/#person`,
-        name: websiteConfig?.author ?? DEFAULT_WEBSITE_AUTHOR,
+        name: websiteConfig?.author || DEFAULT_WEBSITE_AUTHOR,
         url: BASE_URL,
-        sameAs: FALLBACK_SOCIAL_LINKS.map((link) => link.link),
-        ...(currentRole && { jobTitle: currentRole.title }),
+        sameAs:
+          globalContent?.socialLinks.map((link) => link.link) ||
+          FALLBACK_SOCIAL_LINKS.map((link) => link.link),
+        ...(currentRole && {
+          jobTitle: currentRole.title,
+        }),
       },
       {
         '@type': 'WebSite',
