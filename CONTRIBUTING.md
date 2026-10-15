@@ -2,7 +2,7 @@
 
 This guide describes the project layout, local development setup, integrations, quality checks, and pull request expectations.
 
-## Project Overview
+## Overview
 
 - **Framework:** Next.js 16 App Router with React 19
 - **Language:** Typescript
@@ -12,7 +12,7 @@ This guide describes the project layout, local development setup, integrations, 
 - **Package manager:** pnpm 10.4.1
 - **Node.js:** 24 (the version used in CI)
 
-## Project Directory Structure
+## Directory Structure
 
 ```text
 src/
