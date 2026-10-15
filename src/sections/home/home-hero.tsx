@@ -17,7 +17,7 @@ const PROFESSIONS = [
 export default function HomeHero() {
   return (
     <div className="flex min-h-svh w-full flex-col xl:min-h-screen">
-      <div className="flex flex-1 flex-col items-start justify-between p-4 xl:px-12 xl:py-6">
+      <div className="flex flex-1 flex-col items-start justify-between gap-12 p-4 xl:px-12 xl:py-6">
         <div className="relative flex w-full flex-col">
           <h1 className="relative aspect-2/1 w-full overflow-hidden xl:w-3/4">
             <span className="sr-only">Abdul Moiz Solaiman</span>
@@ -46,7 +46,7 @@ export default function HomeHero() {
           </div>
         </div>
 
-        <div className="border-primary flex w-full items-center justify-center pt-12 md:justify-between xl:border-t-2 xl:pt-2">
+        <div className="border-primary flex w-full items-center justify-center pt-2 md:justify-between xl:border-t-2">
           <p className="hidden text-xs text-white md:block">
             Now, <DigitalClock />
           </p>

@@ -27,8 +27,8 @@ export async function generateMetadata(): Promise<Metadata> {
     getGlobalContentData(),
   ]);
 
-  const title = globalContent?.title ?? DEFAULT_WEBSITE_NAME;
-  const description = globalContent?.description ?? DEFAULT_WEBSITE_DESCRIPTION;
+  const title = globalContent?.title || DEFAULT_WEBSITE_NAME;
+  const description = globalContent?.description || DEFAULT_WEBSITE_DESCRIPTION;
 
   return {
     title,
@@ -49,7 +49,6 @@ export async function generateMetadata(): Promise<Metadata> {
             url: websiteConfig.logo,
             width: 512,
             height: 512,
-            alt: 'Official brand logo',
           },
         ],
       }),
@@ -66,20 +65,18 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function App() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
-
   const globalContent = await getGlobalContentData();
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${baseUrl}/#webpage`,
-    url: baseUrl,
-    name: globalContent?.title ?? DEFAULT_WEBSITE_NAME,
-    description: globalContent?.description ?? DEFAULT_WEBSITE_DESCRIPTION,
+    '@id': `${BASE_URL}/#webpage`,
+    url: BASE_URL,
+    name: globalContent?.title || DEFAULT_WEBSITE_NAME,
+    description: globalContent?.description || DEFAULT_WEBSITE_DESCRIPTION,
     inLanguage: 'en',
     isPartOf: {
-      '@id': `${baseUrl}/#website`,
+      '@id': `${BASE_URL}/#website`,
     },
   };
 
