@@ -4,11 +4,11 @@ A modern portfolio website built with Next.js, Typescript, Tailwind, and Sanity.
 
 ## Overview
 
-- **Framework:** Next.js 16 (App Router)
+- **Framework:** Next.js 16 (App Route)
 - **Language:** Typescript
 - **Styling:** Tailwind CSS
-- **CMS:** Sanity Studio
-- **Deployment target:** Vercel
+- **Content management:** Sanity Studio
+- **Deployment:** Vercel
 - **Package manager:** pnpm
 
 ## Getting Started
@@ -42,11 +42,11 @@ Open `http://localhost:3000` with your browser to preview the site.
 src/
 ├── app/                        # Next.js App Router (pages, layouts, etc.)
 │   ├── studio/                 # Sanity Studio entry route
-│   └── layout.tsx              # Root app layout
+│   └── layout.tsx              # Root layout
 │
 ├── _sanity/                    # Sanity integration files
-│   ├── schemas/                # Sanity content schemas
-│   ├── utils/                  # Sanity data fetching and helpers
+│   ├── schemas/                # Sanity document schemas
+│   ├── utils/                  # Content fetching and transformation helpers
 │   └── client.ts               # next-sanity client configuration
 │
 ├── components/                 # Shared UI/feature components
@@ -59,7 +59,7 @@ src/
 │
 ├── sections/                   # Page sections and views
 │
-├── types/                      # TypeScript type definitions
+├── types/                      # Typescript type definitions
 │
 ├── utils/                      # Shared utility functions
 │
