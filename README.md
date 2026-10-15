@@ -4,12 +4,12 @@ A modern portfolio website built with Next.js, Typescript, Tailwind, and Sanity.
 
 ## Overview
 
-- **Framework:** Next.js 16 (App Route)
+- **Framework:** Next.js 16 App Router with React 19
 - **Language:** Typescript
-- **Styling:** Tailwind CSS
-- **Content management:** Sanity Studio
+- **Styling:** Tailwind CSS 4
+- **Content management:** Sanity Studio and `next-sanity`
 - **Deployment:** Vercel
-- **Package manager:** pnpm
+- **Package manager:** pnpm 10.4.1
 
 ## Getting Started
 
@@ -36,36 +36,6 @@ pnpm dev
 
 Open `http://localhost:3000` with your browser to preview the site.
 
-## Directory Structure
-
-```
-src/
-├── app/                        # Next.js App Router (pages, layouts, etc.)
-│   ├── studio/                 # Sanity Studio entry route
-│   └── layout.tsx              # Root layout
-│
-├── _sanity/                    # Sanity integration files
-│   ├── schemas/                # Sanity document schemas
-│   ├── utils/                  # Content fetching and transformation helpers
-│   └── client.ts               # next-sanity client configuration
-│
-├── components/                 # Shared UI/feature components
-│
-├── constants/                  # Application constants
-│
-├── contexts/                   # React context providers and hooks
-│
-├── hooks/                      # Custom utility hooks
-│
-├── sections/                   # Page sections and views
-│
-├── types/                      # Typescript type definitions
-│
-├── utils/                      # Shared utility functions
-│
-└── proxy.ts                    # Next.js proxy helper
-```
-
 ## Sanity Studio
 
 Sanity.io is configured via:
@@ -90,7 +60,7 @@ Access the studio at `http://localhost:3000/studio` when running the dev server.
 ## Learn More
 
 - [Next.js](https://nextjs.org/docs)
-- [Sanity.io](https://www.sanity.io/docs)
 - [Tailwind CSS](https://tailwindcss.com/docs)
+- [Sanity.io](https://www.sanity.io/docs)
 - [Vercel Deployment](https://vercel.com/docs)
 - [Conventional Commit](https://www.conventionalcommits.org/en)

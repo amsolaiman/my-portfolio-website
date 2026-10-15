@@ -6,7 +6,7 @@ export default function HomeQuote() {
       <blockquote className="max-w-230 text-justify font-sans text-3xl text-white xl:text-start xl:text-5xl [&_span]:text-gray-400">
         <p>
           The beginning of wisdom is the statement&nbsp;
-          <span>I do not know</span>. The person who cannot make that statement
+          <span>I do not know.</span> The person who cannot make that statement
           is one who will never <span>learn</span> anything.
         </p>
       </blockquote>
