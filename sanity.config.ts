@@ -12,7 +12,7 @@ import { PATHS } from '@/constants/paths';
 
 const sanityConfig = defineConfig({
   title: DEFAULT_WEBSITE_NAME,
-  basePath: PATHS.studio,
+  basePath: PATHS.studio.root,
   projectId: process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_STUDIO_DATASET!,
   plugins: [structureTool({ structure })],

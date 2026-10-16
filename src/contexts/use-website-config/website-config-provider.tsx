@@ -24,7 +24,10 @@ export function WebsiteConfigProvider({ children, value }: Props) {
   const pathname = usePathname();
 
   if (!value) {
-    if (pathname === PATHS.studio || pathname.startsWith(`${PATHS.studio}/`)) {
+    if (
+      pathname === PATHS.studio.root ||
+      pathname.startsWith(`${PATHS.studio.root}/`)
+    ) {
       return children;
     }
 

@@ -27,7 +27,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: PATHS.root,
-        disallow: [PATHS.studio, PATHS.api.root],
+        disallow: [PATHS.studio.root, PATHS.api.root],
       },
       {
         userAgent: 'Googlebot-Image',

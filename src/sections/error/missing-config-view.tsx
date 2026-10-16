@@ -1,14 +1,39 @@
 'use client';
 
+import { useState } from 'react';
+
 // constants
 import { PATHS } from '@/constants/paths';
 // hooks
 import { useRapidClick } from '@/hooks/use-rapid-click';
+// utils
+import { NotifyResult, sendEmailjsNotification } from '@/utils/emailjs';
 
 // ----------------------------------------------------------------------
 
 export default function MissingConfigView() {
-  const handleClick = useRapidClick(PATHS.studio);
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  const handleClick = useRapidClick(PATHS.studio.root);
+
+  const handleNotify = async () => {
+    if (isDisabled) return;
+
+    setIsDisabled(true);
+    const result = await sendEmailjsNotification();
+
+    if (result === NotifyResult.SENT) {
+      alert('Notification has been sent.');
+      return;
+    }
+    if (result === NotifyResult.THROTTLED) {
+      alert('Notification has been sent.');
+      return;
+    }
+
+    alert('Something went wrong.');
+    setIsDisabled(false);
+  };
 
   return (
     <div className="bg-neutral flex h-svh w-full flex-col gap-4 px-4 py-8 xl:h-screen xl:px-12">
@@ -24,6 +49,15 @@ export default function MissingConfigView() {
         <p className="text-center text-xs text-white">
           Oops! The site is not properly configured.
         </p>
+
+        <button
+          type="button"
+          onClick={handleNotify}
+          disabled={isDisabled}
+          className="cursor-pointer text-xs text-white hover:text-white/75 disabled:cursor-default disabled:text-gray-400"
+        >
+          Ping me here ↗
+        </button>
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ export default function HomeFooter() {
 
   const { handleToggleContact } = useToggleButtons();
 
-  const handleClick = useRapidClick(PATHS.studio);
+  const handleClick = useRapidClick(PATHS.studio.root);
 
   const copyrightText = `©${new Date().getFullYear()} ${copyright || FALLBACK_COPYRIGHT_TEXT}`;
 
