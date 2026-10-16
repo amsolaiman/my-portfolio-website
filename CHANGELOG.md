@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/amsolaiman/my-portfolio-website/compare/v1.3.2...v1.4.0) (2026-10-16)
+
+### Features
+
+- add admin notification button for missing config w/ emailjs ([#105](https://github.com/amsolaiman/my-portfolio-website/issues/105)) ([398884d](https://github.com/amsolaiman/my-portfolio-website/commit/398884d9103e3aa5eb07056080086805da05a063))
+- add hover animation to project items ([#104](https://github.com/amsolaiman/my-portfolio-website/issues/104)) ([6370480](https://github.com/amsolaiman/my-portfolio-website/commit/63704807385d79ff4aafa4ebb4c1765f3f1f02f6))
+
+### Bug Fixes
+
+- fix semantic html of error views ([#106](https://github.com/amsolaiman/my-portfolio-website/issues/106)) ([19dc13f](https://github.com/amsolaiman/my-portfolio-website/commit/19dc13f16a5c9070f7b09abce940ad044dc897be))
+- fix technical seo fallback handling ([#102](https://github.com/amsolaiman/my-portfolio-website/issues/102)) ([e89713a](https://github.com/amsolaiman/my-portfolio-website/commit/e89713a30e3f86b3e6444a0a38edebcaf5eb6b8d))
+- update min & max limit of social links in sanity ([#107](https://github.com/amsolaiman/my-portfolio-website/issues/107)) ([36dad2a](https://github.com/amsolaiman/my-portfolio-website/commit/36dad2a91a83b3ec5c2825b06f06e1be4e8cf987))
+
 ### [1.3.2](https://github.com/amsolaiman/my-portfolio-website/compare/v1.3.1...v1.3.2) (2026-10-12)
 
 ### Bug Fixes
