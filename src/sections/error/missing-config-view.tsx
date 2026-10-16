@@ -36,8 +36,9 @@ export default function MissingConfigView() {
   };
 
   return (
-    <div className="bg-neutral flex h-svh w-full flex-col gap-4 px-4 py-8 xl:h-screen xl:px-12">
+    <main className="bg-neutral flex h-svh w-full flex-col gap-4 px-4 py-8 xl:h-screen xl:px-12">
       <div
+        aria-hidden
         onClick={handleClick}
         className="flex flex-1 items-end justify-center xl:justify-start"
       >
@@ -46,9 +47,9 @@ export default function MissingConfigView() {
       </div>
 
       <div className="flex flex-1 flex-col items-center justify-between xl:flex-row xl:items-start">
-        <p className="text-center text-xs text-white">
+        <h1 className="font-norma text-center text-xs text-white">
           Oops! The site is not properly configured.
-        </p>
+        </h1>
 
         <button
           type="button"
@@ -56,9 +57,9 @@ export default function MissingConfigView() {
           disabled={isDisabled}
           className="cursor-pointer text-xs text-white hover:text-white/75 disabled:cursor-default disabled:text-gray-400"
         >
-          Ping me here ↗
+          Ping me here <span aria-hidden>↗</span>
         </button>
       </div>
-    </div>
+    </main>
   );
 }
