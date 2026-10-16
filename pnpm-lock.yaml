@@ -7,6 +7,9 @@ settings:
 importers:
   .:
     dependencies:
+      '@emailjs/browser':
+        specifier: ^5.0.3
+        version: 5.0.3
       '@portabletext/react':
         specifier: ^6.2.0
         version: 6.2.0(react@19.2.1)
@@ -1461,6 +1464,13 @@ packages:
       }
     peerDependencies:
       react: '>=16.8.0'
+
+  '@emailjs/browser@5.0.3':
+    resolution:
+      {
+        integrity: sha512-4HGAkWdzql7mrG34ZFFj7IDJNRgtbl1+yVgHdQJ6XSfhq9gxGUHtttr4UKNi7Fk++1hMXRHy1lTeGZrkioOtsw==,
+      }
+    engines: { node: '>=14.0.0' }
 
   '@emnapi/core@1.10.0':
     resolution:
@@ -12876,6 +12886,8 @@ snapshots:
     dependencies:
       react: 19.2.1
       tslib: 2.8.1
+
+  '@emailjs/browser@5.0.3': {}
 
   '@emnapi/core@1.10.0':
     dependencies:

@@ -37,6 +37,10 @@ export const envSchema = Yup.object({
   SANITY_STUDIO_DATASET: Yup.string().required(
     'SANITY_STUDIO_DATASET is required'
   ),
+  // EMAILJS
+  EMAILJS_SERVICE_ID: Yup.string().required('EMAILJS_SERVICE_ID is required'),
+  EMAILJS_TEMPLATE_ID: Yup.string().required('EMAILJS_TEMPLATE_ID is required'),
+  EMAILJS_PUBLIC_KEY: Yup.string().required('EMAILJS_PUBLIC_KEY is required'),
   // CONTENT
   DEFAULT_EMAIL_ADDRESS: Yup.string()
     .email()
@@ -73,6 +77,16 @@ export const envClientSchema = Yup.object({
   ),
   NEXT_PUBLIC_SANITY_STUDIO_DATASET: Yup.string().required(
     'NEXT_PUBLIC_SANITY_STUDIO_DATASET is required'
+  ),
+  // EMAILJS
+  NEXT_PUBLIC_EMAILJS_SERVICE_ID: Yup.string().required(
+    'NEXT_PUBLIC_EMAILJS_SERVICE_ID is required'
+  ),
+  NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: Yup.string().required(
+    'NEXT_PUBLIC_EMAILJS_TEMPLATE_ID is required'
+  ),
+  NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: Yup.string().required(
+    'NEXT_PUBLIC_EMAILJS_PUBLIC_KEY is required'
   ),
   // CONTENT
   NEXT_PUBLIC_DEFAULT_EMAIL_ADDRESS: Yup.string()
