@@ -7,7 +7,7 @@ import { PATHS } from '@/constants/paths';
 // hooks
 import { useRapidClick } from '@/hooks/use-rapid-click';
 // utils
-import { NotifyResult, sendNotification } from '@/utils/emailjs';
+import { NotifyResult, sendEmailjsNotification } from '@/utils/emailjs';
 
 // ----------------------------------------------------------------------
 
@@ -20,7 +20,7 @@ export default function MissingConfigView() {
     if (isDisabled) return;
 
     setIsDisabled(true);
-    const result = await sendNotification();
+    const result = await sendEmailjsNotification();
 
     if (result === NotifyResult.SENT) {
       alert('Notification has been sent.');

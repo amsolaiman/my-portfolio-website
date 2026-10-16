@@ -19,7 +19,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
 const COOLDOWN_KEY = 'missing-config-notified-at';
 const COOLDOWN_MS = 10 * 60 * 1000; // 10 minutes
 
-export async function sendNotification(): Promise<NotifyResult> {
+export async function sendEmailjsNotification(): Promise<NotifyResult> {
   try {
     const last = Number(localStorage.getItem(COOLDOWN_KEY) ?? 0);
     if (Date.now() - last < COOLDOWN_MS) return NotifyResult.THROTTLED;
