@@ -23,7 +23,7 @@ export default function ProjectClient({
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const { openProject, handleToggleProject } = useToggleButtons();
+  const { openContact, openProject, handleToggleProject } = useToggleButtons();
 
   useEffect(() => {
     if (!upXl) return;
@@ -73,7 +73,7 @@ export default function ProjectClient({
       <div
         id="project-panel"
         key="project-view-mobile"
-        inert={!openProject}
+        inert={!openProject || openContact}
         className={cn(
           'bg-secondary absolute inset-0 z-10 flex w-screen flex-col overflow-hidden transition-transform duration-500 ease-in-out',
           openProject ? 'translate-y-0' : 'translate-y-full'
@@ -116,7 +116,7 @@ export default function ProjectClient({
       <div
         ref={containerRef}
         id="project-panel"
-        inert={!openProject}
+        inert={!openProject || openContact}
         className="mr-16 w-full overflow-x-scroll"
       >
         <div className="flex h-full grow">{children}</div>
