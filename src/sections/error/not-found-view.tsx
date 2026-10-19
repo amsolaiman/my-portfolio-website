@@ -1,5 +1,8 @@
 import Link from 'next/link';
 
+// constants
+import { PATHS } from '@/constants/paths';
+
 // ----------------------------------------------------------------------
 
 export default function NotFoundView() {
@@ -19,8 +22,8 @@ export default function NotFoundView() {
         </h1>
 
         <Link
-          href="/"
-          className="cursor-pointer text-xs text-white hover:text-white/75"
+          href={PATHS.root}
+          className="cursor-pointer text-xs text-white hover:text-white/75 focus-visible:text-white/75"
         >
           Go back home <span aria-hidden>→</span>
         </Link>

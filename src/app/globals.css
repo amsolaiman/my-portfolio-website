@@ -52,6 +52,10 @@ body:not(:has(#sanity)) {
   font-family: var(--font-fira-code), sans-serif;
   text-transform: uppercase;
 
+  *:focus {
+    outline: none;
+  }
+
   button {
     text-transform: uppercase;
   }
