@@ -54,7 +54,7 @@ export default function ContactView() {
         <button
           type="button"
           onClick={handleToggleMobile}
-          className="bg-primary sticky top-0 w-full p-2 text-start text-sm text-white hover:text-white/75 focus-visible:text-white/75"
+          className="bg-primary sticky top-0 w-full cursor-pointer p-2 text-start text-sm text-white hover:text-white/75 focus-visible:text-white/75"
         >
           <span aria-hidden>↓ </span>Close
         </button>

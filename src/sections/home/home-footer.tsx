@@ -33,14 +33,14 @@ export default function HomeFooter() {
 
   return (
     <div className="mt-32 flex w-full flex-col xl:mt-24 xl:min-h-screen">
-      <div className="relative flex flex-1 flex-col items-center justify-center">
+      <div className="relative flex flex-1 flex-col items-center justify-center px-4 xl:px-12">
         <div className="flex w-full max-w-80 flex-col items-end">
           <p className="[&_span]:text-secondary hidden text-xs whitespace-nowrap text-gray-400 xl:block">
             <span>/ Motivation</span> / Game of Thrones S04 EP06, Min
             28:23-28:35
           </p>
 
-          <div className="relative mt-2 aspect-3/4 w-full overflow-hidden">
+          <div className="relative aspect-3/4 w-full overflow-hidden xl:mt-2">
             <Image
               src={portraitImage?.src || FALLBACK_IMAGE_URL}
               alt={portraitImage?.alt || ''}
