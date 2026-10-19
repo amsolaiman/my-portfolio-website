@@ -1,8 +1,9 @@
 import emailjs from '@emailjs/browser';
 
 // constants
-import { PATHS } from '@/constants/paths';
 import { FALLBACK_EMAIL_ADDRESS } from '@/constants/channel';
+import { BASE_URL } from '@/constants/meta';
+import { PATHS } from '@/constants/paths';
 
 // ----------------------------------------------------------------------
 
@@ -13,8 +14,6 @@ export enum NotifyResult {
 }
 
 // ----------------------------------------------------------------------
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
 
 const COOLDOWN_KEY = 'missing-config-notified-at';
 const COOLDOWN_MS = 10 * 60 * 1000; // 10 minutes

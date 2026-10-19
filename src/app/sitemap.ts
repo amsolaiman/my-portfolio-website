@@ -1,13 +1,14 @@
 import { type MetadataRoute } from 'next';
 
+// constants
+import { BASE_URL } from '@/constants/meta';
+
 // ----------------------------------------------------------------------
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
-
   return [
     {
-      url: baseUrl,
+      url: BASE_URL,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,
