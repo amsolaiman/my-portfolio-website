@@ -19,6 +19,12 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
 const COOLDOWN_KEY = 'missing-config-notified-at';
 const COOLDOWN_MS = 10 * 60 * 1000; // 10 minutes
 
+/**
+ * Sends email notification via EmailJS. Throttled client-side with a
+ * localStorage cooldown to prevent repeat sends.
+ *
+ * @returns Result string: 'sent', 'throttled', or 'error'
+ */
 export async function sendEmailjsNotification(): Promise<NotifyResult> {
   try {
     const last = Number(localStorage.getItem(COOLDOWN_KEY) ?? 0);

@@ -1,5 +1,9 @@
 import { isBefore, isEqual, parseISO } from 'date-fns';
+import capitalize from 'lodash/capitalize';
 import { defineField, defineType } from 'sanity';
+
+// types
+import { ExperienceTypeEnum } from '@/types/data';
 
 // ----------------------------------------------------------------------
 
@@ -20,17 +24,10 @@ const experience = defineType({
       title: 'Employment type',
       type: 'string',
       options: {
-        list: [
-          { title: 'Full-time', value: 'full-time' },
-          { title: 'Part-time', value: 'part-time' },
-          { title: 'Self-employed', value: 'self-employed' },
-          { title: 'Freelance', value: 'freelance' },
-          { title: 'Contract', value: 'contract' },
-          { title: 'Internship', value: 'internship' },
-          { title: 'Apprenticeship', value: 'apprenticeship' },
-          { title: 'Seasonal', value: 'seasonal' },
-          { title: 'Student', value: 'student' },
-        ],
+        list: Object.values(ExperienceTypeEnum).map((value) => ({
+          title: capitalize(value),
+          value,
+        })),
       },
       validation: (Rule) => Rule.required(),
     }),
