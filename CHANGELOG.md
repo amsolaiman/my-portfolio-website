@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/amsolaiman/my-portfolio-website/compare/v1.4.0...v1.4.1) (2026-10-19)
+
+### Bug Fixes
+
+- fix inert bahaviour of project panel when contact panel is open ([#108](https://github.com/amsolaiman/my-portfolio-website/issues/108)) ([27b01a9](https://github.com/amsolaiman/my-portfolio-website/commit/27b01a9751a1818cdded81bf6a1f639c5ccca3d2))
+
 ## [1.4.0](https://github.com/amsolaiman/my-portfolio-website/compare/v1.3.2...v1.4.0) (2026-10-16)
 
 ### Features
