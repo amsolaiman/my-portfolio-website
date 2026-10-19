@@ -58,7 +58,7 @@ export default function ContactDetails() {
 
         <a
           data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-          className="hover:text-secondary cursor-pointer font-sans text-6xl text-white xl:text-7xl"
+          className="hover:text-secondary focus-visible:text-secondary cursor-pointer font-sans text-6xl text-white xl:text-7xl"
           href={`mailto:${emailAddress}`}
         >
           <span className="md:hidden">Email Me</span>
@@ -78,7 +78,7 @@ export default function ContactDetails() {
             <li key={social._key}>
               <a
                 data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-                className="hover:border-secondary cursor-pointer border-b-2 border-transparent text-base text-white hover:text-white/75"
+                className="hover:border-secondary focus-visible:border-secondary cursor-pointer border-b-2 border-transparent text-base text-white hover:text-white/75"
                 href={social.link}
                 target="_blank"
                 rel="noopener noreferrer"

@@ -50,13 +50,12 @@ export default function ProjectItem({ project, index }: Props) {
         aria-label={`View ${project.name} details`}
         data-hover-cursor={CursorIdentfierEnum.CARD_BTN}
         onClick={() => setOpen(true)}
-        className="group relative aspect-3/4 w-full cursor-pointer overflow-hidden"
+        className="group relative aspect-3/4 w-full cursor-pointer overflow-hidden after:pointer-events-none after:absolute after:inset-0 focus-visible:after:shadow-[inset_0_0_32px_0_white]"
       >
         <Image
           src={project.posterImage.src || FALLBACK_IMAGE_URL}
           alt=""
           fill
-          priority
           sizes="(min-width: 768px) 288px, 100vw"
           draggable={false}
           className="object-cover object-center transition-transform duration-300 ease-in group-hover:scale-105"

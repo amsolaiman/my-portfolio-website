@@ -123,7 +123,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
           ref={closeButtonRef}
           type="button"
           data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-          className="cursor-pointer text-xs text-white hover:text-white/75"
+          className="cursor-pointer text-xs text-white hover:text-white/75 focus-visible:text-white/75"
           onClick={onClose}
         >
           Close <span aria-hidden>X</span>
@@ -150,7 +150,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
             {data.previewUrl ? (
               <a
                 data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-                className="w-fit text-xs text-white hover:text-white/75"
+                className="w-fit text-xs text-white hover:text-white/75 focus-visible:text-white/75"
                 href={data.previewUrl.link}
                 download
                 target="_blank"
@@ -203,7 +203,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
                   {data.previewUrl && (
                     <a
                       data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-                      className="hover:border-secondary cursor-pointer border-b-2 border-transparent text-base text-white hover:text-white/75"
+                      className="hover:border-secondary focus-visible:border-secondary cursor-pointer border-b-2 border-transparent text-base text-white hover:text-white/75"
                       href={data.previewUrl.link}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -216,7 +216,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
                   {data.designUrl && (
                     <a
                       data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
-                      className="hover:border-secondary cursor-pointer border-b-2 border-transparent text-base text-white hover:text-white/75"
+                      className="hover:border-secondary focus-visible:border-secondary cursor-pointer border-b-2 border-transparent text-base text-white hover:text-white/75"
                       href={data.designUrl}
                       target="_blank"
                       rel="noopener noreferrer"

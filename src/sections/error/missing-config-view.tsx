@@ -55,7 +55,7 @@ export default function MissingConfigView() {
           type="button"
           onClick={handleNotify}
           disabled={isDisabled}
-          className="cursor-pointer text-xs text-white hover:text-white/75 disabled:cursor-default disabled:text-gray-400"
+          className="cursor-pointer text-xs text-white hover:text-white/75 focus-visible:text-white/75 disabled:cursor-default disabled:text-gray-400"
         >
           Ping me here <span aria-hidden>↗</span>
         </button>
