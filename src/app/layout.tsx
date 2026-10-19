@@ -39,36 +39,34 @@ const firaCode = Fira_Code({
 
 // ----------------------------------------------------------------------
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    metadataBase: new URL(BASE_URL),
-    title: DEFAULT_WEBSITE_NAME,
-    description: DEFAULT_WEBSITE_DESCRIPTION,
-    icons: [
-      {
-        rel: 'icon',
-        url: '/favicon/favicon.ico',
-      },
-      {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '16x16',
-        url: '/favicon/favicon-16x16.png',
-      },
-      {
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '32x32',
-        url: '/favicon/favicon-32x32.png',
-      },
-      {
-        rel: 'apple-touch-icon',
-        sizes: '180x180',
-        url: '/favicon/apple-touch-icon.png',
-      },
-    ],
-  };
-}
+export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
+  title: DEFAULT_WEBSITE_NAME,
+  description: DEFAULT_WEBSITE_DESCRIPTION,
+  icons: [
+    {
+      rel: 'icon',
+      url: '/favicon/favicon.ico',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '16x16',
+      url: '/favicon/favicon-16x16.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '32x32',
+      url: '/favicon/favicon-32x32.png',
+    },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      url: '/favicon/apple-touch-icon.png',
+    },
+  ],
+};
 
 export default async function RootLayout({
   children,
@@ -89,9 +87,9 @@ export default async function RootLayout({
         '@id': `${BASE_URL}/#person`,
         name: websiteConfig?.author || DEFAULT_WEBSITE_AUTHOR,
         url: BASE_URL,
-        sameAs:
-          globalContent?.socialLinks.map((link) => link.link) ||
-          FALLBACK_SOCIAL_LINKS.map((link) => link.link),
+        sameAs: (globalContent?.socialLinks || FALLBACK_SOCIAL_LINKS).map(
+          (link) => link.link
+        ),
         ...(currentRole && {
           jobTitle: currentRole.title,
         }),
