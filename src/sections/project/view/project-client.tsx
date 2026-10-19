@@ -82,7 +82,7 @@ export default function ProjectClient({
         <button
           type="button"
           onClick={handleToggleProject}
-          className="bg-secondary sticky top-0 w-full p-2 text-start text-sm text-white hover:text-white/75 focus-visible:text-white/75"
+          className="bg-secondary sticky top-0 w-full cursor-pointer p-2 text-start text-sm text-white hover:text-white/75 focus-visible:text-white/75"
         >
           <span aria-hidden>↓ </span>Close
         </button>
