@@ -8,6 +8,7 @@ import CursorEffect from '@/components/cursor-effect';
 import { LoadingScreen } from '@/components/loading-screen';
 // constants
 import {
+  BASE_URL,
   DEFAULT_WEBSITE_DESCRIPTION,
   DEFAULT_WEBSITE_NAME,
 } from '@/constants/meta';
@@ -18,8 +19,6 @@ import HomeView from '@/sections/home/view';
 import ProjectView from '@/sections/project/view';
 
 // ----------------------------------------------------------------------
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
 
 export async function generateMetadata(): Promise<Metadata> {
   const [websiteConfig, globalContent] = await Promise.all([

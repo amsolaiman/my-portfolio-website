@@ -12,6 +12,7 @@ import { getWebsiteConfigData } from '@/_sanity/utils/website';
 // constants
 import { FALLBACK_SOCIAL_LINKS } from '@/constants/channel';
 import {
+  BASE_URL,
   DEFAULT_WEBSITE_AUTHOR,
   DEFAULT_WEBSITE_DESCRIPTION,
   DEFAULT_WEBSITE_NAME,
@@ -37,8 +38,6 @@ const firaCode = Fira_Code({
 });
 
 // ----------------------------------------------------------------------
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
