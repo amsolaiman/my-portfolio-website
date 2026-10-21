@@ -1,10 +1,9 @@
 'use client';
 
-import Image from 'next/image';
-
 // components
 import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 import DigitalClock from '@/components/digital-clock';
+import Image from '@/components/image';
 // constants
 import {
   FALLBACK_COPYRIGHT_TEXT,

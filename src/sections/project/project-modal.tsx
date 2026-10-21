@@ -2,11 +2,11 @@
 
 import { useEffect, useId, useRef } from 'react';
 import Lenis from 'lenis';
-import Image from 'next/image';
 import { createPortal } from 'react-dom';
 
 // components
 import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
+import Image from '@/components/image';
 import RichTextRenderer from '@/components/rich-text-renderer';
 // constants
 import { FALLBACK_IMAGE_URL } from '@/constants/content';
