@@ -57,6 +57,7 @@ export default function ProjectItem({ project, index }: Props) {
           alt=""
           fill
           sizes="(min-width: 768px) 288px, 100vw"
+          loading="lazy"
           draggable={false}
           className="object-cover object-center transition-transform duration-300 ease-in group-hover:scale-105"
           skeletonClassName="bg-white/30"

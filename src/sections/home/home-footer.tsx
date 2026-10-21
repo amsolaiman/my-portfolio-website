@@ -44,7 +44,7 @@ export default function HomeFooter() {
               src={portraitImage?.src || FALLBACK_IMAGE_URL}
               alt={portraitImage?.alt || ''}
               fill
-              priority
+              loading="lazy"
               draggable={false}
               className="object-contain object-center"
             />

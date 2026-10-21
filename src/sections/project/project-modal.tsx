@@ -240,7 +240,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
                   alt={image.alt || `${data.name} - Image ${index + 1}`}
                   width={1600}
                   height={900}
-                  priority
+                  loading="lazy"
                   draggable={false}
                   className="h-auto w-full object-contain"
                 />
