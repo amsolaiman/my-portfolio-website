@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 
 // components
+import Image from '@/components/image';
 import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
 // constants
 import { FALLBACK_IMAGE_URL } from '@/constants/content';
@@ -57,8 +57,10 @@ export default function ProjectItem({ project, index }: Props) {
           alt=""
           fill
           sizes="(min-width: 768px) 288px, 100vw"
+          loading="lazy"
           draggable={false}
           className="object-cover object-center transition-transform duration-300 ease-in group-hover:scale-105"
+          skeletonClassName="bg-white/30"
         />
       </button>
 

@@ -2,11 +2,11 @@
 
 import { useEffect, useId, useRef } from 'react';
 import Lenis from 'lenis';
-import Image from 'next/image';
 import { createPortal } from 'react-dom';
 
 // components
 import { CursorIdentfierEnum } from '@/components/cursor-effect/types';
+import Image from '@/components/image';
 import RichTextRenderer from '@/components/rich-text-renderer';
 // constants
 import { FALLBACK_IMAGE_URL } from '@/constants/content';
@@ -240,7 +240,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
                   alt={image.alt || `${data.name} - Image ${index + 1}`}
                   width={1600}
                   height={900}
-                  priority
+                  loading="lazy"
                   draggable={false}
                   className="h-auto w-full object-contain"
                 />
