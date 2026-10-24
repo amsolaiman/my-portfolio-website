@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/amsolaiman/my-portfolio-website/compare/v1.4.1...v1.4.2) (2026-10-24)
+
+### Bug Fixes
+
+- fix footer x-padding; add pointer cursor on mobile catact & project panel toggle buttons ([#112](https://github.com/amsolaiman/my-portfolio-website/issues/112)) ([6912245](https://github.com/amsolaiman/my-portfolio-website/commit/6912245774bdb278756a8cc9b6b68ea66aff632c))
+
 ### [1.4.1](https://github.com/amsolaiman/my-portfolio-website/compare/v1.4.0...v1.4.1) (2026-10-19)
 
 ### Bug Fixes
