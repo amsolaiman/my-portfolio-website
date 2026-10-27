@@ -171,7 +171,6 @@ const website = defineType({
       options: {
         accept: 'image/png, image/jpeg',
       },
-      validation: (Rule) => Rule.required().assetRequired(),
     }),
 
     defineField({
