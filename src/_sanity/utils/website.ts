@@ -23,6 +23,7 @@ export async function getWebsiteConfigData(): Promise<IWebsiteConfig | null> {
     city,
     country,
     "openGrapImage": openGrapImage.asset->url,
+    "twitterCardImage": twitterCardImage.asset->url,
     llmsTxt
   }`;
 

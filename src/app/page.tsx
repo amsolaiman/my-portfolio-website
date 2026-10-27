@@ -55,8 +55,8 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary',
       title,
       description,
-      ...(websiteConfig?.logo && {
-        images: [websiteConfig.logo],
+      ...(websiteConfig?.twitterCardImage && {
+        images: [websiteConfig.twitterCardImage],
       }),
     },
   };

@@ -164,7 +164,7 @@ const website = defineType({
 
     defineField({
       name: 'openGrapImage',
-      title: 'OpenGraph image',
+      title: 'Open graph image',
       type: 'image',
       description:
         'Accepts PNG and JPG/JPEG images only. Recommended resolution is approximately 1200x630 pixels (1.91:1 aspect ratio).',
@@ -172,6 +172,17 @@ const website = defineType({
         accept: 'image/png, image/jpeg',
       },
       validation: (Rule) => Rule.required().assetRequired(),
+    }),
+
+    defineField({
+      name: 'twitterCardImage',
+      title: 'Twitter card image',
+      type: 'image',
+      description:
+        'Accepts PNG and JPG/JPEG images only. Recommended aspect ratio is approximately 1:1.',
+      options: {
+        accept: 'image/png, image/jpeg',
+      },
     }),
 
     defineField({
