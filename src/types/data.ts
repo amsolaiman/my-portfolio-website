@@ -27,6 +27,7 @@ export interface IWebsiteConfig {
   };
   city: string;
   country: string;
+  openGrapImage: string;
   llmsTxt?: string;
 }
 
