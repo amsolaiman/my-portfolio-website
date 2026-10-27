@@ -27,7 +27,7 @@ export interface IWebsiteConfig {
   };
   city: string;
   country: string;
-  openGrapImage: string;
+  openGrapImage?: string;
   twitterCardImage?: string;
   llmsTxt?: string;
 }
