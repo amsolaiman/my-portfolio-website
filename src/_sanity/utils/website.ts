@@ -22,6 +22,7 @@ export async function getWebsiteConfigData(): Promise<IWebsiteConfig | null> {
     businessHours,
     city,
     country,
+    "openGrapImage": openGrapImage.asset->url,
     llmsTxt
   }`;
 

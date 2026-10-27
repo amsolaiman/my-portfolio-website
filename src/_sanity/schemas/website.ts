@@ -163,6 +163,18 @@ const website = defineType({
     }),
 
     defineField({
+      name: 'openGrapImage',
+      title: 'OpenGraph image',
+      type: 'image',
+      description:
+        'Accepts PNG and JPG/JPEG images only. Recommended resolution is approximately 1200x630 pixels (1.91:1 aspect ratio).',
+      options: {
+        accept: 'image/png, image/jpeg',
+      },
+      validation: (Rule) => Rule.required().assetRequired(),
+    }),
+
+    defineField({
       name: 'llmsTxt',
       title: 'LLMs content',
       type: 'text',

@@ -13,6 +13,7 @@ import {
   DEFAULT_WEBSITE_NAME,
 } from '@/constants/meta';
 import { PATHS } from '@/constants/paths';
+import { FALLBACK_IMAGE_URL } from '@/constants/content';
 // sections
 import ContactView from '@/sections/contact/view';
 import HomeView from '@/sections/home/view';
@@ -42,15 +43,13 @@ export async function generateMetadata(): Promise<Metadata> {
       url: BASE_URL,
       siteName: DEFAULT_WEBSITE_NAME,
       locale: 'en_US',
-      ...(websiteConfig?.logo && {
-        images: [
-          {
-            url: websiteConfig.logo,
-            width: 512,
-            height: 512,
-          },
-        ],
-      }),
+      images: [
+        {
+          url: websiteConfig?.openGrapImage || FALLBACK_IMAGE_URL,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
     twitter: {
       card: 'summary',
