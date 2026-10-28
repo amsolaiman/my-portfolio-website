@@ -82,7 +82,7 @@ export default function ProjectClient({
         <button
           type="button"
           onClick={handleToggleProject}
-          className="bg-secondary sticky top-0 w-full cursor-pointer p-2 text-start text-sm text-white hover:text-white/75 focus-visible:text-white/75"
+          className="bg-secondary button-focus-effect sticky top-0 w-full cursor-pointer p-2 text-start text-sm text-white"
         >
           <span aria-hidden>↓ </span>Close
         </button>
@@ -106,7 +106,7 @@ export default function ProjectClient({
         aria-controls="project-panel"
         data-hover-cursor={CursorIdentfierEnum.PROJECT_BTN}
         onClick={handleToggleProject}
-        className="flex h-full w-16 cursor-pointer items-end justify-start text-white/75 hover:text-white focus-visible:text-white"
+        className="button-focus-effect flex h-full w-16 cursor-pointer items-end justify-start text-white/75 hover:text-white"
       >
         <span className="-mb-8 origin-top-left -rotate-90 pt-4 font-sans text-6xl whitespace-nowrap">
           Work

@@ -60,3 +60,9 @@ body:not(:has(#sanity)) {
     text-transform: uppercase;
   }
 }
+
+@layer components {
+  .button-focus-effect {
+    @apply relative after:pointer-events-none after:absolute after:inset-0 focus-visible:after:bg-white/20;
+  }
+}

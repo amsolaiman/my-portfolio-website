@@ -23,7 +23,7 @@ export default function NotFoundView() {
 
         <Link
           href={PATHS.root}
-          className="cursor-pointer text-xs text-white hover:text-white/75 focus-visible:text-white/75"
+          className="button-focus-effect cursor-pointer text-xs text-white hover:text-white/75"
         >
           Go back home <span aria-hidden>→</span>
         </Link>

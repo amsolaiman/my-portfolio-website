@@ -60,7 +60,7 @@ export default function HomeFooter() {
             type="button"
             data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
             onClick={handleToggleContact}
-            className="cursor-pointer text-xs text-white hover:text-white/75 focus-visible:text-white/75"
+            className="button-focus-effect cursor-pointer text-xs text-white hover:text-white/75"
           >
             Let&apos;s get creative →
           </button>

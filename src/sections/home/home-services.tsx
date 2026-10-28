@@ -66,7 +66,7 @@ export default function HomeServices() {
             type="button"
             data-hover-cursor={CursorIdentfierEnum.TEXT_BTN}
             onClick={handleToggleProject}
-            className="mt-6 hidden cursor-pointer self-end text-xs text-white hover:text-white/75 focus-visible:text-white/75 xl:block"
+            className="button-focus-effect mt-6 hidden cursor-pointer self-end text-xs text-white hover:text-white/75 xl:block"
           >
             Check out my projects →
           </button>
