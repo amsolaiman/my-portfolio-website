@@ -89,7 +89,7 @@ async function Timeline() {
                         href={item.employer.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-start text-base text-white hover:text-white/75 focus-visible:text-white/75"
+                        className="button-focus-effect text-start text-base text-white hover:text-white/75"
                       >
                         {item.employer.name}
                       </a>
