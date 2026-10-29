@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/amsolaiman/my-portfolio-website/compare/v1.4.2...v1.5.0) (2026-10-29)
+
+### Features
+
+- make og image sanity-managed via website config ([#116](https://github.com/amsolaiman/my-portfolio-website/issues/116)) ([49b5dca](https://github.com/amsolaiman/my-portfolio-website/commit/49b5dcab3be0dac3ad611eafedcd30b3447dcd1e))
+- make twitter-card image sanity-managed via website config ([#117](https://github.com/amsolaiman/my-portfolio-website/issues/117)) ([cc254d5](https://github.com/amsolaiman/my-portfolio-website/commit/cc254d591481d7fe738aa452e31a6b041da9d3ad))
+
+### Bug Fixes
+
+- fix home-about exp. years label by year count ([#119](https://github.com/amsolaiman/my-portfolio-website/issues/119)) ([d5c162c](https://github.com/amsolaiman/my-portfolio-website/commit/d5c162c9d80c69fbd7be91f2596f005998ab9fed))
+
 ### [1.4.2](https://github.com/amsolaiman/my-portfolio-website/compare/v1.4.1...v1.4.2) (2026-10-24)
 
 ### Bug Fixes
