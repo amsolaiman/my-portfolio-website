@@ -30,7 +30,7 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: 'Googlebot-Image',
-        disallow: ['/assets/banner.svg'],
+        disallow: PATHS.root,
       },
     ],
     sitemap: BASE_URL ? `${BASE_URL}/sitemap.xml` : undefined,
