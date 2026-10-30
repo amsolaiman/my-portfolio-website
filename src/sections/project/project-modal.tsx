@@ -118,7 +118,7 @@ export default function ProjectModal({ data, open, onClose }: Props) {
       aria-labelledby={titleId}
       className="bg-neutral fixed inset-0 z-30 h-svh w-screen overflow-hidden xl:h-screen"
     >
-      <div className="bg-neutral sticky top-0 z-10 flex justify-end px-4 py-2">
+      <div className="bg-neutral fixed inset-x-0 top-0 z-10 flex justify-end px-4 py-2">
         <button
           ref={closeButtonRef}
           type="button"
