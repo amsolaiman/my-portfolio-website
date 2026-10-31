@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/amsolaiman/my-portfolio-website/compare/v1.5.0...v1.5.1) (2026-10-31)
+
+### Bug Fixes
+
+- block googlebot-image from detecting all images ([#122](https://github.com/amsolaiman/my-portfolio-website/issues/122)) ([1010194](https://github.com/amsolaiman/my-portfolio-website/commit/1010194c0bc93db560c94a4f3c3eefc4227d492b))
+- revert project modal close button from sticky --> fixed ([#121](https://github.com/amsolaiman/my-portfolio-website/issues/121)) ([86bbba5](https://github.com/amsolaiman/my-portfolio-website/commit/86bbba595d65e9b08fecdc41e4129f6ce556e274))
+
 ## [1.5.0](https://github.com/amsolaiman/my-portfolio-website/compare/v1.4.2...v1.5.0) (2026-10-29)
 
 ### Features
